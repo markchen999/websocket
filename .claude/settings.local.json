@@ -1,0 +1,10 @@
+{
+  "prefersReducedMotion": true,
+  "permissions": {
+    "allow": [
+      "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-a.html)",
+      "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-b.html)",
+      "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-c.html)"
+    ]
+  }
+}
