@@ -1,133 +1,91 @@
-# WebSocket & Real-Time Communication — Presentation Plan
+# WebSocket & Real-Time Communication — 定稿版 Presentation Plan
 
 ## Overview
 
 - **Topic:** WebSocket & Real-Time Communication
 - **Duration:** 30–45 minutes
-- **Audience:** 3–5 people (1 junior backend dev, 1 PM, others mixed)
-- **Language:** All slides in English (simple vocabulary)
-- **Goal:** Everyone should walk away understanding (1) what WebSocket is and why we need it, (2) when to use it, (3) Connection Lifecycle basics
-- **Format:** HTML/CSS/JS slides + live demos with real connections
-- **Tech stack:** Node.js + Express + Socket.IO (server), HTML/JS (slides & demos)
+- **Slides:** 22 張
+- **Audience:** 3–5 人（1 位初學後端、1 位 PM、其他混合背景）
+- **Language:** 投影片全英文（簡單單字），口頭用中文帶
+- **Theme:** 靜態頁白色背景、Demo 頁深色背景
+- **Diagrams:** Excalidraw 手繪風格 SVG，存在 assets/
 
 ---
 
-## Architecture — Demo Infrastructure
-
-### Server Setup
-
-One local Node.js server running on `localhost:3000`, all demos connect to it. No internet required.
-
-**Endpoints needed:**
-
-| Purpose       | Type      | Endpoint                                                   |
-| ------------- | --------- | ---------------------------------------------------------- |
-| Short Polling | HTTP GET  | `/api/poll` — returns immediately                          |
-| Long Polling  | HTTP GET  | `/api/long-poll` — holds connection until new message      |
-| SSE           | HTTP GET  | `/api/sse` — returns `Content-Type: text/event-stream`     |
-| WebSocket     | Socket.IO | Handles all WS demos (lifecycle, messaging patterns, chat) |
-
-### Network Panel (Custom)
-
-Rendered directly in the browser (no DevTools needed). Intercept `window.fetch` and `window.WebSocket` / `window.EventSource` to capture real traffic.
-
-**Display columns (simplified):** URL / Response / Header Size
-
-- Emphasize header size waste (core motivation from RFC 6455)
-- Add cumulative counter: Total Requests + Total Header Bytes
-
-### Live Chat (Slide 19)
-
-- Audience connects via local Wi-Fi using device IP: `192.168.x.x:3000/chat`
-- Display QR code on slide for easy access
-
----
-
-## Slide-by-Slide Plan
+## Slide-by-Slide Content（定稿）
 
 ### Slide 1 — Cover
 
-**Type:** Static
-
 ```
-Title: WebSocket & Real-Time Communication
-Subtitle: How the web talks in real time
+WebSocket & Real-Time Communication
+How the web talks in real time
 [Name] / [Date]
 ```
 
 ---
 
-### Slide 2 — Opening Question
-
-**Type:** Static | **Time:** ~2 min
+### Slide 2 — Agenda
 
 ```
-When you send a message on LINE or Slack,
-how does it reach the other person instantly?
+Today's Agenda
+
+1  The Problem — HTTP & its limits
+2  WebSocket — persistent two-way connections
+3  Staying Connected — lifecycle, heartbeat, reconnection
+4  Security & Patterns — encryption, auth, message routing
+5  Real World — use cases, trade-offs, live demo
 ```
 
-- Visual: Chat bubble icons, one side "sent", one side "received", big question mark in between
-- Verbal bridge (in Chinese): 「今天的分享就是要回答這個問題。」
+- 視覺：5 列全寬橫排，左側數字（accent 色）+ 右側標題（--h3-size）
+  - 每列有淺藍底色 + 左邊 accent border，填滿頁面寬度
+- 口頭：快速帶過每一段，讓觀眾知道接下來的結構
 
 ---
 
-### Slide 3 — HTTP Request-Response Model
-
-**Type:** Diagram | **Time:** ~3 min
+### Slide 3 — How HTTP Works
 
 ```
 How HTTP Works
 
 The client sends a request, the server sends back a response.
 Then the connection is done.
-
-Think of it like going to a help desk — you ask a question,
-get an answer, and walk away. Every new question means waiting in line again.
 ```
 
-- Visual: Client ←→ Server with Request arrow (→) and Response arrow (←), then ✕ showing connection closed
-- Key point to emphasize verbally: HTTP was not designed for real-time
+- 圖：Client → Request → Server → Response → ✗ Connection closed
+- 口頭用中文帶比喻：「就像去櫃台問問題，問完就走，下次要再排隊」
+- 不要把比喻寫在 slide 上
 
 ---
 
 ### Slide 4 — What if we want real-time with HTTP?
 
-**Type:** Card diagram | **Time:** ~3 min
+```
+What if we want real-time with HTTP?
+```
 
-Three card columns using large → ← text arrows at `--body-size`. No URL details (that's Demo's job). Visual rhythm difference is the teaching tool:
-
-**Short Polling:** 5 rows of `→ No data` + final `→ New message!` — looks "busy". Summary: "Many requests, mostly wasted"
-
-**Long Polling:** request → ⏳ waiting → response rhythm with large gaps — looks "slow". Summary: "Fewer, but held open"
-
-**SSE:** one `→ Connect`, three `← Server event`, then `✗ Client can't send` in red — looks "one-directional". Summary: "One-way only"
-
-Verbal bridge: These all work, but none of them are ideal. That's why WebSocket was created.
+- 圖：三欄卡片（Short Polling / Long Polling / SSE）
+- Short Polling：密密麻麻的 → No data，最後一個 → New message!
+  - 底部：Many requests, mostly wasted
+- Long Polling：一條 request → ⏳ waiting → 回應
+  - 底部：Fewer, but held open
+- SSE：一條 connect，三條 ← Server event，✗ Client can't send
+  - 底部：One-way only
+- 口頭：These all work, but none of them are ideal. That's why WebSocket was created.
 
 ---
 
-### Slide 5 — Demo: Short Polling / Long Polling / SSE
+### Slide 5 — Demo: 三種方法對比
 
-**Type:** Live Demo | **Time:** ~3 min
+**類型：** Live Demo | **時間：** ~3 min
 
-**Layout:** Three columns side by side
-
-- Top: Shared message input + "Send" button (triggers all three simultaneously)
-- Each column: Method label + Network panel (URL / Response / Header Size) + counter bar (Reqs / Headers)
-
-**Demo flow:**
-
-1. Open page, let it idle for ~10 seconds
-2. Short Polling column: requests accumulate rapidly, all responses empty, header bytes pile up
-3. Long Polling column: one request sits in "pending" state
-4. SSE column: one connection established, quiet
-5. Press Send — all three receive the message, but through visibly different mechanisms
+- 三欄：Short Polling / Long Polling / SSE
+- 每欄：Network 面板 + 計數器（不要聊天區）
+- 上方共用 message input + Send 按鈕
+- 操作：空跑 10 秒 → Short Polling 瘋狂刷 → 按 Send → 三邊收到但方式不同
 
 ---
 
 ### Slide 6 — What is WebSocket
-
-**Type:** Diagram | **Time:** ~2 min
 
 ```
 WebSocket
@@ -139,87 +97,66 @@ Once connected, both sides can send messages to each other
 at any time — no need to wait for a request.
 ```
 
-- Visual: Same Client-Server format as Slide 4, but with bidirectional arrows and connection never closes
-- Contrast with Slide 4's diagrams — this one is clean and simple
-- Verbal analogy: The methods we just saw are like sending letters back and forth. WebSocket is like making a phone call — once the call is connected, both sides just talk freely.
+- 圖：Client ↔ Server 雙向箭頭 + Connection stays open ✓
+- 口頭帶比喻：「前面那些方法像寫信，WebSocket 像打電話，接通就自由對話」
+- 不要把比喻寫在 slide 上
 
 ---
 
-### Slide 7 — WebSocket Handshake (HTTP Upgrade)
-
-**Type:** Diagram | **Time:** ~3 min
+### Slide 7 — HTTP vs WebSocket
 
 ```
-How WebSocket Connects
+HTTP vs WebSocket
 
-It starts as a normal HTTP request.
-The client says "Can we upgrade to WebSocket?" and the server says "Yes."
+HTTP: Every message needs a new request.
+The connection closes after each response.
 
-After that, the connection switches from HTTP to WebSocket.
-
-After the upgrade, messages only need a very small frame header
-— as little as 2 bytes.
+WebSocket: One handshake to connect.
+After that, both sides talk freely — the connection stays open.
 ```
 
-- Visual: Two-step flow
-  - Step 1: Client → Server HTTP Request with simplified header `Upgrade: websocket`
-  - Step 2: Server → Client HTTP Response `101 Switching Protocols`
-  - Arrow down → "WebSocket connection is now open"
-- The "2 bytes" line creates suspense for the next Demo — audience will look for it
-- Do NOT mention ws:// vs wss:// here — save for security slide
+- 圖：左右對比。左邊 HTTP 反覆斷開重連，右邊 WebSocket 握手一次然後持續
+- 這頁取代了舊版的「握手細節」頁，不提 Upgrade header 和 101 Switching Protocols
 
 ---
 
 ### Slide 8 — The Cost of One HTTP Request
 
-**Type:** Diagram | **Time:** ~2 min
-
 ```
 The Cost of One HTTP Request
 
-Every HTTP request carries overhead — even when the server has nothing new to say.
+Every HTTP request carries overhead — even when the server
+has nothing new to say.
 
-TCP handshake:  ~1 round trip
-HTTP Headers:   200-800 bytes (cookies, auth, content-type...)
-Body:           often 0 bytes ("no new messages")
+One HTTP request + response: 282 bytes total
+One WebSocket message + response: 54 bytes total
 
 When polling every 2 seconds:
 - 30 requests per minute
-- ~12KB of headers per minute — just to ask "anything new?"
+- ~8.4 KB of overhead per minute — just to ask "anything new?"
 
-WebSocket: 1 handshake, then each message = 2-6 bytes overhead
+WebSocket: 1 handshake, then only data.
 ```
 
-- Visual: Left-right comparison — fat amber HTTP request (TCP handshake + headers + empty body) vs slim blue WebSocket frame (2-6B header + payload)
-- Purpose: Build intuition before the Polling vs WebSocket demo
+- 視覺：HTTP 的肥條 vs WebSocket 的細條（面積對比）
+- 數據來源：Feathers.js benchmark（daffl/websockets-vs-http）
+- CSS 版本已做好，不需要 Excalidraw 圖
 
 ---
 
-### Slide 9 — Demo: HTTP Polling vs WebSocket (with cumulative counter)
+### Slide 9 — Demo: Polling vs WebSocket
 
-**Type:** Live Demo (KEY DEMO) | **Time:** ~4 min
+**類型：** Live Demo (KEY DEMO) | **時間：** ~4 min
 
-**Layout:** Left-right split
-
-- Left: **HTTP Short Polling** — Network panel + cumulative counter (Requests / Wasted / Header Bytes)
-- Right: **WebSocket** — Network panel + cumulative counter (Frames / Overhead)
-- "Wasted Requests" = empty poll responses (status 204), shown in red
-- Top: Shared message input + Send button
-
-**Demo flow:**
-
-1. Open page, do nothing for ~10 seconds
-2. Left side (Polling): 5-6 requests accumulated, several KB of headers, all responses empty
-3. Right side (WebSocket): one line "Connection established", counters barely moved
-4. Press Send — left side waits for next poll cycle (visible delay); right side appears instantly
-5. Send a few more messages — let the counter gap widen
-6. Verbal: "Same messages, same result, but look at the cost."
+- 左右對比：HTTP Short Polling vs WebSocket
+- 每邊：Network 面板 + 計數器（不要聊天區）
+- 計數器：Requests / Wasted / Header Bytes（左）vs Frames / Overhead（右）
+- 操作：空跑 10 秒 → 左邊累積一堆空 request → 按 Send → 左邊等 poll cycle，右邊即時
+- 口頭：Same messages, same result, but look at the cost.
 
 ---
 
-### Slide 10 — Connection Lifecycle Overview
-
-**Type:** Diagram | **Time:** ~3 min
+### Slide 10 — Connection Lifecycle
 
 ```
 Connection Lifecycle
@@ -229,26 +166,19 @@ A WebSocket connection goes through four stages:
 Opening → Open → Closing → Reconnecting
 ```
 
-- Visual: Horizontal flowchart, four boxes connected by arrows
-  - From "Closing": fork into two paths
-    - "Normal close → Done"
-    - "Unexpected close → Reconnecting → back to Opening"
-- Each stage with one-line description:
-  - **Opening** — The client and server do the HTTP upgrade handshake
-  - **Open** — Both sides can send and receive messages freely
-  - **Closing** — One side says "I'm done" and the connection ends gracefully
-  - **Reconnecting** — If the connection drops unexpectedly, the client tries to connect again
+- 圖：橫向流程圖，Closing 分岔成 Normal close → Done 和 Unexpected close → Reconnecting → Opening
+- 四階段各一句說明：
+  - Opening — HTTP upgrade handshake
+  - Open — Both sides send freely
+  - Closing — One side says "I'm done"
+  - Reconnecting — Client retries after drop
 
 ---
 
-### Slide 11 — Heartbeat (Ping/Pong)
-
-**Type:** Diagram | **Time:** ~2 min
+### Slide 11 — Heartbeat Ping/Pong
 
 ```
 Keeping the Connection Alive
-
-How do you know the other side is still there?
 
 The server sends a Ping, the client replies with a Pong.
 If no Pong comes back, the server knows the client is gone.
@@ -257,19 +187,16 @@ Without this, the connection might be silently dropped
 by a proxy or firewall — and neither side would know.
 ```
 
-- Visual: Server ←→ Client with 2-3 Ping → Pong pairs, then last Ping gets ✕ on Client side, labeled `Connection lost`
-- Verbal analogy: It's like when you're on a phone call and it goes quiet — you say "Hello? Are you still there?" That's what Ping does.
+- 圖：2-3 組 Ping → Pong 來回，最後一組 Ping 沒回 → ✗ Connection lost
+- 口頭帶比喻：「像通話中突然安靜，你會說 Hello? 還在嗎？」
+- 不要把比喻寫在 slide 上
 
 ---
 
 ### Slide 12 — Disconnection & Reconnection
 
-**Type:** Diagram | **Time:** ~2 min
-
 ```
 When the Connection Drops
-
-There are two kinds of disconnection:
 
 Normal close — Both sides agree to end the connection.
 Nothing to worry about.
@@ -282,44 +209,24 @@ Wait 1 second, then 2, then 4, then 8...
 This prevents all clients from hitting the server at the same time.
 ```
 
-- Visual: Two blocks — "Normal close" and "Unexpected close"
-  - Unexpected close block: timeline showing 1s → 2s → 4s → 8s with increasing gaps
-- No close code numbers, no "exponential backoff" terminology — just behavior description
+- 圖：兩塊對比。Unexpected close 那邊有 1s → 2s → 4s → 8s 時間軸
+- 不提 close code 編號、不提 exponential backoff 術語
 
 ---
 
-### Slide 13 — Demo: Lifecycle Visualization
+### Slide 13 — Demo: Lifecycle 視覺化
 
-**Type:** Live Demo | **Time:** ~3 min
+**類型：** Live Demo | **時間：** ~3 min
 
-**Implementation:** Real Socket.IO connection to localhost:3000 (not simulated)
-
-**Layout:**
-
-- Top: Large connection status indicator (green "Connected" / yellow "Reconnecting" / red "Disconnected")
-- Middle: Event log area (timestamped entries)
-- Bottom: One button — **"Kill Connection"**
-
-**How it works:**
-
-- Slide entry → `io()` connects with `reconnection: true`, backoff 1s–8s
-- Heartbeat: `socket.emit('ping-server')` every 3s, server replies `pong-server`
-- Kill button: `socket.emit('force disconnect')` → server calls `socket.disconnect(true)`
-- Socket.IO built-in reconnection fires automatically with backoff
-
-**Demo flow:**
-
-1. Show the green status and ping/pong log running (real network traffic)
-2. Say: "I'm going to break the connection on purpose. Watch what happens."
-3. Press "Kill Connection"
-4. Light turns red → log shows reconnection attempts with increasing intervals → light turns green again
-5. Everything is real — no animation, no setTimeout
+- 真實 Socket.IO 連線（不是模擬）
+- 上方：狀態燈（綠 Connected / 黃 Reconnecting / 紅 Disconnected）
+- 中間：事件 log
+- 下方：Kill Connection 按鈕
+- 操作：展示 ping/pong log → 按 Kill → 燈變紅 → 重連倒數 → 自動恢復
 
 ---
 
-### Slide 14 — Security: wss:// and Authentication
-
-**Type:** Diagram | **Time:** ~2 min
+### Slide 14 — Security
 
 ```
 Security
@@ -327,82 +234,45 @@ Security
 ws:// is unencrypted. wss:// is encrypted.
 Same idea as http:// vs https://.
 
-Authentication happens during the first HTTP handshake — the client
-sends a token in the headers. After the upgrade, the connection stays
-open and the token is not sent again.
+Authentication happens during the first HTTP handshake —
+the client sends a token in the headers.
+After the upgrade, the token is not sent again.
 
-This means: if the token expires while the connection is open,
-the server must actively close the connection and ask the client
-to reconnect with a new token.
+If the token expires while the connection is open,
+the server must actively close the connection.
 ```
 
-**Visual for ws:// vs wss://:**
-
-Left-right split:
-
-- Left (`ws://`): Shows message in plaintext — `{"user": "Alice", "message": "Hi!", "token": "abc123"}` with label "Anyone can read this"
-- Right (`wss://`): Shows hex bytes — `17 03 03 00 9a 4b 2d 8f c3 a1 07 e2 91 3c d4 7f ...` with label "Encrypted"
-
-> **Note:** Plan A is to use real Wireshark screenshots (capture ws:// and wss:// traffic). Plan B is to build the visualization directly into the demo. Screenshots can be added later.
-
-**Visual for authentication:**
-
-- Timeline: Handshake phase marked "Token sent here" → long line representing open connection → warning symbol at end "Token expired — server kicks client"
-
-Verbal (to PM): "This is something to think about when designing the product — how do you handle a user whose login session expires while they're still connected?"
+- 圖：左 ws:// 明文 JSON vs 右 wss:// hex 亂碼
+- 口頭對 PM 說：「產品設計要考慮——使用者 session 過期但 WebSocket 還連著怎麼辦？」
 
 ---
 
-### Slide 15 — Message Patterns: Broadcast / Room / One-to-One
-
-**Type:** Diagram | **Time:** ~3 min
+### Slide 15 — Message Patterns
 
 ```
 Message Patterns
 
 Broadcast — Send to everyone connected.
-Like an announcement on a speaker — everyone in the building hears it.
-
 Room — Send to a specific group.
-Like a group chat — only people in that group receive the message.
-
 One-to-One — Send to one specific person.
-Like a private message — only you and that person can see it.
 ```
 
-- Visual: Three groups of 6 user icons, same layout, different "lit up" patterns:
-  - Broadcast: all 6 lit
-  - Room: 3 lit (same-colored border), 3 dim
-  - One-to-One: 1 lit, 5 dim
-
-Verbal (to PM): "When you're designing a product, the first question is — when a user sends a message, who should receive it? That decides which pattern you use."
+- 圖：6 個人物圖示 × 3 組。Broadcast 全亮、Room 3 亮 3 暗、One-to-One 1 亮 5 暗
+- 口頭對 PM：「設計產品時第一個問題是：誰該收到這則訊息？」
 
 ---
 
-### Slide 16 — Demo: Message Patterns Interactive
+### Slide 16 — Demo: 訊息模式互動
 
-**Type:** Live Demo | **Time:** ~3 min
+**類型：** Live Demo | **時間：** ~3 min
 
-**Layout:**
-
-- Top: Dropdown (Broadcast / Room / One-to-One) + message input + Send button
-- Bottom: 6 user cards with names, each labeled Room A or Room B
-- Card fonts, avatars, room labels, and message bubbles enlarged for projection readability
-
-**Implementation:** 6 user cards with flash animation. Server uses Socket.IO rooms.
-
-**Demo flow:**
-
-1. Select **Broadcast** → Send → all 6 cards flash/animate, show message
-2. Select **Room** → pick Room A → Send → only Room A cards light up, Room B stays quiet
-3. Select **One-to-One** → pick specific user → Send → only that one card lights up
-4. Optional: show a simplified log of which socket IDs received the message (for technical audience)
+- 上方：模式下拉選單 + message input + Send
+- 下方：6 張 user card（Room A × 3、Room B × 3）
+- 操作：Broadcast 全亮 → Room A 只亮三個 → One-to-One 只亮一個
 
 ---
 
-### Slide 17 — WebSocket in the Real World
-
-**Type:** Static | **Time:** ~2 min
+### Slide 17 — Real World
 
 ```
 WebSocket in the Real World
@@ -414,14 +284,37 @@ Gaming — Multiplayer online games
 Notifications — Real-time push alerts
 ```
 
-- Visual: Each category with recognizable product logo/icon
-- Verbal example: "When you see someone else's cursor moving in Google Docs, that's WebSocket pushing the position data to your browser in real time."
+- 口頭舉例：「Google Docs 裡看到別人的游標在動，就是 WebSocket 在推位置資料」
 
 ---
 
-### Slide 18 — When to Use / Not Use WebSocket
+### Slide 18 — The Cost of WebSocket（新增）
 
-**Type:** Static | **Time:** ~2 min
+```
+The Cost of WebSocket
+
+Server resources
+Every connected user holds an open connection.
+10,000 users = 10,000 persistent connections on your server.
+HTTP serves a request and moves on — WebSocket doesn't.
+
+Scaling is harder
+HTTP is stateless — any server can handle any request.
+WebSocket is stateful — a client is tied to one server.
+Scaling across multiple servers needs extra work.
+
+More things can go wrong
+Network drops, proxy timeouts, mobile sleep mode...
+You need heartbeat, reconnection logic, and error handling.
+
+Infrastructure cost
+Load balancers, firewalls, and proxies must be configured
+to support long-lived connections. Not all do by default.
+```
+
+---
+
+### Slide 19 — When to Use / Not Use
 
 ```
 When to Use WebSocket
@@ -440,33 +333,28 @@ If a normal HTTP request can do the job, use HTTP.
 WebSocket adds complexity — only use it when you need it.
 ```
 
-- Visual: Green section (use) / Red section (don't use)
-- The closing line is the key takeaway for PM
+---
+
+### Slide 20 — Live Demo: 聊天室
+
+**類型：** Live Demo | **時間：** ~5 min
+
+- QR code 連到 192.168.x.x:3000/chat
+- 觀眾掃碼進入聊天室
+- 如果時間夠，現場分 Room
+- 事件名稱：`chat message`（跟 server.js 一致）
 
 ---
 
-### Slide 19 — Live Demo: Chat Room
-
-**Type:** Live Demo (Interactive) | **Time:** ~5 min
-
-- Display QR code linking to `192.168.x.x:3000/chat`
-- Audience scans, enters nickname, starts chatting
-- Presenter's screen shows all messages in real time
-- If time allows: split audience into different rooms, demonstrate Room pattern live
-- Event name: `chat message` (with space, matching server.js and Socket.IO tutorial convention)
-
----
-
-### Slide 20 — Summary
-
-**Type:** Static | **Time:** ~1 min
+### Slide 21 — Summary
 
 ```
 What We Learned Today
 
 HTTP is request-response. It wasn't designed for real-time.
 
-WebSocket gives us a persistent, two-way connection with very low overhead.
+WebSocket gives us a persistent, two-way connection
+with very low overhead.
 
 A connection has a lifecycle — open it, keep it alive,
 handle disconnections gracefully.
@@ -477,9 +365,7 @@ Choose the right message pattern for your use case
 
 ---
 
-### Slide 21 — Q&A
-
-**Type:** Static
+### Slide 22 — Q&A
 
 ```
 Questions?
@@ -487,70 +373,19 @@ Questions?
 
 ---
 
-## Time Budget
+## Q&A 準備（不放進 slide，口頭回答用）
 
-| Slide | Content                              | Type      | Time        |
-| ----- | ------------------------------------ | --------- | ----------- |
-| 1     | Cover                                | Static    | —           |
-| 2     | Opening question                     | Static    | 2 min       |
-| 3     | HTTP model                           | Diagram   | 3 min       |
-| 4     | Polling / Long Polling / SSE         | Diagram   | 3 min       |
-| 5     | Demo: three methods compared         | Demo      | 3 min       |
-| 6     | What is WebSocket                    | Diagram   | 2 min       |
-| 7     | WebSocket handshake                  | Diagram   | 3 min       |
-| 8     | HTTP request cost breakdown          | Diagram   | 2 min       |
-| 9     | Demo: Polling vs WebSocket + counter | Demo      | 4 min       |
-| 10    | Connection Lifecycle overview        | Diagram   | 3 min       |
-| 11    | Heartbeat Ping/Pong                  | Diagram   | 2 min       |
-| 12    | Disconnection & Reconnection         | Diagram   | 2 min       |
-| 13    | Demo: Lifecycle visualization        | Demo      | 3 min       |
-| 14    | Security: wss:// + auth              | Diagram   | 2 min       |
-| 15    | Message patterns                     | Diagram   | 3 min       |
-| 16    | Demo: Message patterns interactive   | Demo      | 3 min       |
-| 17    | Real-world examples                  | Static    | 2 min       |
-| 18    | When to use / not use                | Static    | 2 min       |
-| 19    | Live demo: chat room                 | Demo      | 5 min       |
-| 20    | Summary                              | Static    | 1 min       |
-| 21    | Q&A                                  | Static    | Remaining   |
-|       |                                      | **Total** | **~40 min** |
+1. **WebSocket 和 HTTP/2 Server Push 的差別？**
+   HTTP/2 Server Push 是推「資源」不是推「資料」，而且 Chrome 已移除支援
 
----
+2. **Socket.IO 和原生 WebSocket 的差異？**
+   Socket.IO 加了自動重連、room、namespace、fallback 到 long polling
 
-## Recommended Reading
+3. **SSE 什麼時候比 WebSocket 更適合？**
+   只需要 server → client 單向推送時，SSE 更簡單且穿透防火牆更容易
 
-### Must Read (Concepts)
+4. **水平擴展的挑戰？**
+   需要 Sticky Session 或 Redis Pub/Sub 在 server 之間同步
 
-- **RFC 6455** — Focus on Section 1 (Overview) and Section 4 (Opening Handshake)
-- **MDN Web Docs — WebSocket** — Covers API, handshake, close codes clearly
-- **High Performance Browser Networking (Ilya Grigorik)** — Free at hpbn.co, has a full WebSocket chapter. Good narrative structure for presentation reference
-
-### Recommended (Deeper Understanding)
-
-- **Socket.IO docs** — Especially "why not raw WebSocket" section; covers reconnection, rooms, namespaces
-- **Ably / PieSocket blog posts** — "WebSockets vs Long Polling" comparisons with diagrams
-
-### Hands-On Prep
-
-- Socket.IO "Get Started" tutorial (builds a chat room — matches Slide 19 Demo)
-- Wireshark basics (for ws:// vs wss:// screenshots on Slide 14)
-
----
-
-## Key Concepts to Master
-
-- HTTP keep-alive vs WebSocket persistent connection — different things
-- WebSocket handshake is an HTTP Upgrade, not a separate protocol initiation
-- Ping/Pong heartbeat: why it exists (proxies/NAT can silently kill idle connections)
-- Reconnection with backoff: prevents thundering herd problem
-- wss:// encryption + token authentication during handshake only
-- Frame header overhead: HTTP headers = hundreds of bytes per request; WebSocket frame = as little as 2 bytes
-
----
-
-## Open Items
-
-- [ ] Wireshark screenshots for Slide 14 (ws:// vs wss:// comparison) — backup: build into demo
-- [ ] Confirm local network IP for Slide 19 QR code
-- [x] Build server (Express + Socket.IO, ~100 lines)
-- [x] Build slides using frontend-slides skill in Claude Code
-- [x] CSS optimized for laptop/projection (mobile breakpoints removed, fonts enlarged)
+5. **TCP 三次握手具體是什麼？**
+   SYN → SYN-ACK → ACK，WebSocket 只需要一次 TCP 握手 + 一次 HTTP Upgrade

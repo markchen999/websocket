@@ -1,10 +1,25 @@
 {
-  "prefersReducedMotion": true,
   "permissions": {
     "allow": [
       "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-a.html)",
       "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-b.html)",
-      "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-c.html)"
+      "Bash(open /Users/jin/Desktop/codeplan/websocket/.claude-design/slide-previews/style-c.html)",
+      "mcp__excalidraw__clear_canvas",
+      "mcp__excalidraw__batch_create_elements",
+      "mcp__excalidraw__export_to_image",
+      "Bash(docker ps:*)",
+      "Bash(docker cp:*)",
+      "mcp__excalidraw__update_element",
+      "mcp__excalidraw__delete_element",
+      "mcp__excalidraw__describe_scene",
+      "Bash(docker exec:*)",
+      "mcp__excalidraw__export_scene",
+      "mcp__excalidraw__import_scene",
+      "mcp__excalidraw__get_canvas_screenshot",
+      "mcp__excalidraw__read_diagram_guide",
+      "mcp__excalidraw__set_viewport",
+      "mcp__excalidraw__snapshot_scene"
     ]
-  }
+  },
+  "prefersReducedMotion": true
 }
