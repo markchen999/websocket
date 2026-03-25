@@ -31,8 +31,11 @@ app.post("/api/message", (req, res) => {
 });
 
 // GET /api/poll — Short Polling (returns immediately)
-app.get("/api/poll", (_req, res) => {
-  res.json({ messages });
+// ?since=<timestamp> returns only messages after that time
+app.get("/api/poll", (req, res) => {
+  const since = req.query.since !== undefined ? parseInt(req.query.since) : null;
+  const filtered = since !== null ? messages.filter((m) => m.time > since) : messages;
+  res.json({ messages: filtered });
 });
 
 // GET /api/long-poll — Long Polling (holds connection until new message or 30s timeout)

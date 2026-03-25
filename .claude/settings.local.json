@@ -18,7 +18,8 @@
       "mcp__excalidraw__get_canvas_screenshot",
       "mcp__excalidraw__read_diagram_guide",
       "mcp__excalidraw__set_viewport",
-      "mcp__excalidraw__snapshot_scene"
+      "mcp__excalidraw__snapshot_scene",
+      "Bash(curl:*)"
     ]
   },
   "prefersReducedMotion": true
