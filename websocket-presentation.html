@@ -2434,88 +2434,81 @@
      SLIDE 11 — DISCONNECTION & RECONNECTION
      ============================================= -->
     <section class="slide slide--light" id="slide-12">
-      <div class="slide-content" style="gap: var(--content-gap)">
+      <div
+        class="slide-content"
+        style="gap: var(--content-gap); align-items: center"
+      >
         <h2 class="slide-h2 reveal">When the Connection Drops</h2>
-        <div class="compare-blocks reveal" style="transition-delay: 0.2s">
-          <div class="compare-block compare-block--green">
-            <h3 class="slide-h3" style="color: var(--green)">Normal Close</h3>
-            <p class="slide-body text-muted-dark">
-              Both sides agree to end the connection. Nothing to worry about.
-            </p>
+        <p class="slide-body reveal" style="text-align: center; font-size: var(--h3-size)">
+          There are two kinds of disconnection:
+        </p>
+
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; gap: clamp(0.5rem, 1vh, 0.8rem)">
+
+        <!-- Normal Close label -->
+        <div class="reveal" style="display: flex; align-items: baseline; gap: 0.5rem; transition-delay: 0.15s">
+          <strong style="color: #22c55e; font-size: var(--h3-size)">Normal Close</strong>
+          <span style="font-size: var(--h3-size); font-weight: 700">— User leaves the page, logs out, or server shuts down for maintenance</span>
+        </div>
+        <!-- Normal Close bar -->
+        <div
+          class="reveal"
+          style="
+            display: flex;
+            width: 100%;
+            height: clamp(6rem, 15vh, 10rem);
+            border-radius: 8px;
+            overflow: hidden;
+            transition-delay: 0.2s;
+          "
+        >
+          <div style="flex: 0 0 auto; min-width: clamp(120px, 12vw, 200px); background: rgba(34,197,94,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 2px solid #fff; gap: 0.2rem">
+            <strong style="color: #22c55e; font-size: var(--h2-size)">1000</strong>
+            <span style="color: var(--text-muted-dark); font-size: var(--small-size)">Normal Closure</span>
           </div>
-          <div class="compare-block compare-block--red">
-            <h3 class="slide-h3" style="color: var(--red)">Unexpected Close</h3>
-            <p class="slide-body text-muted-dark">
-              Network fails, server crashes, or timeout. The client needs to
-              reconnect.
-            </p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: clamp(0.2rem, 0.5vw, 0.4rem);
-                margin-top: clamp(0.2rem, 0.5vh, 0.5rem);
-                flex-wrap: wrap;
-              "
-            >
-              <span
-                class="flow-step"
-                style="
-                  background: rgba(239, 68, 68, 0.1);
-                  border: 1.5px solid var(--red);
-                  color: var(--red);
-                  font-size: var(--small-size);
-                "
-                >1s</span
-              >
-              <span class="flow-arrow" style="color: var(--text-muted-dark)"
-                >→</span
-              >
-              <span
-                class="flow-step"
-                style="
-                  background: rgba(239, 68, 68, 0.1);
-                  border: 1.5px solid var(--red);
-                  color: var(--red);
-                  font-size: var(--small-size);
-                "
-                >2s</span
-              >
-              <span class="flow-arrow" style="color: var(--text-muted-dark)"
-                >→</span
-              >
-              <span
-                class="flow-step"
-                style="
-                  background: rgba(239, 68, 68, 0.1);
-                  border: 1.5px solid var(--red);
-                  color: var(--red);
-                  font-size: var(--small-size);
-                "
-                >4s</span
-              >
-              <span class="flow-arrow" style="color: var(--text-muted-dark)"
-                >→</span
-              >
-              <span
-                class="flow-step"
-                style="
-                  background: rgba(239, 68, 68, 0.1);
-                  border: 1.5px solid var(--red);
-                  color: var(--red);
-                  font-size: var(--small-size);
-                "
-                >8s</span
-              >
-            </div>
-            <p
-              class="slide-body text-muted-dark"
-              style="font-size: var(--small-size)"
-            >
-              Wait longer each retry — prevents all clients from hitting the
-              server at once.
-            </p>
+          <div style="flex: 1; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center">
+            <span style="color: #22c55e; font-size: var(--body-size); font-weight: 600">Close frame sent — both sides agree to end</span>
           </div>
+        </div>
+
+        <!-- Unexpected Close label -->
+        <div class="reveal" style="display: flex; align-items: baseline; gap: 0.5rem; margin-top: clamp(0.3rem, 0.5vh, 0.5rem); transition-delay: 0.25s">
+          <strong style="color: #ef4444; font-size: var(--h3-size)">Unexpected Close</strong>
+          <span style="font-size: var(--h3-size); font-weight: 700">— Network fails, server crashes, or timeout</span>
+        </div>
+        <!-- Unexpected Close bar -->
+        <div
+          class="reveal"
+          style="
+            display: flex;
+            width: 100%;
+            height: clamp(6rem, 15vh, 10rem);
+            border-radius: 8px;
+            overflow: hidden;
+            transition-delay: 0.3s;
+          "
+        >
+          <div style="flex: 0 0 auto; min-width: clamp(120px, 12vw, 200px); background: rgba(239,68,68,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 2px solid #fff; gap: 0.2rem">
+            <strong style="color: #ef4444; font-size: var(--h2-size)">1006</strong>
+            <span style="color: var(--text-muted-dark); font-size: var(--small-size)">Abnormal Closure</span>
+          </div>
+          <div style="flex: 1; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
+            <strong style="color: #ef4444; font-size: var(--h2-size)">1s</strong>
+          </div>
+          <div style="flex: 2; background: rgba(239,68,68,0.17); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
+            <strong style="color: #ef4444; font-size: var(--h2-size)">2s</strong>
+          </div>
+          <div style="flex: 3; background: rgba(239,68,68,0.24); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
+            <strong style="color: #ef4444; font-size: var(--h2-size)">4s</strong>
+          </div>
+          <div style="flex: 4; background: rgba(239,68,68,0.32); display: flex; align-items: center; justify-content: center">
+            <strong style="color: #ef4444; font-size: var(--h2-size)">8s</strong>
+          </div>
+        </div>
+
+        <p class="reveal" style="text-align: center; font-size: var(--body-size); transition-delay: 0.4s">
+          Each retry waits longer to avoid overwhelming the server
+        </p>
         </div>
       </div>
     </section>
@@ -4249,12 +4242,12 @@
           s10.pings++;
           var n = s10.seq;
           s10Stats();
-          // Phase 1: Server sends Ping → (flies right, 5s)
-          s10Packet("PING #" + n, "ping", "r");
-          s10Log("ping", "r", "PING #" + n + " sent by server");
+          // Phase 1: Server (right) sends Ping ← toward Client (left)
+          s10Packet("PING #" + n, "ping", "l");
+          s10Log("ping", "l", "PING #" + n + " sent by server \u2192 client");
           s10Flash("s10-server-box", "s10-hl-ping");
 
-          // Phase 2: After Ping arrives (5s), Client sends Pong ← (flies left, 5s)
+          // Phase 2: After Ping arrives (5s), Client (left) sends Pong → back to Server (right)
           var lat = Math.round(30 + Math.random() * 90);
           s10.timer = setTimeout(function () {
             if (!s10.running) return;
@@ -4262,8 +4255,12 @@
             var el = s10El("s10-lat");
             if (el) el.textContent = lat + "ms";
             s10Stats();
-            s10Packet("PONG #" + n, "pong", "l");
-            s10Log("pong", "l", "PONG #" + n + " (" + lat + "ms)");
+            s10Packet("PONG #" + n, "pong", "r");
+            s10Log(
+              "pong",
+              "r",
+              "PONG #" + n + " client \u2192 server (" + lat + "ms)",
+            );
             s10Flash("s10-client-box", "s10-hl-pong");
 
             // Phase 3: After Pong arrives (5s), wait 1s then start next cycle
