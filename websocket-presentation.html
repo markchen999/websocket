@@ -1519,46 +1519,14 @@
           <div class="demo-col">
             <div class="demo-col-label">Short Polling</div>
             <div class="network-log" id="demo5-sp-net"></div>
-            <div class="counter-bar">
-              <span class="counter-item"
-                ><span class="label">Reqs:</span
-                ><span class="value" id="demo5-sp-reqs">0</span></span
-              ><span class="counter-item"
-                ><span class="label" style="color: #ef4444">Wasted:</span
-                ><span class="value" id="demo5-sp-wasted" style="color: #ef4444"
-                  >0</span
-                ></span
-              ><span class="counter-item"
-                ><span class="label">Size:</span
-                ><span class="value" id="demo5-sp-bytes">0B</span></span
-              >
-            </div>
           </div>
           <div class="demo-col">
             <div class="demo-col-label">Long Polling</div>
             <div class="network-log" id="demo5-lp-net"></div>
-            <div class="counter-bar">
-              <span class="counter-item"
-                ><span class="label">Reqs:</span
-                ><span class="value" id="demo5-lp-reqs">0</span></span
-              ><span class="counter-item"
-                ><span class="label">Size:</span
-                ><span class="value" id="demo5-lp-bytes">0B</span></span
-              >
-            </div>
           </div>
           <div class="demo-col">
             <div class="demo-col-label">SSE</div>
             <div class="network-log" id="demo5-sse-net"></div>
-            <div class="counter-bar">
-              <span class="counter-item"
-                ><span class="label">Reqs:</span
-                ><span class="value" id="demo5-sse-reqs">0</span></span
-              ><span class="counter-item"
-                ><span class="label">Size:</span
-                ><span class="value" id="demo5-sse-bytes">0B</span></span
-              >
-            </div>
           </div>
         </div>
       </div>
@@ -1567,7 +1535,7 @@
     <!-- =============================================
      SLIDE 6 — HTTP vs WEBSOCKET
      ============================================= -->
-    <!-- <section class="slide slide--light" id="slide-6">
+    <section class="slide slide--light" id="slide-6">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -1587,7 +1555,7 @@
           "
         />
       </div>
-    </section> -->
+    </section>
     <!-- =============================================
      SLIDE 8 — HTTP REQUEST COST BREAKDOWN
      ============================================= -->
@@ -1769,7 +1737,7 @@
                         white-space: nowrap;
                       "
                     >
-                      Header: 2–6 bytes
+                      Header: 2–14 bytes
                     </div>
                     <div
                       style="
@@ -1799,28 +1767,40 @@
                     font-weight: 600;
                   "
                 >
-                  ~2–6 bytes overhead
+                  ~6 bytes overhead
                 </div>
               </div>
             </div>
 
             <!-- Bottom summary -->
-            <p
-              class="slide-body reveal"
-              style="
-                font-size: var(--body-size);
-                color: var(--text-muted-dark);
-                text-align: center;
-                transition-delay: 0.4s;
-              "
+            <div
+              class="reveal"
+              style="text-align: center; transition-delay: 0.4s"
             >
-              Polling every 2s =
-              <strong style="color: var(--amber)"
-                >30 req/min × 800 bytes</strong
+              <p
+                style="
+                  font-size: var(--h3-size);
+                  color: var(--text-muted-dark);
+                  line-height: 1.3;
+                "
               >
-              vs WebSocket:
-              <strong style="color: var(--accent)">just your data</strong>
-            </p>
+                1 user polling every 2s —
+                <span style="color: var(--amber)">nothing happening</span> —
+                burns <strong style="color: var(--amber)">1.4 MB</strong> of
+                headers per hour. 1,000 users? That's
+                <strong style="color: var(--amber)">1.4 GB</strong>.
+              </p>
+              <p
+                style="
+                  font-size: var(--h3-size);
+                  color: var(--text-muted-dark);
+                  margin-top: 0.4em;
+                "
+              >
+                WebSocket: same job,
+                <strong style="color: var(--accent)">~6 bytes</strong>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1876,22 +1856,17 @@
                 ><span class="value" id="demo8-poll-reqs">0</span></span
               >
               <span class="counter-item"
-                ><span class="label">Wasted:</span
+                ><span class="label">Overhead:</span
                 ><span
                   class="value"
-                  id="demo8-poll-wasted"
-                  style="color: var(--red)"
+                  id="demo8-poll-overhead"
+                  style="color: var(--amber)"
                   >0</span
                 ></span
               >
               <span class="counter-item"
-                ><span class="label">Header Bytes:</span
-                ><span
-                  class="value"
-                  id="demo8-poll-bytes"
-                  style="color: var(--amber)"
-                  >0</span
-                ></span
+                ><span class="label">Payload:</span
+                ><span class="value" id="demo8-poll-payload">0</span></span
               >
             </div>
           </div>
@@ -1905,7 +1880,16 @@
               >
               <span class="counter-item"
                 ><span class="label">Overhead:</span
-                ><span class="value" id="demo8-ws-bytes">0</span></span
+                ><span
+                  class="value"
+                  id="demo8-ws-overhead"
+                  style="color: var(--accent)"
+                  >0</span
+                ></span
+              >
+              <span class="counter-item"
+                ><span class="label">Payload:</span
+                ><span class="value" id="demo8-ws-payload">0</span></span
               >
             </div>
           </div>
@@ -3190,7 +3174,15 @@
         <div class="demo-body reveal" style="transition-delay: 0.15s">
           <div class="url-display" style="flex: 0.8">
             <p class="slide-small text-muted-light">Scan or visit to join</p>
-            <div id="chat-qr" style="background:#fff;padding:8px;border-radius:8px;display:inline-block;"></div>
+            <div
+              id="chat-qr"
+              style="
+                background: #fff;
+                padding: 8px;
+                border-radius: 8px;
+                display: inline-block;
+              "
+            ></div>
             <div class="url-box" id="chat-url">localhost:3000/chat</div>
             <p
               class="slide-body text-muted-light"
@@ -3553,7 +3545,6 @@
           this.sseReqs = 0;
           this.sseBytes = 0;
           this.spSince = 0;
-          this.updateCounters();
           this.start();
         }
 
@@ -3562,10 +3553,11 @@
           this.addInterval(() => {
             fetch(this.BASE + "/api/poll?since=" + this.spSince)
               .then(async (r) => {
-                const headerSize = this.getHeaderSize(r);
+                const respHeaderSize = this.getHeaderSize(r);
+                const reqHeaderEst = 400;
                 const text = await r.text();
                 const bodySize = text.length;
-                const totalSize = headerSize + bodySize;
+                const totalSize = reqHeaderEst + respHeaderSize + bodySize;
                 const data = JSON.parse(text);
                 this.spReqs++;
                 this.spBytes += totalSize;
@@ -3612,10 +3604,11 @@
           fetch(this.BASE + "/api/long-poll", { signal: this.lpAbort.signal })
             .then(async (r) => {
               if (!this.active) return;
-              const headerSize = this.getHeaderSize(r);
+              const respHeaderSize = this.getHeaderSize(r);
+              const reqHeaderEst = 400;
               const text = await r.text();
               const bodySize = text.length;
-              const totalSize = headerSize + bodySize;
+              const totalSize = reqHeaderEst + respHeaderSize + bodySize;
               const data = JSON.parse(text);
               const msgs = data.messages || [];
               const hasNew = msgs.length > 0;
@@ -3662,7 +3655,6 @@
           });
         }
 
-        /* --- Send: POST /api/message (triggers all 3) --- */
         sendMsg() {
           const input = document.getElementById("demo5-input");
           const msg = input.value.trim() || "Hello!";
@@ -3684,19 +3676,7 @@
           el.scrollTop = el.scrollHeight;
         }
 
-        updateCounters() {
-          document.getElementById("demo5-sp-reqs").textContent = this.spReqs;
-          document.getElementById("demo5-sp-wasted").textContent =
-            this.spWasted;
-          document.getElementById("demo5-sp-bytes").textContent =
-            this.formatBytes(this.spBytes);
-          document.getElementById("demo5-lp-reqs").textContent = this.lpReqs;
-          document.getElementById("demo5-lp-bytes").textContent =
-            this.formatBytes(this.lpBytes);
-          document.getElementById("demo5-sse-reqs").textContent = this.sseReqs;
-          document.getElementById("demo5-sse-bytes").textContent =
-            this.formatBytes(this.sseBytes);
-        }
+        updateCounters() {}
       }
 
       /* ===========================================
@@ -3707,10 +3687,11 @@
           super();
           this.BASE = "http://localhost:3000";
           this.pollReqs = 0;
-          this.pollBytes = 0;
-          this.pollWasted = 0;
+          this.pollOverhead = 0;
+          this.pollPayload = 0;
           this.wsFrames = 0;
-          this.wsBytes = 0;
+          this.wsOverhead = 0;
+          this.wsPayload = 0;
           this.pollSince = 0;
           this.socket = null;
 
@@ -3748,10 +3729,11 @@
             document.getElementById(id).innerHTML = "";
           });
           this.pollReqs = 0;
-          this.pollBytes = 0;
-          this.pollWasted = 0;
+          this.pollOverhead = 0;
+          this.pollPayload = 0;
           this.wsFrames = 0;
-          this.wsBytes = 0;
+          this.wsOverhead = 0;
+          this.wsPayload = 0;
           this.pollSince = 0;
           this.updateCounters();
           this.start();
@@ -3763,15 +3745,16 @@
             fetch(this.BASE + "/api/poll?since=" + this.pollSince)
               .then(async (r) => {
                 if (!this.active) return;
-                const headerSize = this.getHeaderSize(r);
+                const respHeaderSize = this.getHeaderSize(r);
+                const reqHeaderEst = 400;
                 const text = await r.text();
                 const bodySize = text.length;
-                const totalSize = headerSize + bodySize;
+                const overhead = reqHeaderEst + respHeaderSize;
                 const data = JSON.parse(text);
                 this.pollReqs++;
-                this.pollBytes += totalSize;
+                this.pollOverhead += overhead;
+                this.pollPayload += bodySize;
                 const hasNew = data.messages.length > 0;
-                if (!hasNew) this.pollWasted++;
                 if (hasNew) {
                   const last = data.messages[data.messages.length - 1];
                   this.pollSince = last.time;
@@ -3781,7 +3764,7 @@
                   "GET",
                   "/api/poll",
                   String(r.status),
-                  this.formatBytes(totalSize),
+                  this.formatBytes(overhead + bodySize),
                 );
                 this.updateCounters();
               })
@@ -3812,15 +3795,17 @@
 
             this.socket.on("chat message", (msg) => {
               if (!this.active) return;
-              const frameSize = 2 + JSON.stringify(msg).length;
+              const payloadSize = JSON.stringify(msg).length;
+              const frameHeader = 6;
               this.wsFrames++;
-              this.wsBytes += frameSize;
+              this.wsOverhead += frameHeader;
+              this.wsPayload += payloadSize;
               this.addNetRow(
                 "demo8-ws-net",
                 "WS",
                 "frame: " + msg.text,
                 "—",
-                this.formatBytes(frameSize),
+                this.formatBytes(frameHeader + payloadSize),
               );
               this.updateCounters();
             });
@@ -3854,13 +3839,15 @@
         updateCounters() {
           document.getElementById("demo8-poll-reqs").textContent =
             this.pollReqs;
-          document.getElementById("demo8-poll-wasted").textContent =
-            this.pollWasted;
-          document.getElementById("demo8-poll-bytes").textContent =
-            this.formatBytes(this.pollBytes);
+          document.getElementById("demo8-poll-overhead").textContent =
+            this.formatBytes(this.pollOverhead);
+          document.getElementById("demo8-poll-payload").textContent =
+            this.formatBytes(this.pollPayload);
           document.getElementById("demo8-ws-reqs").textContent = this.wsFrames;
-          document.getElementById("demo8-ws-bytes").textContent =
-            this.formatBytes(this.wsBytes);
+          document.getElementById("demo8-ws-overhead").textContent =
+            this.formatBytes(this.wsOverhead);
+          document.getElementById("demo8-ws-payload").textContent =
+            this.formatBytes(this.wsPayload);
         }
       }
 
@@ -4209,7 +4196,7 @@
 
         addMsg(user, text) {
           const div = document.createElement("div");
-          div.className = "chat message";
+          div.className = "chat-message";
           div.innerHTML = `<span class="sender">${user}</span>${text}`;
           this.messages.appendChild(div);
           this.messages.scrollTop = this.messages.scrollHeight;
@@ -4480,24 +4467,21 @@
     </script>
 
     <!-- QR code generator -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="vendor/qrcode.min.js"></script>
 
     <!-- Optional: Socket.IO client for live chat demo -->
-    <script
-      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
-      onerror=""
-    ></script>
+    <script src="vendor/socket.io.min.js" onerror=""></script>
 
     <!-- Generate QR code for chat URL -->
     <script>
       (function () {
-        if (typeof qrcode === 'undefined') return;
-        var chatUrl = 'http://192.168.30.68:3000/chat';
-        document.getElementById('chat-url').textContent = chatUrl;
-        var qr = qrcode(0, 'M');
+        if (typeof qrcode === "undefined") return;
+        var chatUrl = "http://192.168.30.68:3000/chat";
+        document.getElementById("chat-url").textContent = chatUrl;
+        var qr = qrcode(0, "M");
         qr.addData(chatUrl);
         qr.make();
-        document.getElementById('chat-qr').innerHTML = qr.createSvgTag(5, 0);
+        document.getElementById("chat-qr").innerHTML = qr.createSvgTag(5, 0);
       })();
     </script>
   </body>
