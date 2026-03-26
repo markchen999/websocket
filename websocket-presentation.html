@@ -492,34 +492,35 @@
    =========================================== */
       .user-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: clamp(0.6rem, 1.5vw, 1.2rem);
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(0.8rem, 2vw, 1.5rem);
       }
 
       .user-icon {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: clamp(0.15rem, 0.3vh, 0.3rem);
-        padding: clamp(0.5rem, 1.2vw, 1rem);
-        border-radius: 6px;
+        gap: clamp(0.2rem, 0.5vh, 0.4rem);
+        padding: clamp(0.6rem, 1.5vw, 1.2rem);
+        border-radius: 8px;
         border: 2px solid transparent;
         transition: all 0.3s ease;
       }
 
       .user-icon .avatar {
-        width: clamp(48px, 5vw, 72px);
-        height: clamp(48px, 5vw, 72px);
+        width: clamp(56px, 6vw, 88px);
+        height: clamp(56px, 6vw, 88px);
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: clamp(1rem, 1.8vw, 1.5rem);
+        font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+        font-weight: 700;
       }
 
       .user-icon .name {
-        font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+        font-size: clamp(0.85rem, 1.3vw, 1.1rem);
         font-weight: 600;
         opacity: 0.6;
       }
@@ -2718,195 +2719,208 @@
           class="cols reveal"
           style="
             transition-delay: 0.2s;
-            gap: clamp(1rem, 3vw, 3rem);
-            align-items: flex-start;
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: stretch;
+            width: 100%;
           "
         >
           <!-- Broadcast -->
-          <div style="text-align: center">
+          <div
+            style="text-align: center; display: flex; flex-direction: column"
+          >
             <h3
               class="slide-h3"
-              style="margin-bottom: clamp(0.3rem, 0.8vh, 0.8rem)"
+              style="margin-bottom: clamp(0.5rem, 1vh, 1rem)"
             >
               Broadcast
             </h3>
             <div
               style="
-                font-size: var(--small-size);
-                font-weight: 700;
-                color: var(--accent);
-                margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+                border-left: 3px solid var(--accent);
+                padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.8rem, 1.5vw, 1.2rem);
+                border-radius: 4px;
+                flex: 1;
               "
             >
-              Server &rarr; Everyone
-            </div>
-            <div class="user-grid" id="pattern-broadcast">
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">A</div>
-                <div class="name">Alice</div>
+              <div
+                style="
+                  font-size: var(--body-size);
+                  font-weight: 700;
+                  color: var(--accent);
+                  text-align: left;
+                  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+                "
+              >
+                Server &rarr; Everyone
               </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">B</div>
-                <div class="name">Bob</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">C</div>
-                <div class="name">Carol</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">D</div>
-                <div class="name">Dave</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">E</div>
-                <div class="name">Eve</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">F</div>
-                <div class="name">Frank</div>
+              <div class="user-grid" id="pattern-broadcast">
+                <div class="user-icon user-icon--lit">
+                  <div class="avatar">A</div>
+                  <div class="name">Alice</div>
+                </div>
+                <div class="user-icon user-icon--lit">
+                  <div class="avatar">B</div>
+                  <div class="name">Bob</div>
+                </div>
+                <div class="user-icon user-icon--lit">
+                  <div class="avatar">C</div>
+                  <div class="name">Carol</div>
+                </div>
+                <div class="user-icon user-icon--lit">
+                  <div class="avatar">D</div>
+                  <div class="name">Dave</div>
+                </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="
-                font-size: var(--body-size);
-                margin-top: 0.6em;
-                max-width: 22ch;
-                margin-left: auto;
-                margin-right: auto;
-                line-height: 1.4;
-              "
+              style="font-size: var(--body-size); margin-top: 0.6em"
             >
-              Every connected client receives the message — regardless of room
-              or role.
+              All connected clients receive it
             </p>
           </div>
           <!-- Room -->
-          <div style="text-align: center">
+          <div
+            style="text-align: center; display: flex; flex-direction: column"
+          >
             <h3
               class="slide-h3"
-              style="margin-bottom: clamp(0.3rem, 0.8vh, 0.8rem)"
+              style="margin-bottom: clamp(0.5rem, 1vh, 1rem)"
             >
               Room
             </h3>
-            <div class="user-grid" id="pattern-room">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: clamp(0.5rem, 1vh, 0.8rem);
+                flex: 1;
+              "
+            >
               <div
                 style="
-                  grid-column: 1 / -1;
-                  font-size: var(--small-size);
-                  font-weight: 700;
-                  color: var(--accent);
+                  border-left: 3px solid var(--accent);
+                  padding: clamp(0.6rem, 1.2vw, 1rem)
+                    clamp(0.8rem, 1.5vw, 1.2rem);
+                  border-radius: 4px;
+                  flex: 1;
                 "
               >
-                Room A
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">A</div>
-                <div class="name">Alice</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">B</div>
-                <div class="name">Bob</div>
-              </div>
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">C</div>
-                <div class="name">Carol</div>
+                <div
+                  style="
+                    font-size: var(--body-size);
+                    font-weight: 700;
+                    color: var(--accent);
+                    text-align: left;
+                    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+                  "
+                >
+                  Room A
+                </div>
+                <div class="user-grid">
+                  <div class="user-icon user-icon--lit">
+                    <div class="avatar">A</div>
+                    <div class="name">Alice</div>
+                  </div>
+                  <div class="user-icon user-icon--lit">
+                    <div class="avatar">B</div>
+                    <div class="name">Bob</div>
+                  </div>
+                </div>
               </div>
               <div
                 style="
-                  grid-column: 1 / -1;
-                  font-size: var(--small-size);
-                  font-weight: 700;
-                  color: var(--amber);
-                  margin-top: 0.2em;
+                  border-left: 3px solid var(--amber);
+                  padding: clamp(0.6rem, 1.2vw, 1rem)
+                    clamp(0.8rem, 1.5vw, 1.2rem);
+                  border-radius: 4px;
+                  opacity: 0.35;
+                  flex: 1;
                 "
               >
-                Room B
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">D</div>
-                <div class="name">Dave</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">E</div>
-                <div class="name">Eve</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">F</div>
-                <div class="name">Frank</div>
+                <div
+                  style="
+                    font-size: var(--body-size);
+                    font-weight: 700;
+                    color: var(--amber);
+                    text-align: left;
+                    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+                  "
+                >
+                  Room B
+                </div>
+                <div class="user-grid">
+                  <div class="user-icon user-icon--dim" style="opacity: 1">
+                    <div class="avatar">C</div>
+                    <div class="name">Carol</div>
+                  </div>
+                  <div class="user-icon user-icon--dim" style="opacity: 1">
+                    <div class="avatar">D</div>
+                    <div class="name">Dave</div>
+                  </div>
+                </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="
-                font-size: var(--body-size);
-                margin-top: 0.6em;
-                max-width: 22ch;
-                margin-left: auto;
-                margin-right: auto;
-                line-height: 1.4;
-              "
+              style="font-size: var(--body-size); margin-top: 0.6em"
             >
-              Only clients who joined the same room receive it. Others see
-              nothing.
+              Only same-room members receive it
             </p>
           </div>
           <!-- One-to-One -->
-          <div style="text-align: center">
+          <div
+            style="text-align: center; display: flex; flex-direction: column"
+          >
             <h3
               class="slide-h3"
-              style="margin-bottom: clamp(0.3rem, 0.8vh, 0.8rem)"
+              style="margin-bottom: clamp(0.5rem, 1vh, 1rem)"
             >
               One-to-One
             </h3>
             <div
               style="
-                font-size: var(--small-size);
-                font-weight: 700;
-                color: var(--accent);
-                margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+                border-left: 3px solid var(--accent);
+                padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.8rem, 1.5vw, 1.2rem);
+                border-radius: 4px;
+                flex: 1;
               "
             >
-              &rarr; Alice
-            </div>
-            <div class="user-grid" id="pattern-direct">
-              <div class="user-icon user-icon--lit">
-                <div class="avatar">A</div>
-                <div class="name">Alice</div>
+              <div
+                style="
+                  font-size: var(--body-size);
+                  font-weight: 700;
+                  color: var(--accent);
+                  text-align: left;
+                  margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+                "
+              >
+                &rarr; Alice
               </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">B</div>
-                <div class="name">Bob</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">C</div>
-                <div class="name">Carol</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">D</div>
-                <div class="name">Dave</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">E</div>
-                <div class="name">Eve</div>
-              </div>
-              <div class="user-icon user-icon--dim">
-                <div class="avatar">F</div>
-                <div class="name">Frank</div>
+              <div class="user-grid" id="pattern-direct">
+                <div class="user-icon user-icon--lit">
+                  <div class="avatar">A</div>
+                  <div class="name">Alice</div>
+                </div>
+                <div class="user-icon user-icon--dim">
+                  <div class="avatar">B</div>
+                  <div class="name">Bob</div>
+                </div>
+                <div class="user-icon user-icon--dim">
+                  <div class="avatar">C</div>
+                  <div class="name">Carol</div>
+                </div>
+                <div class="user-icon user-icon--dim">
+                  <div class="avatar">D</div>
+                  <div class="name">Dave</div>
+                </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="
-                font-size: var(--body-size);
-                margin-top: 0.6em;
-                max-width: 22ch;
-                margin-left: auto;
-                margin-right: auto;
-                line-height: 1.4;
-              "
+              style="font-size: var(--body-size); margin-top: 0.6em"
             >
-              The message is delivered to exactly one client. No one else knows.
+              Exactly one client receives it
             </p>
           </div>
         </div>
@@ -2914,13 +2928,13 @@
           class="slide-body reveal"
           style="
             text-align: center;
-            font-size: var(--body-size);
+            font-size: var(--h3-size);
             font-weight: 700;
             transition-delay: 0.35s;
           "
         >
-          The first question when designing a real-time feature:
-          <span style="color: var(--accent)"
+          The first question when designing a real-time feature:<br />
+          <span style="color: var(--accent); font-size: var(--h3-size)"
             >who should receive this message?</span
           >
         </p>
@@ -3471,7 +3485,9 @@
               >5</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              >WebSocket isn't free &mdash; choose <strong class="text-accent">the right protocol</strong> for the job: HTTP, SSE, or WebSocket.</span
+              >WebSocket isn't free &mdash; choose
+              <strong class="text-accent">the right protocol</strong> for the
+              job: HTTP, SSE, or WebSocket.</span
             >
           </div>
         </div>
