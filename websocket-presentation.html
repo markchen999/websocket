@@ -493,7 +493,7 @@
       .user-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: clamp(0.4rem, 1vw, 0.8rem);
+        gap: clamp(0.6rem, 1.5vw, 1.2rem);
       }
 
       .user-icon {
@@ -501,25 +501,25 @@
         flex-direction: column;
         align-items: center;
         gap: clamp(0.15rem, 0.3vh, 0.3rem);
-        padding: clamp(0.3rem, 0.8vw, 0.6rem);
+        padding: clamp(0.5rem, 1.2vw, 1rem);
         border-radius: 6px;
         border: 2px solid transparent;
         transition: all 0.3s ease;
       }
 
       .user-icon .avatar {
-        width: clamp(24px, 3vw, 40px);
-        height: clamp(24px, 3vw, 40px);
+        width: clamp(48px, 5vw, 72px);
+        height: clamp(48px, 5vw, 72px);
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: clamp(0.6rem, 1vw, 0.9rem);
+        font-size: clamp(1rem, 1.8vw, 1.5rem);
       }
 
       .user-icon .name {
-        font-size: clamp(0.45rem, 0.7vw, 0.6rem);
+        font-size: clamp(0.7rem, 1.1vw, 0.95rem);
         font-weight: 600;
         opacity: 0.6;
       }
@@ -2705,11 +2705,11 @@
      SLIDE 14 — MESSAGE PATTERNS
      ============================================= -->
     <section class="slide slide--light" id="slide-15">
-      <div class="slide-content" style="gap: var(--content-gap)">
+      <div class="slide-content" style="gap: var(--content-gap); justify-content: center; align-items: center">
         <h2 class="slide-h2 reveal">Message Patterns</h2>
         <div
           class="cols reveal"
-          style="transition-delay: 0.2s; gap: clamp(1rem, 3vw, 3rem)"
+          style="transition-delay: 0.2s; gap: clamp(1rem, 3vw, 3rem); align-items: flex-start"
         >
           <!-- Broadcast -->
           <div style="text-align: center">
@@ -2719,6 +2719,9 @@
             >
               Broadcast
             </h3>
+            <div style="font-size: var(--small-size); font-weight: 700; color: var(--accent); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem)">
+              Server &rarr; Everyone
+            </div>
             <div class="user-grid" id="pattern-broadcast">
               <div class="user-icon user-icon--lit">
                 <div class="avatar">A</div>
@@ -2747,9 +2750,9 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--small-size); margin-top: 0.5em"
+              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
             >
-              Everyone hears it
+              Every connected client receives the message — regardless of room or role.
             </p>
           </div>
           <!-- Room -->
@@ -2761,6 +2764,7 @@
               Room
             </h3>
             <div class="user-grid" id="pattern-room">
+              <div style="grid-column: 1 / -1; font-size: var(--small-size); font-weight: 700; color: var(--accent)">Room A</div>
               <div class="user-icon user-icon--lit">
                 <div class="avatar">A</div>
                 <div class="name">Alice</div>
@@ -2773,6 +2777,7 @@
                 <div class="avatar">C</div>
                 <div class="name">Carol</div>
               </div>
+              <div style="grid-column: 1 / -1; font-size: var(--small-size); font-weight: 700; color: var(--amber); margin-top: 0.2em">Room B</div>
               <div class="user-icon user-icon--dim">
                 <div class="avatar">D</div>
                 <div class="name">Dave</div>
@@ -2788,9 +2793,9 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--small-size); margin-top: 0.5em"
+              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
             >
-              Only the group
+              Only clients who joined the same room receive it. Others see nothing.
             </p>
           </div>
           <!-- One-to-One -->
@@ -2801,6 +2806,9 @@
             >
               One-to-One
             </h3>
+            <div style="font-size: var(--small-size); font-weight: 700; color: var(--accent); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem)">
+              &rarr; Alice
+            </div>
             <div class="user-grid" id="pattern-direct">
               <div class="user-icon user-icon--lit">
                 <div class="avatar">A</div>
@@ -2829,106 +2837,15 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--small-size); margin-top: 0.5em"
+              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
             >
-              Private message
+              The message is delivered to exactly one client. No one else knows.
             </p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 15 — DEMO: MESSAGE PATTERNS
-     ============================================= -->
-    <section
-      class="slide slide--dark demo-slide"
-      id="slide-16"
-      data-demo="patterns"
-    >
-      <div class="slide-content">
-        <div
-          class="reveal"
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-          "
-        >
-          <h2 class="slide-h3">Demo: Message Patterns</h2>
-          <div class="demo-controls">
-            <select class="demo-select" id="demo15-mode">
-              <option value="broadcast">Broadcast</option>
-              <option value="roomA">Room A</option>
-              <option value="roomB">Room B</option>
-              <option value="direct">One-to-One</option>
-            </select>
-            <select
-              class="demo-select"
-              id="demo15-target"
-              style="display: none"
-            >
-              <option value="0">Alice</option>
-              <option value="1">Bob</option>
-              <option value="2">Carol</option>
-              <option value="3">Dave</option>
-              <option value="4">Eve</option>
-              <option value="5">Frank</option>
-            </select>
-            <input
-              type="text"
-              class="demo-input"
-              id="demo15-input"
-              placeholder="Message..."
-              style="max-width: 160px"
-            />
-            <button class="demo-btn" id="demo15-send">Send</button>
-          </div>
-        </div>
-        <div
-          class="user-cards reveal"
-          id="demo15-cards"
-          style="transition-delay: 0.15s"
-        >
-          <div class="user-card" data-room="A">
-            <div class="card-avatar">A</div>
-            <div class="card-name">Alice</div>
-            <div class="card-room">Room A</div>
-            <div class="msg-bubble"></div>
-          </div>
-          <div class="user-card" data-room="A">
-            <div class="card-avatar">B</div>
-            <div class="card-name">Bob</div>
-            <div class="card-room">Room A</div>
-            <div class="msg-bubble"></div>
-          </div>
-          <div class="user-card" data-room="A">
-            <div class="card-avatar">C</div>
-            <div class="card-name">Carol</div>
-            <div class="card-room">Room A</div>
-            <div class="msg-bubble"></div>
-          </div>
-          <div class="user-card" data-room="B">
-            <div class="card-avatar">D</div>
-            <div class="card-name">Dave</div>
-            <div class="card-room">Room B</div>
-            <div class="msg-bubble"></div>
-          </div>
-          <div class="user-card" data-room="B">
-            <div class="card-avatar">E</div>
-            <div class="card-name">Eve</div>
-            <div class="card-room">Room B</div>
-            <div class="msg-bubble"></div>
-          </div>
-          <div class="user-card" data-room="B">
-            <div class="card-avatar">F</div>
-            <div class="card-name">Frank</div>
-            <div class="card-room">Room B</div>
-            <div class="msg-bubble"></div>
-          </div>
-        </div>
+        <p class="slide-body reveal" style="text-align: center; font-size: var(--body-size); font-weight: 700; transition-delay: 0.35s">
+          The first question when designing a real-time feature: <span style="color: var(--accent)">who should receive this message?</span>
+        </p>
       </div>
     </section>
 
@@ -3170,9 +3087,42 @@
       data-demo="chat"
     >
       <div class="slide-content">
-        <h2 class="slide-h3 reveal">Live Demo: Chat Room</h2>
+        <div
+          class="reveal"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+          "
+        >
+          <h2 class="slide-h3">Live Demo: Chat & Message Patterns</h2>
+          <div class="demo-controls">
+            <select class="demo-select" id="demo18-mode">
+              <option value="broadcast">Broadcast</option>
+              <option value="roomA">Room A</option>
+              <option value="roomB">Room B</option>
+              <option value="direct">Direct</option>
+            </select>
+            <select
+              class="demo-select"
+              id="demo18-target"
+              style="display: none"
+            ></select>
+            <input
+              type="text"
+              class="demo-input"
+              id="demo18-input"
+              placeholder="Type a message..."
+              style="max-width: 200px"
+            />
+            <button class="demo-btn" id="demo18-send">Send</button>
+          </div>
+        </div>
         <div class="demo-body reveal" style="transition-delay: 0.15s">
-          <div class="url-display" style="flex: 0.8">
+          <!-- Left column: QR & URL -->
+          <div class="url-display" style="flex: 0.6">
             <p class="slide-small text-muted-light">Scan or visit to join</p>
             <div
               id="chat-qr"
@@ -3186,31 +3136,45 @@
             <div class="url-box" id="chat-url">localhost:3000/chat</div>
             <p
               class="slide-body text-muted-light"
-              style="
-                font-size: var(--small-size);
-                max-width: 25ch;
-                text-align: center;
-              "
+              style="font-size: var(--small-size); text-align: center"
             >
-              Connect to the same Wi-Fi network, then open this URL on your
-              device
+              Connect to the same Wi-Fi network
             </p>
             <div class="status-indicator" style="font-size: var(--small-size)">
               <div class="status-dot status-dot--amber" id="demo18-dot"></div>
               <span id="demo18-conn-status">Waiting for server...</span>
             </div>
           </div>
-          <div class="chat-panel">
+          <!-- Center column: Chat messages -->
+          <div class="chat-panel" style="flex: 1">
             <div class="chat-messages" id="demo18-messages"></div>
-            <div class="demo-controls">
-              <input
-                type="text"
-                class="demo-input"
-                id="demo18-input"
-                placeholder="Type a message..."
-              />
-              <button class="demo-btn" id="demo18-send">Send</button>
+          </div>
+          <!-- Right column: Connected users -->
+          <div
+            style="
+              flex: 0.6;
+              display: flex;
+              flex-direction: column;
+              gap: clamp(0.4rem, 1vh, 0.8rem);
+            "
+          >
+            <div
+              class="slide-small text-muted-light"
+              style="text-align: center; font-weight: 700"
+            >
+              Connected Users
             </div>
+            <div
+              id="demo18-users"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: clamp(0.4rem, 0.8vh, 0.6rem);
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+              "
+            ></div>
           </div>
         </div>
       </div>
@@ -4027,85 +3991,23 @@
       }
 
       /* ===========================================
-   DEMO 15: MESSAGE PATTERNS
+   DEMO 18: LIVE CHAT + MESSAGE PATTERNS
    =========================================== */
-      class MessagePatternDemo extends DemoController {
+      class ChatDemo extends DemoController {
         constructor() {
           super();
-          this.cards = document.querySelectorAll('#demo15-cards .user-card');
-          this.modeSelect = document.getElementById('demo15-mode');
-          this.targetSelect = document.getElementById('demo15-target');
+          this.messagesEl = document.getElementById('demo18-messages');
+          this.usersEl = document.getElementById('demo18-users');
+          this.modeSelect = document.getElementById('demo18-mode');
+          this.targetSelect = document.getElementById('demo18-target');
+          this.socket = null;
+          this.users = []; // { nickname, room, socketId }
+          this.isSimulation = false;
 
           this.modeSelect.addEventListener('change', () => {
             this.targetSelect.style.display =
               this.modeSelect.value === 'direct' ? '' : 'none';
           });
-
-          document
-            .getElementById('demo15-send')
-            .addEventListener('click', () => this.sendMsg());
-          document
-            .getElementById('demo15-input')
-            .addEventListener('keydown', (e) => {
-              if (e.key === 'Enter') this.sendMsg();
-            });
-        }
-
-        start() {
-          super.start();
-          this.clearFlash();
-        }
-        stop() {
-          super.stop();
-          this.clearFlash();
-        }
-
-        sendMsg() {
-          const input = document.getElementById('demo15-input');
-          const msg = input.value.trim() || 'Hello!';
-          input.value = '';
-          const mode = this.modeSelect.value;
-          this.clearFlash();
-
-          let targets = [];
-          if (mode === 'broadcast') {
-            targets = Array.from(this.cards);
-          } else if (mode === 'roomA') {
-            targets = Array.from(this.cards).filter(
-              (c) => c.dataset.room === 'A',
-            );
-          } else if (mode === 'roomB') {
-            targets = Array.from(this.cards).filter(
-              (c) => c.dataset.room === 'B',
-            );
-          } else if (mode === 'direct') {
-            const idx = parseInt(this.targetSelect.value);
-            targets = [this.cards[idx]];
-          }
-
-          targets.forEach((card) => {
-            card.classList.add('flash');
-            card.querySelector('.msg-bubble').textContent = msg;
-          });
-
-          this.addTimeout(() => this.clearFlash(), 2500);
-        }
-
-        clearFlash() {
-          this.cards.forEach((c) => {
-            c.classList.remove('flash');
-          });
-        }
-      }
-
-      /* ===========================================
-   DEMO 18: LIVE CHAT
-   =========================================== */
-      class ChatDemo extends DemoController {
-        constructor() {
-          super();
-          this.messages = document.getElementById('demo18-messages');
-          this.socket = null;
 
           document
             .getElementById('demo18-send')
@@ -4140,8 +4042,28 @@
                 this.setStatus('green', 'Connected to server');
                 this.addMsg('System', 'Connected to chat server');
               });
+              this.socket.on('user list', (users) => {
+                this.users = users;
+                this.renderUsers();
+                this.updateTargetSelect();
+              });
               this.socket.on('chat message', (data) => {
                 this.addMsg(data.user, data.text);
+                this.flashCards(null, data.text); // flash all
+              });
+              this.socket.on('room message', (data) => {
+                this.addMsg(data.user, data.text, '[' + data.room + '] ');
+                this.flashCards(data.room, data.text);
+              });
+              this.socket.on('private message', (data) => {
+                this.addMsg(data.user, data.text, '(DM) ');
+                // flash only the targeted user
+                const cards = this.usersEl.querySelectorAll('.user-card');
+                cards.forEach((c) => {
+                  if (c.dataset.socketId === data.from || c.querySelector('.card-name').textContent === data.user) {
+                    this.flashOne(c, data.text);
+                  }
+                });
               });
               this.socket.on('disconnect', () => {
                 this.setStatus('red', 'Disconnected');
@@ -4158,48 +4080,120 @@
         }
 
         fallbackMode() {
+          this.isSimulation = true;
           this.setStatus('amber', 'Simulation mode (no server)');
-          this.addMsg(
-            'System',
-            'Server not available — running in simulation mode',
-          );
+          this.addMsg('System', 'Server not available — running in simulation mode');
+          this.users = [
+            { nickname: 'Alice', room: 'Room A', socketId: 'fake-0' },
+            { nickname: 'Bob', room: 'Room B', socketId: 'fake-1' },
+            { nickname: 'Carol', room: 'Room A', socketId: 'fake-2' },
+          ];
+          this.renderUsers();
+          this.updateTargetSelect();
+        }
+
+        renderUsers() {
+          this.usersEl.innerHTML = '';
+          this.users.forEach((u) => {
+            const card = document.createElement('div');
+            card.className = 'user-card';
+            card.dataset.socketId = u.socketId;
+            card.dataset.room = u.room === 'Room A' ? 'A' : 'B';
+            const initial = u.nickname.charAt(0).toUpperCase();
+            const roomColor = u.room === 'Room A' ? 'var(--accent)' : 'var(--amber)';
+            card.innerHTML =
+              '<div class="card-avatar">' + initial + '</div>' +
+              '<div class="card-name">' + u.nickname + '</div>' +
+              '<div class="card-room" style="color:' + roomColor + '">' + u.room + '</div>' +
+              '<div class="msg-bubble"></div>';
+            this.usersEl.appendChild(card);
+          });
+        }
+
+        updateTargetSelect() {
+          this.targetSelect.innerHTML = '';
+          this.users.forEach((u) => {
+            const opt = document.createElement('option');
+            opt.value = u.socketId;
+            opt.textContent = u.nickname;
+            this.targetSelect.appendChild(opt);
+          });
         }
 
         sendMsg() {
           const input = document.getElementById('demo18-input');
-          const msg = input.value.trim();
-          if (!msg) return;
+          const msg = input.value.trim() || 'Hello!';
           input.value = '';
+          const mode = this.modeSelect.value;
 
           if (this.socket && this.socket.connected) {
-            this.socket.emit('chat message', { text: msg });
-          } else {
-            this.addMsg('You', msg);
-            this.addTimeout(
-              () => {
-                const replies = [
-                  'Got it!',
-                  'Interesting!',
-                  'Tell me more',
-                  '👍',
-                  'Nice!',
-                ];
-                this.addMsg(
-                  'Bot',
-                  replies[Math.floor(Math.random() * replies.length)],
-                );
-              },
-              500 + Math.random() * 1000,
-            );
+            const payload = {
+              mode,
+              text: msg,
+              user: 'Presenter',
+              targetRoom: mode === 'roomA' ? 'Room A' : mode === 'roomB' ? 'Room B' : undefined,
+              targetSocketId: mode === 'direct' ? this.targetSelect.value : undefined,
+            };
+            this.socket.emit('presenter message', payload);
+          } else if (this.isSimulation) {
+            this.simulateSend(mode, msg);
           }
         }
 
-        addMsg(user, text) {
+        simulateSend(mode, msg) {
+          this.clearFlash();
+          const cards = this.usersEl.querySelectorAll('.user-card');
+          if (mode === 'broadcast') {
+            this.addMsg('Presenter', msg);
+            cards.forEach((c) => this.flashOne(c, msg));
+          } else if (mode === 'roomA' || mode === 'roomB') {
+            const room = mode === 'roomA' ? 'A' : 'B';
+            const label = mode === 'roomA' ? 'Room A' : 'Room B';
+            this.addMsg('Presenter', msg, '[' + label + '] ');
+            cards.forEach((c) => {
+              if (c.dataset.room === room) this.flashOne(c, msg);
+            });
+          } else if (mode === 'direct') {
+            const targetId = this.targetSelect.value;
+            const targetUser = this.users.find((u) => u.socketId === targetId);
+            this.addMsg('Presenter', msg, '(DM) ');
+            cards.forEach((c) => {
+              if (c.dataset.socketId === targetId) this.flashOne(c, msg);
+            });
+          }
+          this.addTimeout(() => this.clearFlash(), 2000);
+        }
+
+        flashCards(room, msg) {
+          this.clearFlash();
+          const cards = this.usersEl.querySelectorAll('.user-card');
+          cards.forEach((c) => {
+            if (!room || c.dataset.room === (room === 'Room A' ? 'A' : 'B')) {
+              this.flashOne(c, msg);
+            }
+          });
+          this.addTimeout(() => this.clearFlash(), 2000);
+        }
+
+        flashOne(card, msg) {
+          card.classList.add('flash');
+          const bubble = card.querySelector('.msg-bubble');
+          if (bubble) bubble.textContent = msg;
+        }
+
+        clearFlash() {
+          this.usersEl.querySelectorAll('.user-card').forEach((c) => {
+            c.classList.remove('flash');
+          });
+        }
+
+        addMsg(user, text, prefix) {
           const div = document.createElement('div');
           div.className = 'chat-message';
-          div.innerHTML = `<span class="sender">${user}</span>${text}`;
-          this.messages.appendChild(div);
-          this.messages.scrollTop = this.messages.scrollHeight;
+          const pfx = prefix ? '<span class="sender" style="opacity:0.5">' + prefix + '</span>' : '';
+          div.innerHTML = pfx + '<span class="sender">' + user + '</span>' + text;
+          this.messagesEl.appendChild(div);
+          this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
         }
 
         setStatus(color, text) {
@@ -4334,7 +4328,6 @@
         'polling-compare': new PollingComparisonDemo(),
         'overhead-compare': new OverheadComparisonDemo(),
         lifecycle: new LifecycleDemo(),
-        patterns: new MessagePatternDemo(),
         chat: new ChatDemo(),
       };
 

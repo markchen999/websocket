@@ -117,6 +117,33 @@
       opacity: 0.7;
     }
     .msg.mine .name { display: none; }
+    .msg.dm {
+      align-self: flex-start;
+      background: rgba(67, 97, 238, 0.15);
+    }
+    .msg .dm-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #4361ee;
+      margin-left: 4px;
+    }
+    .msg .room-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      margin-right: 4px;
+    }
+    .room-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(67, 97, 238, 0.15);
+      color: #4361ee;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
 
     .msg.system {
       align-self: center;
@@ -177,7 +204,7 @@
 
   <!-- Chat UI -->
   <div class="header">
-    <h1>Chat Room</h1>
+    <h1>Chat Room<span class="room-badge" id="roomBadge" style="display:none"></span></h1>
     <div class="status">
       <div class="status-dot" id="dot"></div>
       <span id="statusText">Connecting...</span>
@@ -198,13 +225,21 @@
     let nickname = '';
     const socket = io({ transports: ['websocket'] });
 
-    // ── Nickname ──
+    // ── Nickname & Registration ──
     function enterChat() {
       const val = $('nicknameInput').value.trim();
       nickname = val || 'Anonymous';
-      $('nicknameScreen').classList.add('hidden');
-      $('msgInput').focus();
+      socket.emit('register', { nickname });
     }
+
+    socket.on('registered', (data) => {
+      $('nicknameScreen').classList.add('hidden');
+      $('roomBadge').textContent = data.room;
+      $('roomBadge').style.display = 'inline-block';
+      $('msgInput').focus();
+      addMsg(null, 'You joined ' + data.room, true);
+    });
+
     $('nicknameBtn').addEventListener('click', enterChat);
     $('nicknameInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') enterChat();
@@ -242,6 +277,34 @@
 
     socket.on('chat message', (data) => {
       addMsg(data.user, data.text, false);
+    });
+
+    socket.on('room message', (data) => {
+      const div = document.createElement('div');
+      const isMine = data.user === nickname;
+      div.className = 'msg ' + (isMine ? 'mine' : 'other');
+      div.innerHTML =
+        '<span class="name">' +
+        '<span class="room-label">[' + escHtml(data.room) + ']</span>' +
+        escHtml(data.user) +
+        '</span>' +
+        escHtml(data.text);
+      $('messages').appendChild(div);
+      $('messages').scrollTop = $('messages').scrollHeight;
+    });
+
+    socket.on('private message', (data) => {
+      const div = document.createElement('div');
+      const isMine = data.user === nickname;
+      div.className = 'msg ' + (isMine ? 'mine' : 'other dm');
+      div.innerHTML =
+        '<span class="name">' +
+        escHtml(data.user) +
+        '<span class="dm-label">(DM)</span>' +
+        '</span>' +
+        escHtml(data.text);
+      $('messages').appendChild(div);
+      $('messages').scrollTop = $('messages').scrollHeight;
     });
 
     // ── Send ──

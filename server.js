@@ -78,6 +78,10 @@ app.get("/chat", (_req, res) => {
   res.sendFile(__dirname + "/chat.html");
 });
 
+// -- Chat user tracking --
+const chatUsers = new Map(); // socketId → { nickname, room, socketId }
+let registerCount = 0; // for round-robin room assignment
+
 // -- Socket.IO — WebSocket handling --
 io.on("connection", (socket) => {
   console.log(`[ws] connected: ${socket.id}`);
@@ -89,7 +93,44 @@ io.on("connection", (socket) => {
     socket.emit("pong-server", { time: Date.now() });
   });
 
+  // --- Chat user registration ---
+  socket.on("register", ({ nickname }) => {
+    const room = registerCount % 2 === 0 ? "Room A" : "Room B";
+    registerCount++;
+    const user = { nickname, room, socketId: socket.id };
+    chatUsers.set(socket.id, user);
+    socket.join(room);
+    console.log(`[chat] registered: ${nickname} (${socket.id}) → ${room}`);
+    socket.emit("registered", { nickname, room });
+    io.emit("user list", Array.from(chatUsers.values()));
+  });
+
+  // --- Presenter message (slide 15 demo) ---
+  socket.on("presenter message", ({ mode, text, user, targetRoom, targetSocketId }) => {
+    const time = Date.now();
+    if (mode === "broadcast") {
+      const payload = { user: user || "Presenter", text, time };
+      io.emit("chat message", payload);
+      pushToHttpClients(payload);
+    } else if (mode === "roomA" || mode === "roomB") {
+      const room = targetRoom || (mode === "roomA" ? "Room A" : "Room B");
+      io.to(room).emit("room message", { room, user: user || "Presenter", text, time });
+    } else if (mode === "direct") {
+      const payload = { from: "presenter", user: user || "Presenter", text, time };
+      if (targetSocketId) {
+        io.to(targetSocketId).emit("private message", payload);
+      }
+      socket.emit("private message", payload); // echo to presenter
+    }
+  });
+
   socket.on("disconnect", (reason) => {
+    const user = chatUsers.get(socket.id);
+    if (user) {
+      console.log(`[chat] unregistered: ${user.nickname} (${socket.id})`);
+      chatUsers.delete(socket.id);
+      io.emit("user list", Array.from(chatUsers.values()));
+    }
     console.log(`[ws] disconnected: ${socket.id} (${reason})`);
   });
 
