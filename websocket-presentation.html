@@ -3190,6 +3190,7 @@
         <div class="demo-body reveal" style="transition-delay: 0.15s">
           <div class="url-display" style="flex: 0.8">
             <p class="slide-small text-muted-light">Scan or visit to join</p>
+            <div id="chat-qr" style="background:#fff;padding:8px;border-radius:8px;display:inline-block;"></div>
             <div class="url-box" id="chat-url">localhost:3000/chat</div>
             <p
               class="slide-body text-muted-light"
@@ -4478,10 +4479,26 @@
       })();
     </script>
 
+    <!-- QR code generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
     <!-- Optional: Socket.IO client for live chat demo -->
     <script
       src="https://cdn.socket.io/4.7.4/socket.io.min.js"
       onerror=""
     ></script>
+
+    <!-- Generate QR code for chat URL -->
+    <script>
+      (function () {
+        if (typeof qrcode === 'undefined') return;
+        var chatUrl = 'http://192.168.30.68:3000/chat';
+        document.getElementById('chat-url').textContent = chatUrl;
+        var qr = qrcode(0, 'M');
+        qr.addData(chatUrl);
+        qr.make();
+        document.getElementById('chat-qr').innerHTML = qr.createSvgTag(5, 0);
+      })();
+    </script>
   </body>
 </html>

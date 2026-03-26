@@ -19,7 +19,9 @@
       "mcp__excalidraw__read_diagram_guide",
       "mcp__excalidraw__set_viewport",
       "mcp__excalidraw__snapshot_scene",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(ls /mnt/c/Users/User/Desktop/Project/websocket/*.js)",
+      "Bash(powershell.exe -Command \"Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias ''Wi-Fi*'' | Select-Object -ExpandProperty IPAddress\")"
     ]
   },
   "prefersReducedMotion": true

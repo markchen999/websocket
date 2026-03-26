@@ -12,7 +12,7 @@ app.use(express.json());
 // -- Shared message store (used by polling / SSE) --
 let messages = [];
 let longPollWaiters = []; // pending long-poll responses
-let sseClients = [];      // active SSE connections
+let sseClients = []; // active SSE connections
 
 // Broadcast a new message to long-poll waiters and SSE clients
 function pushToHttpClients(msg) {
@@ -24,7 +24,11 @@ function pushToHttpClients(msg) {
 
 // POST /api/message — inject a message into all channels at once
 app.post("/api/message", (req, res) => {
-  const msg = { user: req.body.user || "Anonymous", text: req.body.text || "", time: Date.now() };
+  const msg = {
+    user: req.body.user || "Anonymous",
+    text: req.body.text || "",
+    time: Date.now(),
+  };
   pushToHttpClients(msg);
   io.emit("chat message", msg);
   res.json({ ok: true });
@@ -33,8 +37,10 @@ app.post("/api/message", (req, res) => {
 // GET /api/poll — Short Polling (returns immediately)
 // ?since=<timestamp> returns only messages after that time
 app.get("/api/poll", (req, res) => {
-  const since = req.query.since !== undefined ? parseInt(req.query.since) : null;
-  const filtered = since !== null ? messages.filter((m) => m.time > since) : messages;
+  const since =
+    req.query.since !== undefined ? parseInt(req.query.since) : null;
+  const filtered =
+    since !== null ? messages.filter((m) => m.time > since) : messages;
   res.json({ messages: filtered });
 });
 
@@ -55,10 +61,16 @@ app.get("/api/long-poll", (_req, res) => {
 
 // GET /api/sse — Server-Sent Events (persistent one-way stream)
 app.get("/api/sse", (_req, res) => {
-  res.set({ "Content-Type": "text/event-stream", "Cache-Control": "no-cache", Connection: "keep-alive" });
+  res.set({
+    "Content-Type": "text/event-stream",
+    "Cache-Control": "no-cache",
+    Connection: "keep-alive",
+  });
   res.flushHeaders();
   sseClients.push(res);
-  _req.on("close", () => { sseClients = sseClients.filter((r) => r !== res); });
+  _req.on("close", () => {
+    sseClients = sseClients.filter((r) => r !== res);
+  });
 });
 
 // GET /chat — Serve the live chat page (Slide 18)
@@ -83,7 +95,11 @@ io.on("connection", (socket) => {
 
   // Chat messages — broadcast to everyone
   socket.on("chat message", (msg) => {
-    const payload = { user: msg.user || "Anonymous", text: msg.text, time: Date.now() };
+    const payload = {
+      user: msg.user || "Anonymous",
+      text: msg.text,
+      time: Date.now(),
+    };
     io.emit("chat message", payload);
     pushToHttpClients(payload);
   });
@@ -101,12 +117,22 @@ io.on("connection", (socket) => {
   });
 
   socket.on("room message", ({ room, text, user }) => {
-    io.to(room).emit("room message", { room, user: user || "Anonymous", text, time: Date.now() });
+    io.to(room).emit("room message", {
+      room,
+      user: user || "Anonymous",
+      text,
+      time: Date.now(),
+    });
   });
 
   // One-to-one messaging
   socket.on("private message", ({ to, text, user }) => {
-    const payload = { from: socket.id, user: user || "Anonymous", text, time: Date.now() };
+    const payload = {
+      from: socket.id,
+      user: user || "Anonymous",
+      text,
+      time: Date.now(),
+    };
     io.to(to).emit("private message", payload);
     socket.emit("private message", payload); // echo to sender
   });
