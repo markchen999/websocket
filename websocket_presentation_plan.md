@@ -4,7 +4,7 @@
 
 - **Topic:** WebSocket & Real-Time Communication
 - **Duration:** 30–45 minutes
-- **Slides:** 21 張
+- **Slides:** 20 張
 - **Audience:** 3–5 人（1 位初學後端、1 位 PM、其他混合背景）
 - **Language:** 投影片全英文（簡單單字），口頭用中文帶
 - **Theme:** 靜態頁白色背景、Demo 頁深色背景
@@ -32,7 +32,7 @@ Today's Agenda
 1  The Problem — HTTP & its limits
 2  WebSocket — persistent two-way connections
 3  Staying Connected — lifecycle, heartbeat, reconnection
-4  Security & Patterns — encryption, auth, message routing
+4  Patterns — broadcast, room, one-to-one
 5  Real World — use cases, trade-offs, live demo
 ```
 
@@ -213,28 +213,7 @@ This prevents all clients from hitting the server at the same time.
 
 ---
 
-### Slide 13 — Security
-
-```
-Security
-
-ws:// is unencrypted. wss:// is encrypted.
-Same idea as http:// vs https://.
-
-Authentication happens during the first HTTP handshake —
-the client sends a token in the headers.
-After the upgrade, the token is not sent again.
-
-If the token expires while the connection is open,
-the server must actively close the connection.
-```
-
-- 圖：左 ws:// 明文 JSON vs 右 wss:// hex 亂碼
-- 口頭對 PM 說：「產品設計要考慮——使用者 session 過期但 WebSocket 還連著怎麼辦？」
-
----
-
-### Slide 14 — Message Patterns
+### Slide 13 — Message Patterns
 
 ```
 Message Patterns
@@ -376,7 +355,6 @@ Questions?
 | 10    | Heartbeat Ping/Pong                  | Diagram   | 2 min       |
 | 11    | Disconnection & Reconnection         | Diagram   | 2 min       |
 | 12    | Demo: Lifecycle visualization        | Demo      | 3 min       |
-| 13    | Security: wss:// + auth              | Diagram   | 2 min       |
 | 14    | Message patterns                     | Diagram   | 3 min       |
 | 15    | Demo: Message patterns interactive   | Demo      | 3 min       |
 | 16    | Real-world examples                  | Static    | 2 min       |
@@ -399,7 +377,6 @@ Questions?
 | 9     | connection-lifecycle.svg       | 橫向流程圖：Opening → Open → Closing → Reconnecting | ⬜ 待畫   |
 | 10    | ping-pong.svg                  | 時序圖：Ping/Pong 來回 + 最後失敗                   | ⬜ 待畫   |
 | 11    | disconnection-reconnection.svg | 兩塊對比 + backoff 時間軸                           | ⬜ 待畫   |
-| 13    | ws-vs-wss.svg                  | 左右對比：明文 vs 加密                              | ⬜ 待畫   |
 | 14    | message-patterns.svg           | 6 人圖示 × 3 組：Broadcast / Room / One-to-One      | ⬜ 待畫   |
 
 **不需要畫圖的 slide：** 7（CSS bar chart）、所有 Demo 頁、所有純文字靜態頁

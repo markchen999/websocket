@@ -1243,7 +1243,7 @@
     <!-- =============================================
      SLIDE 1 — COVER
      ============================================= -->
-    <!-- <section class="slide slide--split" id="slide-1">
+    <section class="slide slide--split" id="slide-1">
       <div class="panel panel--top">
         <span class="corner-mark corner-tl text-muted-dark"
           >Electric Studio</span
@@ -1280,12 +1280,12 @@
         </p>
         <span class="corner-mark corner-br text-muted-light">20 Slides</span>
       </div>
-    </section> -->
+    </section>
 
     <!-- =============================================
      SLIDE 2 — AGENDA
      ============================================= -->
-    <!-- <section class="slide slide--light" id="slide-2">
+    <section class="slide slide--light" id="slide-2">
       <div class="slide-content" style="gap: var(--content-gap)">
         <h2 class="slide-h2 reveal">Today's Agenda</h2>
 
@@ -1392,8 +1392,7 @@
               >4</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              >Security & Patterns &mdash; encryption, auth, message
-              routing</span
+              >Patterns &mdash; broadcast, room, one-to-one</span
             >
           </div>
 
@@ -1422,12 +1421,12 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- =============================================
      SLIDE 3 — HTTP REQUEST-RESPONSE MODEL
      ============================================= -->
-    <!-- <section class="slide slide--light" id="slide-3">
+    <section class="slide slide--light" id="slide-3">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -1451,12 +1450,12 @@
           <strong>Then the connection is done.</strong>
         </p>
       </div>
-    </section> -->
+    </section>
 
     <!-- =============================================
      SLIDE 4 — ALTERNATIVES BEFORE WEBSOCKET
      ============================================= -->
-    <!-- <section class="slide slide--light" id="slide-4">
+    <section class="slide slide--light" id="slide-4">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -1476,7 +1475,7 @@
           "
         />
       </div>
-    </section> -->
+    </section>
 
     <!-- =============================================
      SLIDE 5 — DEMO: POLLING COMPARISON
@@ -1589,7 +1588,6 @@
         />
       </div>
     </section> -->
-
     <!-- =============================================
      SLIDE 8 — HTTP REQUEST COST BREAKDOWN
      ============================================= -->
@@ -1914,7 +1912,6 @@
         </div>
       </div>
     </section>
-
     <!-- =============================================
      SLIDE 10 — CONNECTION LIFECYCLE
      ============================================= -->
@@ -2716,58 +2713,6 @@
           >
             Unexpected Close
           </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 13 — SECURITY
-     ============================================= -->
-    <section class="slide slide--light" id="slide-14">
-      <div class="slide-content" style="gap: var(--content-gap)">
-        <h2 class="slide-h2 reveal">Security</h2>
-        <div class="compare-blocks reveal" style="transition-delay: 0.2s">
-          <div class="compare-block compare-block--dark">
-            <div class="slide-small text-red" style="margin-bottom: 0.3em">
-              ws:// — Unencrypted
-            </div>
-            <div class="data-display data-display--plain">
-              {"user": "Alice", "message": "Hi!", "token": "abc123"}
-            </div>
-            <p class="slide-body text-red" style="font-size: var(--small-size)">
-              Anyone can read this
-            </p>
-          </div>
-          <div class="compare-block compare-block--dark">
-            <div class="slide-small text-green" style="margin-bottom: 0.3em">
-              wss:// — Encrypted
-            </div>
-            <div class="data-display data-display--encrypted">
-              17 03 03 00 9a 4b 2d 8f c3 a1 07 e2 91 3c d4 7f b8 5e 22 c0 a9 73
-              6d ...
-            </div>
-            <p
-              class="slide-body text-green"
-              style="font-size: var(--small-size)"
-            >
-              Encrypted — same idea as https://
-            </p>
-          </div>
-        </div>
-        <div
-          class="reveal"
-          style="
-            transition-delay: 0.3s;
-            max-width: min(90vw, 700px);
-            margin: 0 auto;
-          "
-        >
-          <p class="slide-body text-muted-dark" style="text-align: center">
-            Authentication happens during the HTTP handshake — the client sends
-            a token. After the upgrade, the token is
-            <strong>not sent again</strong>. If it expires, the server must
-            actively close the connection.
-          </p>
         </div>
       </div>
     </section>
