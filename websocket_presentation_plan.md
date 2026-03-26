@@ -4,7 +4,7 @@
 
 - **Topic:** WebSocket & Real-Time Communication
 - **Duration:** 30–45 minutes
-- **Slides:** 22 張
+- **Slides:** 21 張
 - **Audience:** 3–5 人（1 位初學後端、1 位 PM、其他混合背景）
 - **Language:** 投影片全英文（簡單單字），口頭用中文帶
 - **Theme:** 靜態頁白色背景、Demo 頁深色背景
@@ -37,7 +37,6 @@ Today's Agenda
 ```
 
 - 視覺：5 列全寬橫排，左側數字（accent 色）+ 右側標題（--h3-size）
-  - 每列有淺藍底色 + 左邊 accent border，填滿頁面寬度
 - 口頭：快速帶過每一段，讓觀眾知道接下來的結構
 
 ---
@@ -51,7 +50,7 @@ The client sends a request, the server sends back a response.
 Then the connection is done.
 ```
 
-- 圖：Client → Request → Server → Response → ✗ Connection closed
+- 圖：時序圖風格，兩組 Request/Response 各配一小段短色條（代表短暫連線）
 - 口頭用中文帶比喻：「就像去櫃台問問題，問完就走，下次要再排隊」
 - 不要把比喻寫在 slide 上
 
@@ -63,12 +62,12 @@ Then the connection is done.
 What if we want real-time with HTTP?
 ```
 
-- 圖：三欄卡片（Short Polling / Long Polling / SSE）
-- Short Polling：密密麻麻的 → No data，最後一個 → New message!
+- 圖：三欄時序圖（Short Polling / Long Polling / SSE），風格跟 Slide 3 一致
+- Short Polling：密密麻麻的 Request → No data，最後一個 → New message!
   - 底部：Many requests, mostly wasted
 - Long Polling：一條 request → ⏳ waiting → 回應
   - 底部：Fewer, but held open
-- SSE：一條 connect，三條 ← Server event，✗ Client can't send
+- SSE：一條 connect，三條 ← Server event（單向），✗ Client can't send
   - 底部：One-way only
 - 口頭：These all work, but none of them are ideal. That's why WebSocket was created.
 
@@ -85,42 +84,30 @@ What if we want real-time with HTTP?
 
 ---
 
-### Slide 6 — What is WebSocket
-
-```
-WebSocket
-
-A protocol that creates a persistent, two-way connection
-between client and server.
-
-Once connected, both sides can send messages to each other
-at any time — no need to wait for a request.
-```
-
-- 圖：Client ↔ Server 雙向箭頭 + Connection stays open ✓
-- 口頭帶比喻：「前面那些方法像寫信，WebSocket 像打電話，接通就自由對話」
-- 不要把比喻寫在 slide 上
-
----
-
-### Slide 7 — HTTP vs WebSocket
+### Slide 6 — HTTP vs WebSocket
 
 ```
 HTTP vs WebSocket
+
+WebSocket is a protocol that creates a persistent, two-way connection.
+Once connected, both sides talk freely — no need to wait for a request.
 
 HTTP: Every message needs a new request.
 The connection closes after each response.
 
 WebSocket: One handshake to connect.
-After that, both sides talk freely — the connection stays open.
+The connection stays open.
 ```
 
-- 圖：左右對比。左邊 HTTP 反覆斷開重連，右邊 WebSocket 握手一次然後持續
-- 這頁取代了舊版的「握手細節」頁，不提 Upgrade header 和 101 Switching Protocols
+- 圖：左右對比時序圖。左邊 HTTP（兩組短色條，反覆斷開重連），右邊 WebSocket（一條長色條，握手一次然後持續）
+- 上方文字是 WebSocket 的一句話定義
+- 口頭帶比喻：「前面那些方法像寫信，WebSocket 像打電話，接通就自由對話」
+- 不要把比喻寫在 slide 上
+- 不提 Upgrade header 和 101 Switching Protocols
 
 ---
 
-### Slide 8 — The Cost of One HTTP Request
+### Slide 7 — The Cost of One HTTP Request
 
 ```
 The Cost of One HTTP Request
@@ -138,13 +125,13 @@ When polling every 2 seconds:
 WebSocket: 1 handshake, then only data.
 ```
 
-- 視覺：HTTP 的肥條 vs WebSocket 的細條（面積對比）
+- 視覺：全寬水平長條圖。HTTP bar 撐滿 100% 寬度，WebSocket bar 很短。面積對比。
 - 數據來源：Feathers.js benchmark（daffl/websockets-vs-http）
 - CSS 版本已做好，不需要 Excalidraw 圖
 
 ---
 
-### Slide 9 — Demo: Polling vs WebSocket
+### Slide 8 — Demo: Polling vs WebSocket
 
 **類型：** Live Demo (KEY DEMO) | **時間：** ~4 min
 
@@ -156,7 +143,7 @@ WebSocket: 1 handshake, then only data.
 
 ---
 
-### Slide 10 — Connection Lifecycle
+### Slide 9 — Connection Lifecycle
 
 ```
 Connection Lifecycle
@@ -175,7 +162,7 @@ Opening → Open → Closing → Reconnecting
 
 ---
 
-### Slide 11 — Heartbeat Ping/Pong
+### Slide 10 — Heartbeat Ping/Pong
 
 ```
 Keeping the Connection Alive
@@ -187,13 +174,13 @@ Without this, the connection might be silently dropped
 by a proxy or firewall — and neither side would know.
 ```
 
-- 圖：2-3 組 Ping → Pong 來回，最後一組 Ping 沒回 → ✗ Connection lost
+- 圖：時序圖風格，2-3 組 Ping → Pong 來回，最後一組 Ping 沒回 → ✗ Connection lost
 - 口頭帶比喻：「像通話中突然安靜，你會說 Hello? 還在嗎？」
 - 不要把比喻寫在 slide 上
 
 ---
 
-### Slide 12 — Disconnection & Reconnection
+### Slide 11 — Disconnection & Reconnection
 
 ```
 When the Connection Drops
@@ -214,7 +201,7 @@ This prevents all clients from hitting the server at the same time.
 
 ---
 
-### Slide 13 — Demo: Lifecycle 視覺化
+### Slide 12 — Demo: Lifecycle 視覺化
 
 **類型：** Live Demo | **時間：** ~3 min
 
@@ -226,7 +213,7 @@ This prevents all clients from hitting the server at the same time.
 
 ---
 
-### Slide 14 — Security
+### Slide 13 — Security
 
 ```
 Security
@@ -247,7 +234,7 @@ the server must actively close the connection.
 
 ---
 
-### Slide 15 — Message Patterns
+### Slide 14 — Message Patterns
 
 ```
 Message Patterns
@@ -262,7 +249,7 @@ One-to-One — Send to one specific person.
 
 ---
 
-### Slide 16 — Demo: 訊息模式互動
+### Slide 15 — Demo: 訊息模式互動
 
 **類型：** Live Demo | **時間：** ~3 min
 
@@ -272,7 +259,7 @@ One-to-One — Send to one specific person.
 
 ---
 
-### Slide 17 — Real World
+### Slide 16 — Real World
 
 ```
 WebSocket in the Real World
@@ -288,7 +275,7 @@ Notifications — Real-time push alerts
 
 ---
 
-### Slide 18 — The Cost of WebSocket（新增）
+### Slide 17 — The Cost of WebSocket
 
 ```
 The Cost of WebSocket
@@ -314,7 +301,7 @@ to support long-lived connections. Not all do by default.
 
 ---
 
-### Slide 19 — When to Use / Not Use
+### Slide 18 — When to Use / Not Use
 
 ```
 When to Use WebSocket
@@ -335,7 +322,7 @@ WebSocket adds complexity — only use it when you need it.
 
 ---
 
-### Slide 20 — Live Demo: 聊天室
+### Slide 19 — Live Demo: 聊天室
 
 **類型：** Live Demo | **時間：** ~5 min
 
@@ -346,7 +333,7 @@ WebSocket adds complexity — only use it when you need it.
 
 ---
 
-### Slide 21 — Summary
+### Slide 20 — Summary
 
 ```
 What We Learned Today
@@ -365,11 +352,57 @@ Choose the right message pattern for your use case
 
 ---
 
-### Slide 22 — Q&A
+### Slide 21 — Q&A
 
 ```
 Questions?
 ```
+
+---
+
+## Time Budget
+
+| Slide | Content                              | Type      | Time        |
+| ----- | ------------------------------------ | --------- | ----------- |
+| 1     | Cover                                | Static    | —           |
+| 2     | Agenda                               | Static    | 1 min       |
+| 3     | HTTP model                           | Diagram   | 3 min       |
+| 4     | Polling / Long Polling / SSE         | Diagram   | 3 min       |
+| 5     | Demo: three methods compared         | Demo      | 3 min       |
+| 6     | HTTP vs WebSocket                    | Diagram   | 3 min       |
+| 7     | HTTP request cost breakdown          | Diagram   | 2 min       |
+| 8     | Demo: Polling vs WebSocket + counter | Demo      | 4 min       |
+| 9     | Connection Lifecycle overview        | Diagram   | 3 min       |
+| 10    | Heartbeat Ping/Pong                  | Diagram   | 2 min       |
+| 11    | Disconnection & Reconnection         | Diagram   | 2 min       |
+| 12    | Demo: Lifecycle visualization        | Demo      | 3 min       |
+| 13    | Security: wss:// + auth              | Diagram   | 2 min       |
+| 14    | Message patterns                     | Diagram   | 3 min       |
+| 15    | Demo: Message patterns interactive   | Demo      | 3 min       |
+| 16    | Real-world examples                  | Static    | 2 min       |
+| 17    | Cost of WebSocket                    | Static    | 2 min       |
+| 18    | When to use / not use                | Static    | 2 min       |
+| 19    | Live demo: chat room                 | Demo      | 5 min       |
+| 20    | Summary                              | Static    | 1 min       |
+| 21    | Q&A                                  | Static    | Remaining   |
+|       |                                      | **Total** | **~39 min** |
+
+---
+
+## Excalidraw Diagrams Needed
+
+| Slide | 圖片檔名                       | 描述                                                | 狀態      |
+| ----- | ------------------------------ | --------------------------------------------------- | --------- |
+| 3     | http-request-response.svg      | 時序圖：兩組 Request/Response + 短色條              | ✅ 已完成 |
+| 4     | polling-comparison.svg         | 三欄時序圖：Short Polling / Long Polling / SSE      | ✅ 已完成 |
+| 6     | http-vs-websocket.svg          | 左右對比：HTTP 短色條 vs WebSocket 長色條           | ⬜ 待畫   |
+| 9     | connection-lifecycle.svg       | 橫向流程圖：Opening → Open → Closing → Reconnecting | ⬜ 待畫   |
+| 10    | ping-pong.svg                  | 時序圖：Ping/Pong 來回 + 最後失敗                   | ⬜ 待畫   |
+| 11    | disconnection-reconnection.svg | 兩塊對比 + backoff 時間軸                           | ⬜ 待畫   |
+| 13    | ws-vs-wss.svg                  | 左右對比：明文 vs 加密                              | ⬜ 待畫   |
+| 14    | message-patterns.svg           | 6 人圖示 × 3 組：Broadcast / Room / One-to-One      | ⬜ 待畫   |
+
+**不需要畫圖的 slide：** 7（CSS bar chart）、所有 Demo 頁、所有純文字靜態頁
 
 ---
 
