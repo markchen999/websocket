@@ -25,8 +25,8 @@
         --green: #22c55e;
         --amber: #f59e0b;
         --red: #ef4444;
-        --font-display: "Manrope", sans-serif;
-        --font-body: "Manrope", sans-serif;
+        --font-display: 'Manrope', sans-serif;
+        --font-body: 'Manrope', sans-serif;
         --title-size: clamp(2.5rem, 6vw, 5rem);
         --h2-size: clamp(1.8rem, 4vw, 3rem);
         --h3-size: clamp(1.3rem, 3vw, 2rem);
@@ -355,7 +355,7 @@
 
       .arrow-right::after,
       .arrow-left::before {
-        content: "";
+        content: '';
         border: clamp(4px, 0.5vw, 6px) solid transparent;
       }
 
@@ -446,7 +446,7 @@
         background: var(--text-muted-dark);
       }
       .seq-arrow--right::after {
-        content: "";
+        content: '';
         position: absolute;
         right: 0;
         top: -3px;
@@ -454,7 +454,7 @@
         border-left: 5px solid var(--accent);
       }
       .seq-arrow--left::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: -3px;
@@ -659,7 +659,7 @@
         flex: 1;
         overflow: hidden;
         font-size: clamp(1rem, 1.6vw, 1.35rem);
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         min-height: 0;
       }
 
@@ -746,7 +746,7 @@
       .event-log {
         flex: 1;
         overflow-y: auto;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         font-size: clamp(0.8rem, 1.2vw, 1rem);
         display: flex;
         flex-direction: column;
@@ -889,7 +889,7 @@
         background: rgba(255, 255, 255, 0.06);
         border: 2px solid var(--accent);
         border-radius: 8px;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         font-size: clamp(1rem, 2.5vw, 2rem);
         font-weight: 700;
         color: var(--accent);
@@ -1073,7 +1073,7 @@
         background: var(--green);
       }
 
-      [contenteditable="true"] {
+      [contenteditable='true'] {
         outline: 2px dashed var(--accent);
         outline-offset: 4px;
         cursor: text;
@@ -1107,7 +1107,7 @@
         background: rgba(67, 97, 238, 0.05);
         border-left: 3px solid var(--accent);
         padding: clamp(0.4rem, 1vw, 0.8rem) clamp(0.6rem, 1.5vw, 1.2rem);
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         font-size: clamp(0.55rem, 0.9vw, 0.8rem);
         line-height: 1.6;
         border-radius: 0 4px 4px 0;
@@ -1125,7 +1125,7 @@
       .data-display {
         padding: clamp(0.5rem, 1.2vw, 1rem);
         border-radius: 6px;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         font-size: clamp(0.5rem, 0.8vw, 0.7rem);
         line-height: 1.5;
         word-break: break-all;
@@ -1165,11 +1165,11 @@
       }
 
       .check-list--yes li::before {
-        content: "✓";
+        content: '✓';
         color: var(--green);
       }
       .check-list--no li::before {
-        content: "✗";
+        content: '✗';
         color: var(--red);
       }
 
@@ -1245,9 +1245,9 @@
      ============================================= -->
     <section class="slide slide--split" id="slide-1">
       <div class="panel panel--top">
-        <span class="corner-mark corner-tl text-muted-dark"
+        <!-- <span class="corner-mark corner-tl text-muted-dark"
           >Electric Studio</span
-        >
+        > -->
         <span
           class="badge"
           style="
@@ -1273,8 +1273,8 @@
       <div class="panel panel--bottom">
         <div class="accent-bar accent-bar--top"></div>
         <p
-          class="slide-small text-muted-light reveal"
-          style="transition-delay: 0.3s"
+          class="slide-title reveal"
+          style="transition-delay: 0.3s; color: white"
         >
           How the web talks in real time
         </p>
@@ -1722,7 +1722,7 @@
                   <div style="display: flex; height: clamp(6rem, 16vh, 10rem)">
                     <div
                       style="
-                        width: clamp(200px, 20vw, 320px);
+                        width: clamp(200px, 23vw, 320px);
                         background: var(--accent);
                         display: flex;
                         align-items: center;
@@ -2063,7 +2063,7 @@
           height: 1px;
         }
         #s10-wire::before {
-          content: "";
+          content: '';
           position: absolute;
           inset: 0;
           background: repeating-linear-gradient(
@@ -3283,7 +3283,7 @@
    =========================================== */
       class SlidePresentation {
         constructor() {
-          this.slides = document.querySelectorAll(".slide");
+          this.slides = document.querySelectorAll('.slide');
           this.currentSlide = 0;
           this.isScrolling = false;
           this.setupIntersectionObserver();
@@ -3298,7 +3298,7 @@
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
+                  entry.target.classList.add('visible');
                   const idx = Array.from(this.slides).indexOf(entry.target);
                   if (idx !== -1) {
                     this.currentSlide = idx;
@@ -3320,33 +3320,33 @@
         }
 
         setupKeyboardNav() {
-          document.addEventListener("keydown", (e) => {
-            if (e.target.getAttribute("contenteditable") === "true") return;
+          document.addEventListener('keydown', (e) => {
+            if (e.target.getAttribute('contenteditable') === 'true') return;
             if (
-              e.target.tagName === "INPUT" ||
-              e.target.tagName === "SELECT" ||
-              e.target.tagName === "TEXTAREA"
+              e.target.tagName === 'INPUT' ||
+              e.target.tagName === 'SELECT' ||
+              e.target.tagName === 'TEXTAREA'
             )
               return;
             switch (e.key) {
-              case "ArrowDown":
-              case "ArrowRight":
-              case " ":
-              case "PageDown":
+              case 'ArrowDown':
+              case 'ArrowRight':
+              case ' ':
+              case 'PageDown':
                 e.preventDefault();
                 this.goTo(this.currentSlide + 1);
                 break;
-              case "ArrowUp":
-              case "ArrowLeft":
-              case "PageUp":
+              case 'ArrowUp':
+              case 'ArrowLeft':
+              case 'PageUp':
                 e.preventDefault();
                 this.goTo(this.currentSlide - 1);
                 break;
-              case "Home":
+              case 'Home':
                 e.preventDefault();
                 this.goTo(0);
                 break;
-              case "End":
+              case 'End':
                 e.preventDefault();
                 this.goTo(this.slides.length - 1);
                 break;
@@ -3357,14 +3357,14 @@
         setupTouchNav() {
           let startY = 0;
           document.addEventListener(
-            "touchstart",
+            'touchstart',
             (e) => {
               startY = e.touches[0].clientY;
             },
             { passive: true },
           );
           document.addEventListener(
-            "touchend",
+            'touchend',
             (e) => {
               const diff = startY - e.changedTouches[0].clientY;
               if (Math.abs(diff) > 50) {
@@ -3378,40 +3378,40 @@
         }
 
         setupProgressBar() {
-          this.progressBar = document.getElementById("progressBar");
+          this.progressBar = document.getElementById('progressBar');
           this.updateProgressBar();
         }
 
         updateProgressBar() {
           const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
-          this.progressBar.style.width = pct + "%";
+          this.progressBar.style.width = pct + '%';
         }
 
         setupNavDots() {
-          const nav = document.getElementById("navDots");
+          const nav = document.getElementById('navDots');
           this.slides.forEach((_, i) => {
-            const dot = document.createElement("button");
-            dot.className = "nav-dot" + (i === 0 ? " active" : "");
-            dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-            dot.addEventListener("click", () => this.goTo(i));
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => this.goTo(i));
             nav.appendChild(dot);
           });
-          this.dots = nav.querySelectorAll(".nav-dot");
+          this.dots = nav.querySelectorAll('.nav-dot');
         }
 
         updateNavDots() {
           this.dots.forEach((d, i) =>
-            d.classList.toggle("active", i === this.currentSlide),
+            d.classList.toggle('active', i === this.currentSlide),
           );
         }
 
         goTo(idx) {
           if (idx < 0 || idx >= this.slides.length) return;
-          this.slides[idx].scrollIntoView({ behavior: "smooth" });
+          this.slides[idx].scrollIntoView({ behavior: 'smooth' });
         }
 
         onSlideEnter(idx) {
-          const demo = this.slides[idx].getAttribute("data-demo");
+          const demo = this.slides[idx].getAttribute('data-demo');
           if (demo && window.demos && window.demos[demo]) {
             window.demos[demo].start();
           }
@@ -3419,7 +3419,7 @@
 
         onSlideLeave(idx) {
           if (idx < 0) return;
-          const demo = this.slides[idx].getAttribute("data-demo");
+          const demo = this.slides[idx].getAttribute('data-demo');
           if (demo && window.demos && window.demos[demo]) {
             window.demos[demo].stop();
           }
@@ -3461,15 +3461,15 @@
         }
         now() {
           const d = new Date();
-          return d.toLocaleTimeString("en-US", {
+          return d.toLocaleTimeString('en-US', {
             hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
           });
         }
         formatBytes(b) {
-          return b < 1024 ? b + "B" : (b / 1024).toFixed(1) + "KB";
+          return b < 1024 ? b + 'B' : (b / 1024).toFixed(1) + 'KB';
         }
         getHeaderSize(r) {
           let s = `HTTP/1.1 ${r.status} ${r.statusText}\r\n`.length;
@@ -3487,7 +3487,7 @@
       class PollingComparisonDemo extends DemoController {
         constructor() {
           super();
-          this.BASE = "http://localhost:3000";
+          this.BASE = 'http://localhost:3000';
           this.spReqs = 0;
           this.spWasted = 0;
           this.spBytes = 0;
@@ -3500,16 +3500,16 @@
           this.lpAbort = null;
 
           document
-            .getElementById("demo5-send")
-            .addEventListener("click", () => this.sendMsg());
+            .getElementById('demo5-send')
+            .addEventListener('click', () => this.sendMsg());
           document
-            .getElementById("demo5-input")
-            .addEventListener("keydown", (e) => {
-              if (e.key === "Enter") this.sendMsg();
+            .getElementById('demo5-input')
+            .addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') this.sendMsg();
             });
           document
-            .getElementById("demo5-reset")
-            .addEventListener("click", () => this.reset());
+            .getElementById('demo5-reset')
+            .addEventListener('click', () => this.reset());
         }
 
         start() {
@@ -3534,8 +3534,8 @@
 
         reset() {
           this.stop();
-          ["demo5-sp-net", "demo5-lp-net", "demo5-sse-net"].forEach((id) => {
-            document.getElementById(id).innerHTML = "";
+          ['demo5-sp-net', 'demo5-lp-net', 'demo5-sse-net'].forEach((id) => {
+            document.getElementById(id).innerHTML = '';
           });
           this.spReqs = 0;
           this.spWasted = 0;
@@ -3551,7 +3551,7 @@
         /* --- Short Polling: real fetch every 1.5s --- */
         startShortPolling() {
           this.addInterval(() => {
-            fetch(this.BASE + "/api/poll?since=" + this.spSince)
+            fetch(this.BASE + '/api/poll?since=' + this.spSince)
               .then(async (r) => {
                 const respHeaderSize = this.getHeaderSize(r);
                 const reqHeaderEst = 400;
@@ -3568,9 +3568,9 @@
                   this.spSince = last.time;
                 }
                 this.addNetRow(
-                  "demo5-sp-net",
-                  "GET",
-                  "/api/poll",
+                  'demo5-sp-net',
+                  'GET',
+                  '/api/poll',
                   String(r.status),
                   this.formatBytes(totalSize),
                   hasNew,
@@ -3578,7 +3578,7 @@
                 this.updateCounters();
               })
               .catch(() => {
-                this.addNetRow("demo5-sp-net", "GET", "/api/poll", "ERR", "—");
+                this.addNetRow('demo5-sp-net', 'GET', '/api/poll', 'ERR', '—');
               });
           }, 1500);
         }
@@ -3592,16 +3592,16 @@
           if (!this.active) return;
           this.lpAbort = new AbortController();
           this.addNetRow(
-            "demo5-lp-net",
-            "GET",
-            "/api/long-poll",
-            "",
-            "pending",
+            'demo5-lp-net',
+            'GET',
+            '/api/long-poll',
+            '',
+            'pending',
           );
           this.lpReqs++;
           this.updateCounters();
 
-          fetch(this.BASE + "/api/long-poll", { signal: this.lpAbort.signal })
+          fetch(this.BASE + '/api/long-poll', { signal: this.lpAbort.signal })
             .then(async (r) => {
               if (!this.active) return;
               const respHeaderSize = this.getHeaderSize(r);
@@ -3614,11 +3614,11 @@
               const hasNew = msgs.length > 0;
               this.lpBytes += totalSize;
               this.addNetRow(
-                "demo5-lp-net",
-                "GET",
-                "/api/long-poll",
+                'demo5-lp-net',
+                'GET',
+                '/api/long-poll',
                 String(r.status),
-                hasNew ? this.formatBytes(totalSize) : "timeout",
+                hasNew ? this.formatBytes(totalSize) : 'timeout',
                 hasNew,
               );
               this.updateCounters();
@@ -3631,23 +3631,23 @@
 
         /* --- SSE: real EventSource --- */
         startSSE() {
-          this.eventSource = new EventSource(this.BASE + "/api/sse");
+          this.eventSource = new EventSource(this.BASE + '/api/sse');
           this.sseReqs = 1;
           this.sseBytes = 0;
-          this.addNetRow("demo5-sse-net", "GET", "/api/sse", "200", "stream");
+          this.addNetRow('demo5-sse-net', 'GET', '/api/sse', '200', 'stream');
           this.updateCounters();
 
-          this.eventSource.addEventListener("message", (e) => {
+          this.eventSource.addEventListener('message', (e) => {
             if (!this.active) return;
             try {
               const msg = JSON.parse(e.data);
               const size = e.data.length + 6;
               this.sseBytes += size;
               this.addNetRow(
-                "demo5-sse-net",
-                "EVT",
-                "message",
-                "—",
+                'demo5-sse-net',
+                'EVT',
+                'message',
+                '—',
                 this.formatBytes(size),
               );
               this.updateCounters();
@@ -3656,21 +3656,21 @@
         }
 
         sendMsg() {
-          const input = document.getElementById("demo5-input");
-          const msg = input.value.trim() || "Hello!";
-          input.value = "";
+          const input = document.getElementById('demo5-input');
+          const msg = input.value.trim() || 'Hello!';
+          input.value = '';
 
-          fetch(this.BASE + "/api/message", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user: "Presenter", text: msg }),
+          fetch(this.BASE + '/api/message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user: 'Presenter', text: msg }),
           }).catch(() => {});
         }
 
         addNetRow(id, method, url, status, size) {
           const el = document.getElementById(id);
-          const div = document.createElement("div");
-          div.className = "net-row";
+          const div = document.createElement('div');
+          div.className = 'net-row';
           div.innerHTML = `<span class="method">${method}</span><span class="url">${url}</span><span class="status">${status}</span><span class="size">${size}</span>`;
           el.appendChild(div);
           el.scrollTop = el.scrollHeight;
@@ -3685,7 +3685,7 @@
       class OverheadComparisonDemo extends DemoController {
         constructor() {
           super();
-          this.BASE = "http://localhost:3000";
+          this.BASE = 'http://localhost:3000';
           this.pollReqs = 0;
           this.pollOverhead = 0;
           this.pollPayload = 0;
@@ -3696,16 +3696,16 @@
           this.socket = null;
 
           document
-            .getElementById("demo8-send")
-            .addEventListener("click", () => this.sendMsg());
+            .getElementById('demo8-send')
+            .addEventListener('click', () => this.sendMsg());
           document
-            .getElementById("demo8-input")
-            .addEventListener("keydown", (e) => {
-              if (e.key === "Enter") this.sendMsg();
+            .getElementById('demo8-input')
+            .addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') this.sendMsg();
             });
           document
-            .getElementById("demo8-reset")
-            .addEventListener("click", () => this.reset());
+            .getElementById('demo8-reset')
+            .addEventListener('click', () => this.reset());
         }
 
         start() {
@@ -3725,8 +3725,8 @@
 
         reset() {
           this.stop();
-          ["demo8-poll-net", "demo8-ws-net"].forEach((id) => {
-            document.getElementById(id).innerHTML = "";
+          ['demo8-poll-net', 'demo8-ws-net'].forEach((id) => {
+            document.getElementById(id).innerHTML = '';
           });
           this.pollReqs = 0;
           this.pollOverhead = 0;
@@ -3742,7 +3742,7 @@
         /* --- Left side: real HTTP short polling --- */
         startPolling() {
           this.addInterval(() => {
-            fetch(this.BASE + "/api/poll?since=" + this.pollSince)
+            fetch(this.BASE + '/api/poll?since=' + this.pollSince)
               .then(async (r) => {
                 if (!this.active) return;
                 const respHeaderSize = this.getHeaderSize(r);
@@ -3760,9 +3760,9 @@
                   this.pollSince = last.time;
                 }
                 this.addNetRow(
-                  "demo8-poll-net",
-                  "GET",
-                  "/api/poll",
+                  'demo8-poll-net',
+                  'GET',
+                  '/api/poll',
                   String(r.status),
                   this.formatBytes(overhead + bodySize),
                 );
@@ -3770,11 +3770,11 @@
               })
               .catch(() => {
                 this.addNetRow(
-                  "demo8-poll-net",
-                  "GET",
-                  "/api/poll",
-                  "ERR",
-                  "—",
+                  'demo8-poll-net',
+                  'GET',
+                  '/api/poll',
+                  'ERR',
+                  '—',
                 );
               });
           }, 1500);
@@ -3783,17 +3783,17 @@
         /* --- Right side: real WebSocket via Socket.IO --- */
         startWebSocket() {
           try {
-            this.socket = io(this.BASE, { transports: ["websocket"] });
-            this.addNetRow("demo8-ws-net", "WS", "Upgrade", "101", "—");
+            this.socket = io(this.BASE, { transports: ['websocket'] });
+            this.addNetRow('demo8-ws-net', 'WS', 'Upgrade', '101', '—');
             this.wsFrames = 1;
             this.wsBytes = 0;
 
-            this.socket.on("connect", () => {
-              this.addNetRow("demo8-ws-net", "WS", "Connected", "—", "—");
+            this.socket.on('connect', () => {
+              this.addNetRow('demo8-ws-net', 'WS', 'Connected', '—', '—');
               this.updateCounters();
             });
 
-            this.socket.on("chat message", (msg) => {
+            this.socket.on('chat message', (msg) => {
               if (!this.active) return;
               const payloadSize = JSON.stringify(msg).length;
               const frameHeader = 6;
@@ -3801,52 +3801,52 @@
               this.wsOverhead += frameHeader;
               this.wsPayload += payloadSize;
               this.addNetRow(
-                "demo8-ws-net",
-                "WS",
-                "frame: " + msg.text,
-                "—",
+                'demo8-ws-net',
+                'WS',
+                'frame: ' + msg.text,
+                '—',
                 this.formatBytes(frameHeader + payloadSize),
               );
               this.updateCounters();
             });
           } catch (e) {
-            this.addNetRow("demo8-ws-net", "WS", "Error", "—", "—");
+            this.addNetRow('demo8-ws-net', 'WS', 'Error', '—', '—');
           }
         }
 
         /* --- Send: POST /api/message (polling picks it up + WS broadcasts) --- */
         sendMsg() {
-          const input = document.getElementById("demo8-input");
-          const msg = input.value.trim() || "Hello!";
-          input.value = "";
+          const input = document.getElementById('demo8-input');
+          const msg = input.value.trim() || 'Hello!';
+          input.value = '';
 
-          fetch(this.BASE + "/api/message", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user: "Presenter", text: msg }),
+          fetch(this.BASE + '/api/message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user: 'Presenter', text: msg }),
           }).catch(() => {});
         }
 
         addNetRow(id, method, url, status, size) {
           const el = document.getElementById(id);
-          const div = document.createElement("div");
-          div.className = "net-row";
+          const div = document.createElement('div');
+          div.className = 'net-row';
           div.innerHTML = `<span class="method">${method}</span><span class="url">${url}</span><span class="status">${status}</span><span class="size">${size}</span>`;
           el.appendChild(div);
           el.scrollTop = el.scrollHeight;
         }
 
         updateCounters() {
-          document.getElementById("demo8-poll-reqs").textContent =
+          document.getElementById('demo8-poll-reqs').textContent =
             this.pollReqs;
-          document.getElementById("demo8-poll-overhead").textContent =
+          document.getElementById('demo8-poll-overhead').textContent =
             this.formatBytes(this.pollOverhead);
-          document.getElementById("demo8-poll-payload").textContent =
+          document.getElementById('demo8-poll-payload').textContent =
             this.formatBytes(this.pollPayload);
-          document.getElementById("demo8-ws-reqs").textContent = this.wsFrames;
-          document.getElementById("demo8-ws-overhead").textContent =
+          document.getElementById('demo8-ws-reqs').textContent = this.wsFrames;
+          document.getElementById('demo8-ws-overhead').textContent =
             this.formatBytes(this.wsOverhead);
-          document.getElementById("demo8-ws-payload").textContent =
+          document.getElementById('demo8-ws-payload').textContent =
             this.formatBytes(this.wsPayload);
         }
       }
@@ -3859,17 +3859,17 @@
           super();
           this.socket = null;
           document
-            .getElementById("demo12-kill")
-            .addEventListener("click", () => this.unexpectedClose());
+            .getElementById('demo12-kill')
+            .addEventListener('click', () => this.unexpectedClose());
           document
-            .getElementById("demo12-normal")
-            .addEventListener("click", () => this.normalClose());
+            .getElementById('demo12-normal')
+            .addEventListener('click', () => this.normalClose());
         }
 
         start() {
           super.start();
-          this.log = document.getElementById("demo12-log");
-          this.log.innerHTML = "";
+          this.log = document.getElementById('demo12-log');
+          this.log.innerHTML = '';
           this.connect();
         }
 
@@ -3882,103 +3882,103 @@
         }
 
         connect() {
-          this.addLog("info", "Opening connection...");
+          this.addLog('info', 'Opening connection...');
           try {
-            this.socket = io("http://localhost:3000", {
-              transports: ["websocket"],
+            this.socket = io('http://localhost:3000', {
+              transports: ['websocket'],
               reconnection: true,
               reconnectionDelay: 1000,
               reconnectionDelayMax: 8000,
               reconnectionAttempts: 10,
             });
 
-            this.socket.on("connect", () => {
-              this.setStatus("green", "Connected");
+            this.socket.on('connect', () => {
+              this.setStatus('green', 'Connected');
               this.addLog(
-                "success",
-                "Connection opened (id: " + this.socket.id + ")",
+                'success',
+                'Connection opened (id: ' + this.socket.id + ')',
               );
               this.startHeartbeat();
             });
 
-            this.socket.on("disconnect", (reason) => {
-              this.setStatus("red", "Disconnected");
-              this.addLog("error", "⚠ Connection lost (" + reason + ")");
+            this.socket.on('disconnect', (reason) => {
+              this.setStatus('red', 'Disconnected');
+              this.addLog('error', '⚠ Connection lost (' + reason + ')');
               // Unexpected close: server kicked us — reconnect manually
-              if (reason === "io server disconnect" && this._shouldReconnect) {
+              if (reason === 'io server disconnect' && this._shouldReconnect) {
                 this._shouldReconnect = false;
-                this.addLog("warn", "Unexpected — attempting to reconnect...");
+                this.addLog('warn', 'Unexpected — attempting to reconnect...');
                 this.socket.connect();
               }
             });
 
-            this.socket.io.on("reconnect_attempt", (attempt) => {
-              this.setStatus("amber", "Reconnecting...");
-              this.addLog("warn", "Reconnecting... (attempt " + attempt + ")");
+            this.socket.io.on('reconnect_attempt', (attempt) => {
+              this.setStatus('amber', 'Reconnecting...');
+              this.addLog('warn', 'Reconnecting... (attempt ' + attempt + ')');
             });
 
-            this.socket.io.on("reconnect", (attempt) => {
-              this.setStatus("green", "Connected");
+            this.socket.io.on('reconnect', (attempt) => {
+              this.setStatus('green', 'Connected');
               this.addLog(
-                "success",
-                "Reconnected after " + attempt + " attempt(s)",
+                'success',
+                'Reconnected after ' + attempt + ' attempt(s)',
               );
             });
 
-            this.socket.io.on("reconnect_failed", () => {
-              this.setStatus("red", "Failed");
-              this.addLog("error", "Reconnection failed — giving up");
+            this.socket.io.on('reconnect_failed', () => {
+              this.setStatus('red', 'Failed');
+              this.addLog('error', 'Reconnection failed — giving up');
             });
 
-            this.socket.on("pong-server", () => {
+            this.socket.on('pong-server', () => {
               var latency = Math.round(300 + Math.random() * 700);
               var self = this;
               setTimeout(function () {
-                self.addLog("success", "Pong received (" + latency + "ms)");
+                self.addLog('success', 'Pong received (' + latency + 'ms)');
               }, latency);
             });
           } catch (e) {
-            this.setStatus("red", "Error");
-            this.addLog("error", "Could not connect to server");
+            this.setStatus('red', 'Error');
+            this.addLog('error', 'Could not connect to server');
           }
         }
 
         startHeartbeat() {
           this.addInterval(() => {
             if (!this.socket || !this.socket.connected) return;
-            this.addLog("info", "Ping sent");
-            this.socket.emit("ping-server");
+            this.addLog('info', 'Ping sent');
+            this.socket.emit('ping-server');
           }, 3000);
         }
 
         normalClose() {
-          var btn = document.getElementById("demo12-normal");
+          var btn = document.getElementById('demo12-normal');
           if (this.socket && this.socket.connected) {
             // Disconnect
             this._shouldReconnect = false;
             this.addLog(
-              "info",
-              "Normal close — client disconnecting gracefully",
+              'info',
+              'Normal close — client disconnecting gracefully',
             );
             this.socket.disconnect();
-            this.setStatus("green", "Closed (1000)");
-            this.addLog("success", "Connection closed normally ✓");
-            btn.textContent = "Connect";
-            btn.style.background = "#4361ee";
+            this.setStatus('green', 'Closed (1000)');
+            this.addLog('success', 'Connection closed normally ✓');
+            btn.textContent = 'Connect';
+            btn.style.background = '#4361ee';
           } else {
             // Reconnect
-            this.addLog("info", "Opening connection...");
+            this.addLog('info', 'Opening connection...');
             this.socket.connect();
-            btn.textContent = "Normal Close";
-            btn.style.background = "#22c55e";
+            btn.textContent = 'Normal Close';
+            btn.style.background = '#22c55e';
           }
         }
 
         unexpectedClose() {
           if (!this.socket || !this.socket.connected) return;
           this._shouldReconnect = false; // prevent auto-reconnect
-          this.addLog("warn", "Simulating unexpected close...");
-          this.socket.emit("force disconnect");
+          this.addLog('warn', 'Simulating unexpected close...');
+          this.socket.emit('force disconnect');
 
           // Simulate exponential backoff: 1s → 2s → 4s → then reconnect
           var self = this;
@@ -3988,14 +3988,14 @@
           delays.forEach(function (delay, i) {
             total += delay;
             setTimeout(function () {
-              self.setStatus("amber", "Reconnecting...");
+              self.setStatus('amber', 'Reconnecting...');
               self.addLog(
-                "warn",
-                "Retry #" +
+                'warn',
+                'Retry #' +
                   (i + 1) +
-                  " failed — waiting " +
-                  (delays[i + 1] ? delays[i + 1] / 1000 + "s" : "") +
-                  "...",
+                  ' failed — waiting ' +
+                  (delays[i + 1] ? delays[i + 1] / 1000 + 's' : '') +
+                  '...',
               );
             }, total);
           });
@@ -4003,23 +4003,23 @@
           // After all retries, actually reconnect
           total += 2000;
           setTimeout(function () {
-            self.addLog("info", "Retry #4 — connecting...");
+            self.addLog('info', 'Retry #4 — connecting...');
             self.socket.connect();
-            var btn = document.getElementById("demo12-normal");
-            btn.textContent = "Normal Close";
-            btn.style.background = "#22c55e";
+            var btn = document.getElementById('demo12-normal');
+            btn.textContent = 'Normal Close';
+            btn.style.background = '#22c55e';
           }, total);
         }
 
         setStatus(color, text) {
-          const dot = document.getElementById("demo12-dot");
-          dot.className = "status-dot status-dot--" + color;
-          document.getElementById("demo12-status").textContent = text;
+          const dot = document.getElementById('demo12-dot');
+          dot.className = 'status-dot status-dot--' + color;
+          document.getElementById('demo12-status').textContent = text;
         }
 
         addLog(type, msg) {
-          const entry = document.createElement("div");
-          entry.className = "log-entry log-entry--" + type;
+          const entry = document.createElement('div');
+          entry.className = 'log-entry log-entry--' + type;
           entry.innerHTML = `<span class="time">[${this.now()}]</span>${msg}`;
           this.log.appendChild(entry);
           this.log.scrollTop = this.log.scrollHeight;
@@ -4032,22 +4032,22 @@
       class MessagePatternDemo extends DemoController {
         constructor() {
           super();
-          this.cards = document.querySelectorAll("#demo15-cards .user-card");
-          this.modeSelect = document.getElementById("demo15-mode");
-          this.targetSelect = document.getElementById("demo15-target");
+          this.cards = document.querySelectorAll('#demo15-cards .user-card');
+          this.modeSelect = document.getElementById('demo15-mode');
+          this.targetSelect = document.getElementById('demo15-target');
 
-          this.modeSelect.addEventListener("change", () => {
+          this.modeSelect.addEventListener('change', () => {
             this.targetSelect.style.display =
-              this.modeSelect.value === "direct" ? "" : "none";
+              this.modeSelect.value === 'direct' ? '' : 'none';
           });
 
           document
-            .getElementById("demo15-send")
-            .addEventListener("click", () => this.sendMsg());
+            .getElementById('demo15-send')
+            .addEventListener('click', () => this.sendMsg());
           document
-            .getElementById("demo15-input")
-            .addEventListener("keydown", (e) => {
-              if (e.key === "Enter") this.sendMsg();
+            .getElementById('demo15-input')
+            .addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') this.sendMsg();
             });
         }
 
@@ -4061,31 +4061,31 @@
         }
 
         sendMsg() {
-          const input = document.getElementById("demo15-input");
-          const msg = input.value.trim() || "Hello!";
-          input.value = "";
+          const input = document.getElementById('demo15-input');
+          const msg = input.value.trim() || 'Hello!';
+          input.value = '';
           const mode = this.modeSelect.value;
           this.clearFlash();
 
           let targets = [];
-          if (mode === "broadcast") {
+          if (mode === 'broadcast') {
             targets = Array.from(this.cards);
-          } else if (mode === "roomA") {
+          } else if (mode === 'roomA') {
             targets = Array.from(this.cards).filter(
-              (c) => c.dataset.room === "A",
+              (c) => c.dataset.room === 'A',
             );
-          } else if (mode === "roomB") {
+          } else if (mode === 'roomB') {
             targets = Array.from(this.cards).filter(
-              (c) => c.dataset.room === "B",
+              (c) => c.dataset.room === 'B',
             );
-          } else if (mode === "direct") {
+          } else if (mode === 'direct') {
             const idx = parseInt(this.targetSelect.value);
             targets = [this.cards[idx]];
           }
 
           targets.forEach((card) => {
-            card.classList.add("flash");
-            card.querySelector(".msg-bubble").textContent = msg;
+            card.classList.add('flash');
+            card.querySelector('.msg-bubble').textContent = msg;
           });
 
           this.addTimeout(() => this.clearFlash(), 2500);
@@ -4093,7 +4093,7 @@
 
         clearFlash() {
           this.cards.forEach((c) => {
-            c.classList.remove("flash");
+            c.classList.remove('flash');
           });
         }
       }
@@ -4104,16 +4104,16 @@
       class ChatDemo extends DemoController {
         constructor() {
           super();
-          this.messages = document.getElementById("demo18-messages");
+          this.messages = document.getElementById('demo18-messages');
           this.socket = null;
 
           document
-            .getElementById("demo18-send")
-            .addEventListener("click", () => this.sendMsg());
+            .getElementById('demo18-send')
+            .addEventListener('click', () => this.sendMsg());
           document
-            .getElementById("demo18-input")
-            .addEventListener("keydown", (e) => {
-              if (e.key === "Enter") this.sendMsg();
+            .getElementById('demo18-input')
+            .addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') this.sendMsg();
             });
         }
 
@@ -4132,21 +4132,21 @@
 
         tryConnect() {
           try {
-            if (typeof io !== "undefined") {
-              this.socket = io("http://localhost:3000", {
-                transports: ["websocket"],
+            if (typeof io !== 'undefined') {
+              this.socket = io('http://localhost:3000', {
+                transports: ['websocket'],
               });
-              this.socket.on("connect", () => {
-                this.setStatus("green", "Connected to server");
-                this.addMsg("System", "Connected to chat server");
+              this.socket.on('connect', () => {
+                this.setStatus('green', 'Connected to server');
+                this.addMsg('System', 'Connected to chat server');
               });
-              this.socket.on("chat message", (data) => {
+              this.socket.on('chat message', (data) => {
                 this.addMsg(data.user, data.text);
               });
-              this.socket.on("disconnect", () => {
-                this.setStatus("red", "Disconnected");
+              this.socket.on('disconnect', () => {
+                this.setStatus('red', 'Disconnected');
               });
-              this.socket.on("connect_error", () => {
+              this.socket.on('connect_error', () => {
                 this.fallbackMode();
               });
             } else {
@@ -4158,34 +4158,34 @@
         }
 
         fallbackMode() {
-          this.setStatus("amber", "Simulation mode (no server)");
+          this.setStatus('amber', 'Simulation mode (no server)');
           this.addMsg(
-            "System",
-            "Server not available — running in simulation mode",
+            'System',
+            'Server not available — running in simulation mode',
           );
         }
 
         sendMsg() {
-          const input = document.getElementById("demo18-input");
+          const input = document.getElementById('demo18-input');
           const msg = input.value.trim();
           if (!msg) return;
-          input.value = "";
+          input.value = '';
 
           if (this.socket && this.socket.connected) {
-            this.socket.emit("chat message", { text: msg });
+            this.socket.emit('chat message', { text: msg });
           } else {
-            this.addMsg("You", msg);
+            this.addMsg('You', msg);
             this.addTimeout(
               () => {
                 const replies = [
-                  "Got it!",
-                  "Interesting!",
-                  "Tell me more",
-                  "👍",
-                  "Nice!",
+                  'Got it!',
+                  'Interesting!',
+                  'Tell me more',
+                  '👍',
+                  'Nice!',
                 ];
                 this.addMsg(
-                  "Bot",
+                  'Bot',
                   replies[Math.floor(Math.random() * replies.length)],
                 );
               },
@@ -4195,17 +4195,17 @@
         }
 
         addMsg(user, text) {
-          const div = document.createElement("div");
-          div.className = "chat-message";
+          const div = document.createElement('div');
+          div.className = 'chat-message';
           div.innerHTML = `<span class="sender">${user}</span>${text}`;
           this.messages.appendChild(div);
           this.messages.scrollTop = this.messages.scrollHeight;
         }
 
         setStatus(color, text) {
-          document.getElementById("demo18-dot").className =
-            "status-dot status-dot--" + color;
-          document.getElementById("demo18-conn-status").textContent = text;
+          document.getElementById('demo18-dot').className =
+            'status-dot status-dot--' + color;
+          document.getElementById('demo18-conn-status').textContent = text;
         }
       }
 
@@ -4215,45 +4215,45 @@
       class InlineEditor {
         constructor() {
           this.isActive = false;
-          this.toggle = document.getElementById("editToggle");
-          this.hotzone = document.getElementById("editHotzone");
-          this.toast = document.getElementById("saveToast");
+          this.toggle = document.getElementById('editToggle');
+          this.hotzone = document.getElementById('editHotzone');
+          this.toast = document.getElementById('saveToast');
           this.editableSelectors =
-            ".slide-title, .slide-h2, .slide-h3, .slide-body, .demo-col-label, .section-num, p, li, h2, h3, strong";
+            '.slide-title, .slide-h2, .slide-h3, .slide-body, .demo-col-label, .section-num, p, li, h2, h3, strong';
           let hideTimeout = null;
 
-          this.toggle.addEventListener("click", () => this.toggleEditMode());
+          this.toggle.addEventListener('click', () => this.toggleEditMode());
 
-          this.hotzone.addEventListener("mouseenter", () => {
+          this.hotzone.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
-            this.toggle.classList.add("show");
+            this.toggle.classList.add('show');
           });
-          this.hotzone.addEventListener("mouseleave", () => {
+          this.hotzone.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              if (!this.isActive) this.toggle.classList.remove("show");
+              if (!this.isActive) this.toggle.classList.remove('show');
             }, 400);
           });
-          this.toggle.addEventListener("mouseenter", () =>
+          this.toggle.addEventListener('mouseenter', () =>
             clearTimeout(hideTimeout),
           );
-          this.toggle.addEventListener("mouseleave", () => {
+          this.toggle.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
-              if (!this.isActive) this.toggle.classList.remove("show");
+              if (!this.isActive) this.toggle.classList.remove('show');
             }, 400);
           });
 
-          this.hotzone.addEventListener("click", () => this.toggleEditMode());
+          this.hotzone.addEventListener('click', () => this.toggleEditMode());
 
-          document.addEventListener("keydown", (e) => {
+          document.addEventListener('keydown', (e) => {
             if (
-              (e.key === "e" || e.key === "E") &&
-              !e.target.getAttribute("contenteditable") &&
-              e.target.tagName !== "INPUT" &&
-              e.target.tagName !== "SELECT"
+              (e.key === 'e' || e.key === 'E') &&
+              !e.target.getAttribute('contenteditable') &&
+              e.target.tagName !== 'INPUT' &&
+              e.target.tagName !== 'SELECT'
             ) {
               this.toggleEditMode();
             }
-            if (e.ctrlKey && e.key === "s" && this.isActive) {
+            if (e.ctrlKey && e.key === 's' && this.isActive) {
               e.preventDefault();
               this.save();
             }
@@ -4264,25 +4264,25 @@
 
         toggleEditMode() {
           this.isActive = !this.isActive;
-          this.toggle.classList.toggle("active", this.isActive);
+          this.toggle.classList.toggle('active', this.isActive);
           if (this.isActive) {
-            this.toggle.classList.add("show");
+            this.toggle.classList.add('show');
           }
 
           document.querySelectorAll(this.editableSelectors).forEach((el) => {
             if (
-              el.closest(".demo-slide") ||
-              el.closest(".nav-dots") ||
-              el.closest(".edit-toggle") ||
-              el.closest("script")
+              el.closest('.demo-slide') ||
+              el.closest('.nav-dots') ||
+              el.closest('.edit-toggle') ||
+              el.closest('script')
             )
               return;
             if (this.isActive) {
-              el.setAttribute("contenteditable", "true");
-              el.addEventListener("input", this._onInput);
+              el.setAttribute('contenteditable', 'true');
+              el.addEventListener('input', this._onInput);
             } else {
-              el.removeAttribute("contenteditable");
-              el.removeEventListener("input", this._onInput);
+              el.removeAttribute('contenteditable');
+              el.removeEventListener('input', this._onInput);
             }
           });
 
@@ -4299,10 +4299,10 @@
           document
             .querySelectorAll('[contenteditable="true"]')
             .forEach((el, i) => {
-              data[`el_${i}_${el.className.split(" ")[0]}`] = el.innerHTML;
+              data[`el_${i}_${el.className.split(' ')[0]}`] = el.innerHTML;
             });
           try {
-            localStorage.setItem("ws-presentation-edits", JSON.stringify(data));
+            localStorage.setItem('ws-presentation-edits', JSON.stringify(data));
             this.showToast();
           } catch (e) {
             /* storage full or unavailable */
@@ -4312,7 +4312,7 @@
         loadFromStorage() {
           try {
             const data = JSON.parse(
-              localStorage.getItem("ws-presentation-edits"),
+              localStorage.getItem('ws-presentation-edits'),
             );
             if (!data) return;
             /* Edits are session-persistent. Clear with localStorage.removeItem('ws-presentation-edits') */
@@ -4322,8 +4322,8 @@
         }
 
         showToast() {
-          this.toast.classList.add("show");
-          setTimeout(() => this.toast.classList.remove("show"), 1500);
+          this.toast.classList.add('show');
+          setTimeout(() => this.toast.classList.remove('show'), 1500);
         }
       }
 
@@ -4331,8 +4331,8 @@
    INITIALIZATION
    =========================================== */
       window.demos = {
-        "polling-compare": new PollingComparisonDemo(),
-        "overhead-compare": new OverheadComparisonDemo(),
+        'polling-compare': new PollingComparisonDemo(),
+        'overhead-compare': new OverheadComparisonDemo(),
         lifecycle: new LifecycleDemo(),
         patterns: new MessagePatternDemo(),
         chat: new ChatDemo(),
@@ -4357,33 +4357,33 @@
         }
 
         function s10Log(type, dir, msg) {
-          var logs = s10El("s10-log-list");
+          var logs = s10El('s10-log-list');
           if (!logs) return;
-          var t = new Date().toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
+          var t = new Date().toLocaleTimeString('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
           });
-          var a = dir === "r" ? "\u2192" : dir === "l" ? "\u2190" : "\u25CF";
-          var e = document.createElement("div");
-          e.className = "s10-log-entry s10-" + type + "-log";
+          var a = dir === 'r' ? '\u2192' : dir === 'l' ? '\u2190' : '\u25CF';
+          var e = document.createElement('div');
+          e.className = 's10-log-entry s10-' + type + '-log';
           e.innerHTML =
             '<span class="s10-time">' +
             t +
             '</span><span class="s10-dir">' +
             a +
-            "</span><span>" +
+            '</span><span>' +
             msg +
-            "</span>";
+            '</span>';
           logs.appendChild(e);
           logs.scrollTop = logs.scrollHeight;
         }
 
         function s10Packet(label, cls, dir) {
-          var w = s10El("s10-wire-area");
+          var w = s10El('s10-wire-area');
           if (!w) return;
-          var p = document.createElement("div");
-          p.className = "s10-packet " + cls + " fly-" + dir;
+          var p = document.createElement('div');
+          p.className = 's10-packet ' + cls + ' fly-' + dir;
           p.textContent = label;
           w.appendChild(p);
           setTimeout(function () {
@@ -4401,9 +4401,9 @@
         }
 
         function s10Stats() {
-          var ep = s10El("s10-pings");
+          var ep = s10El('s10-pings');
           if (ep) ep.textContent = s10.pings;
-          var eo = s10El("s10-pongs");
+          var eo = s10El('s10-pongs');
           if (eo) eo.textContent = s10.pongs;
         }
 
@@ -4414,25 +4414,25 @@
           var n = s10.seq;
           s10Stats();
           // Phase 1: Server (right) sends Ping ← toward Client (left)
-          s10Packet("PING #" + n, "ping", "l");
-          s10Log("ping", "l", "PING #" + n + " sent by server \u2192 client");
-          s10Flash("s10-server-box", "s10-hl-ping");
+          s10Packet('PING #' + n, 'ping', 'l');
+          s10Log('ping', 'l', 'PING #' + n + ' sent by server \u2192 client');
+          s10Flash('s10-server-box', 's10-hl-ping');
 
           // Phase 2: After Ping arrives (5s), Client (left) sends Pong → back to Server (right)
           var lat = Math.round(30 + Math.random() * 90);
           s10.timer = setTimeout(function () {
             if (!s10.running) return;
             s10.pongs++;
-            var el = s10El("s10-lat");
-            if (el) el.textContent = lat + "ms";
+            var el = s10El('s10-lat');
+            if (el) el.textContent = lat + 'ms';
             s10Stats();
-            s10Packet("PONG #" + n, "pong", "r");
+            s10Packet('PONG #' + n, 'pong', 'r');
             s10Log(
-              "pong",
-              "r",
-              "PONG #" + n + " client \u2192 server (" + lat + "ms)",
+              'pong',
+              'r',
+              'PONG #' + n + ' client \u2192 server (' + lat + 'ms)',
             );
-            s10Flash("s10-client-box", "s10-hl-pong");
+            s10Flash('s10-client-box', 's10-hl-pong');
 
             // Phase 3: After Pong arrives (5s), wait 1s then start next cycle
             s10.timer = setTimeout(function () {
@@ -4450,18 +4450,18 @@
 
         window.s10Toggle = function () {
           s10.running = !s10.running;
-          var btn = s10El("s10-toggle");
-          if (btn) btn.textContent = s10.running ? "Pause" : "Start";
+          var btn = s10El('s10-toggle');
+          if (btn) btn.textContent = s10.running ? 'Pause' : 'Start';
           if (s10.running) s10Loop();
           else clearTimeout(s10.timer);
         };
 
         window.s10ClearLog = function () {
-          var l = s10El("s10-log-list");
-          if (l) l.innerHTML = "";
+          var l = s10El('s10-log-list');
+          if (l) l.innerHTML = '';
         };
 
-        s10Log("info", "", "WebSocket connection established");
+        s10Log('info', '', 'WebSocket connection established');
         s10Loop();
       })();
     </script>
@@ -4475,13 +4475,13 @@
     <!-- Generate QR code for chat URL -->
     <script>
       (function () {
-        if (typeof qrcode === "undefined") return;
-        var chatUrl = "http://192.168.30.68:3000/chat";
-        document.getElementById("chat-url").textContent = chatUrl;
-        var qr = qrcode(0, "M");
+        if (typeof qrcode === 'undefined') return;
+        var chatUrl = 'http://192.168.30.68:3000/chat';
+        document.getElementById('chat-url').textContent = chatUrl;
+        var qr = qrcode(0, 'M');
         qr.addData(chatUrl);
         qr.make();
-        document.getElementById("chat-qr").innerHTML = qr.createSvgTag(5, 0);
+        document.getElementById('chat-qr').innerHTML = qr.createSvgTag(5, 0);
       })();
     </script>
   </body>
