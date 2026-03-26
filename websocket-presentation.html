@@ -1557,9 +1557,9 @@
       </div>
     </section>
     <!-- =============================================
-     SLIDE 8 — HTTP REQUEST COST BREAKDOWN
+     SLIDE 7 — HTTP REQUEST COST BREAKDOWN
      ============================================= -->
-    <section class="slide slide--light" id="slide-8">
+    <section class="slide slide--light" id="slide-7">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -1807,11 +1807,11 @@
     </section>
 
     <!-- =============================================
-     SLIDE 9 — DEMO: POLLING VS WEBSOCKET
+     SLIDE 8 — DEMO: POLLING VS WEBSOCKET
      ============================================= -->
     <section
       class="slide slide--dark demo-slide"
-      id="slide-9"
+      id="slide-8"
       data-demo="overhead-compare"
     >
       <div class="slide-content">
@@ -1897,9 +1897,9 @@
       </div>
     </section>
     <!-- =============================================
-     SLIDE 10 — CONNECTION LIFECYCLE
+     SLIDE 9 — CONNECTION LIFECYCLE
      ============================================= -->
-    <section class="slide slide--light" id="slide-10">
+    <section class="slide slide--light" id="slide-9">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -2047,7 +2047,7 @@
     <!-- =============================================
      SLIDE 10 — HEARTBEAT (PING/PONG)
      ============================================= -->
-    <section class="slide slide--light" id="slide-11">
+    <section class="slide slide--light" id="slide-10">
       <style>
         /* Slide 10 — Ping/Pong */
         #s10-wire-area {
@@ -2414,7 +2414,7 @@
     <!-- =============================================
      SLIDE 11 — DISCONNECTION & RECONNECTION
      ============================================= -->
-    <section class="slide slide--light" id="slide-12">
+    <section class="slide slide--light" id="slide-11">
       <div
         class="slide-content"
         style="gap: var(--content-gap); align-items: center"
@@ -2641,7 +2641,7 @@
      ============================================= -->
     <section
       class="slide slide--dark demo-slide"
-      id="slide-13"
+      id="slide-12"
       data-demo="lifecycle"
     >
       <div class="slide-content" style="align-items: center">
@@ -2702,14 +2702,25 @@
     </section>
 
     <!-- =============================================
-     SLIDE 14 — MESSAGE PATTERNS
+     SLIDE 13 — MESSAGE PATTERNS
      ============================================= -->
-    <section class="slide slide--light" id="slide-15">
-      <div class="slide-content" style="gap: var(--content-gap); justify-content: center; align-items: center">
+    <section class="slide slide--light" id="slide-13">
+      <div
+        class="slide-content"
+        style="
+          gap: var(--content-gap);
+          justify-content: center;
+          align-items: center;
+        "
+      >
         <h2 class="slide-h2 reveal">Message Patterns</h2>
         <div
           class="cols reveal"
-          style="transition-delay: 0.2s; gap: clamp(1rem, 3vw, 3rem); align-items: flex-start"
+          style="
+            transition-delay: 0.2s;
+            gap: clamp(1rem, 3vw, 3rem);
+            align-items: flex-start;
+          "
         >
           <!-- Broadcast -->
           <div style="text-align: center">
@@ -2719,7 +2730,14 @@
             >
               Broadcast
             </h3>
-            <div style="font-size: var(--small-size); font-weight: 700; color: var(--accent); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem)">
+            <div
+              style="
+                font-size: var(--small-size);
+                font-weight: 700;
+                color: var(--accent);
+                margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+              "
+            >
               Server &rarr; Everyone
             </div>
             <div class="user-grid" id="pattern-broadcast">
@@ -2750,9 +2768,17 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
+              style="
+                font-size: var(--body-size);
+                margin-top: 0.6em;
+                max-width: 22ch;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.4;
+              "
             >
-              Every connected client receives the message — regardless of room or role.
+              Every connected client receives the message — regardless of room
+              or role.
             </p>
           </div>
           <!-- Room -->
@@ -2764,7 +2790,16 @@
               Room
             </h3>
             <div class="user-grid" id="pattern-room">
-              <div style="grid-column: 1 / -1; font-size: var(--small-size); font-weight: 700; color: var(--accent)">Room A</div>
+              <div
+                style="
+                  grid-column: 1 / -1;
+                  font-size: var(--small-size);
+                  font-weight: 700;
+                  color: var(--accent);
+                "
+              >
+                Room A
+              </div>
               <div class="user-icon user-icon--lit">
                 <div class="avatar">A</div>
                 <div class="name">Alice</div>
@@ -2777,7 +2812,17 @@
                 <div class="avatar">C</div>
                 <div class="name">Carol</div>
               </div>
-              <div style="grid-column: 1 / -1; font-size: var(--small-size); font-weight: 700; color: var(--amber); margin-top: 0.2em">Room B</div>
+              <div
+                style="
+                  grid-column: 1 / -1;
+                  font-size: var(--small-size);
+                  font-weight: 700;
+                  color: var(--amber);
+                  margin-top: 0.2em;
+                "
+              >
+                Room B
+              </div>
               <div class="user-icon user-icon--dim">
                 <div class="avatar">D</div>
                 <div class="name">Dave</div>
@@ -2793,9 +2838,17 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
+              style="
+                font-size: var(--body-size);
+                margin-top: 0.6em;
+                max-width: 22ch;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.4;
+              "
             >
-              Only clients who joined the same room receive it. Others see nothing.
+              Only clients who joined the same room receive it. Others see
+              nothing.
             </p>
           </div>
           <!-- One-to-One -->
@@ -2806,7 +2859,14 @@
             >
               One-to-One
             </h3>
-            <div style="font-size: var(--small-size); font-weight: 700; color: var(--accent); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem)">
+            <div
+              style="
+                font-size: var(--small-size);
+                font-weight: 700;
+                color: var(--accent);
+                margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+              "
+            >
               &rarr; Alice
             </div>
             <div class="user-grid" id="pattern-direct">
@@ -2837,24 +2897,41 @@
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em; max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.4"
+              style="
+                font-size: var(--body-size);
+                margin-top: 0.6em;
+                max-width: 22ch;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.4;
+              "
             >
               The message is delivered to exactly one client. No one else knows.
             </p>
           </div>
         </div>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--body-size); font-weight: 700; transition-delay: 0.35s">
-          The first question when designing a real-time feature: <span style="color: var(--accent)">who should receive this message?</span>
+        <p
+          class="slide-body reveal"
+          style="
+            text-align: center;
+            font-size: var(--body-size);
+            font-weight: 700;
+            transition-delay: 0.35s;
+          "
+        >
+          The first question when designing a real-time feature:
+          <span style="color: var(--accent)"
+            >who should receive this message?</span
+          >
         </p>
       </div>
     </section>
 
     <!-- =============================================
-     SLIDE 16 — THE COST OF WEBSOCKET
+     SLIDE 14 — THE COST OF WEBSOCKET
      ============================================= -->
-    <section class="slide slide--light" id="slide-cost">
+    <section class="slide slide--light" id="slide-14">
       <div class="slide-content" style="gap: var(--content-gap)">
-        <div class="section-num reveal">14 — TRADE-OFFS</div>
         <h2 class="slide-h2 reveal">The Cost of WebSocket</h2>
         <div
           class="reveal"
@@ -2867,36 +2944,84 @@
             transition-delay: 0.2s;
           "
         >
-          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+          <div
+            class="compare-block compare-block--dark"
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            "
+          >
             <h3 class="slide-h3" style="color: var(--amber)">
               Server Resources
             </h3>
-            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
-              1 user = 1 persistent connection. <strong>10K users = 10K open sockets.</strong>
+            <p
+              class="slide-body text-muted-dark"
+              style="font-size: var(--body-size)"
+            >
+              1 user = 1 persistent connection.
+              <strong>10K users = 10K open sockets.</strong>
             </p>
           </div>
-          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+          <div
+            class="compare-block compare-block--dark"
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            "
+          >
             <h3 class="slide-h3" style="color: var(--amber)">
               Scaling is Harder
             </h3>
-            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
-              <strong>Stateful</strong> — client tied to one server. Scaling needs sticky sessions or pub/sub.
+            <p
+              class="slide-body text-muted-dark"
+              style="font-size: var(--body-size)"
+            >
+              <strong>Stateful</strong> — client tied to one server. Scaling
+              needs sticky sessions or pub/sub.
             </p>
           </div>
-          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+          <div
+            class="compare-block compare-block--dark"
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            "
+          >
             <h3 class="slide-h3" style="color: var(--amber)">
               More Things Can Go Wrong
             </h3>
-            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
-              Network drops, proxy timeouts, mobile sleep. <strong>You must handle all of them.</strong>
+            <p
+              class="slide-body text-muted-dark"
+              style="font-size: var(--body-size)"
+            >
+              Network drops, proxy timeouts, mobile sleep.
+              <strong>You must handle all of them.</strong>
             </p>
           </div>
-          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+          <div
+            class="compare-block compare-block--dark"
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            "
+          >
             <h3 class="slide-h3" style="color: var(--amber)">
               Infrastructure Cost
             </h3>
-            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
-              Load balancers, firewalls, proxies — all need <strong>long-lived connection support.</strong>
+            <p
+              class="slide-body text-muted-dark"
+              style="font-size: var(--body-size)"
+            >
+              Load balancers, firewalls, proxies — all need
+              <strong>long-lived connection support.</strong>
             </p>
           </div>
         </div>
@@ -2904,11 +3029,13 @@
     </section>
 
     <!-- =============================================
-     SLIDE 17 — CHOOSING THE RIGHT PROTOCOL
+     SLIDE 15 — CHOOSING THE RIGHT PROTOCOL
      ============================================= -->
-    <section class="slide slide--light" id="slide-18">
-      <div class="slide-content" style="gap: var(--content-gap); justify-content: center">
-        <div class="section-num reveal">15 — DECISION</div>
+    <section class="slide slide--light" id="slide-15">
+      <div
+        class="slide-content"
+        style="gap: var(--content-gap); justify-content: center"
+      >
         <h2 class="slide-h2 reveal">Choosing the Right Protocol</h2>
         <div
           class="reveal"
@@ -2923,94 +3050,292 @@
           "
         >
           <!-- Column Headers -->
-          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--amber); text-align: center">
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              background: rgba(0, 0, 0, 0.03);
+              border-top: 4px solid var(--amber);
+              text-align: center;
+            "
+          >
             <strong class="slide-h3" style="color: var(--amber)">HTTP</strong>
           </div>
-          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--green); text-align: center">
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              background: rgba(0, 0, 0, 0.03);
+              border-top: 4px solid var(--green);
+              text-align: center;
+            "
+          >
             <strong class="slide-h3" style="color: var(--green)">SSE</strong>
           </div>
-          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--accent); text-align: center">
-            <strong class="slide-h3" style="color: var(--accent)">WebSocket</strong>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              background: rgba(0, 0, 0, 0.03);
+              border-top: 4px solid var(--accent);
+              text-align: center;
+            "
+          >
+            <strong class="slide-h3" style="color: var(--accent)"
+              >WebSocket</strong
+            >
           </div>
           <!-- Row: Direction -->
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Direction
+            </div>
             Request ↔ Response
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Direction
+            </div>
             Server → Client only
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Direction
+            </div>
             <strong>Bidirectional</strong>
           </div>
           <!-- Row: Connection -->
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Connection
+            </div>
             New connection per request
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Connection
+            </div>
             Persistent HTTP stream
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Connection
+            </div>
             Persistent, protocol upgrade
           </div>
           <!-- Row: Best for -->
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Best for
+            </div>
             REST APIs, forms, static resources, caching
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Best for
+            </div>
             Live feeds, notifications, dashboards, AI token streaming
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Best for
+            </div>
             Chat, collaborative editing, multiplayer games, trading
           </div>
           <!-- Row: Complexity -->
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Complexity
+            </div>
             <strong style="color: var(--green)">Low</strong>
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
-            <strong style="color: var(--green)">Low</strong> — auto-reconnect built in
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Complexity
+            </div>
+            <strong style="color: var(--green)">Low</strong> — auto-reconnect
+            built in
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
-            <strong style="color: var(--amber)">Higher</strong> — manage lifecycle yourself
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Complexity
+            </div>
+            <strong style="color: var(--amber)">Higher</strong> — manage
+            lifecycle yourself
           </div>
           <!-- Row: Binary data -->
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Binary data
+            </div>
             <strong style="color: var(--green)">✓</strong>
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Binary data
+            </div>
             <strong style="color: var(--red)">✗</strong> text only
           </div>
-          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
-            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+          <div
+            style="
+              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              font-size: var(--small-size);
+            "
+          >
+            <div
+              class="slide-small text-muted-dark"
+              style="font-weight: 700; margin-bottom: 0.2em"
+            >
+              Binary data
+            </div>
             <strong style="color: var(--green)">✓</strong>
           </div>
         </div>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--body-size); font-weight: 700; transition-delay: 0.35s; max-width: 65ch; margin: 0 auto">
-          Need the server to push data? &rarr;
-          If one-way is enough, use <strong style="color: var(--green)">SSE</strong>.
-          If both sides talk, use <strong style="color: var(--accent)">WebSocket</strong>.
-          If neither — <strong style="color: var(--amber)">HTTP is all you need</strong>.
+        <p
+          class="slide-body reveal"
+          style="
+            text-align: center;
+            font-size: var(--body-size);
+            font-weight: 700;
+            transition-delay: 0.35s;
+            max-width: 65ch;
+            margin: 0 auto;
+          "
+        >
+          Need the server to push data? &rarr; If one-way is enough, use
+          <strong style="color: var(--green)">SSE</strong>. If both sides talk,
+          use <strong style="color: var(--accent)">WebSocket</strong>. If
+          neither —
+          <strong style="color: var(--amber)">HTTP is all you need</strong>.
         </p>
       </div>
     </section>
 
     <!-- =============================================
-     SLIDE 19 — SUMMARY
+     SLIDE 16 — SUMMARY
      ============================================= -->
-    <section class="slide slide--light" id="slide-20">
+    <section class="slide slide--light" id="slide-16">
       <div class="slide-content" style="gap: var(--content-gap)">
         <h2 class="slide-h2 reveal">What We Learned Today</h2>
 
@@ -3044,7 +3369,8 @@
               >1</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              ><strong class="text-accent">HTTP</strong> is request-response. It wasn't designed for real-time.</span
+              ><strong class="text-accent">HTTP</strong> is request-response. It
+              wasn't designed for real-time.</span
             >
           </div>
 
@@ -3068,7 +3394,8 @@
               >2</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              ><strong class="text-accent">WebSocket</strong> gives us a persistent, two-way connection with very low overhead.</span
+              ><strong class="text-accent">WebSocket</strong> gives us a
+              persistent, two-way connection with very low overhead.</span
             >
           </div>
 
@@ -3092,7 +3419,9 @@
               >3</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              >A connection has a <strong class="text-accent">lifecycle</strong> &mdash; open it, keep it alive, handle disconnections gracefully.</span
+              >A connection has a
+              <strong class="text-accent">lifecycle</strong> &mdash; open it,
+              keep it alive, handle disconnections gracefully.</span
             >
           </div>
 
@@ -3116,7 +3445,33 @@
               >4</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              >Choose the right <strong class="text-accent">message pattern</strong> &mdash; broadcast, room, or one-to-one.</span
+              >Choose the right
+              <strong class="text-accent">message pattern</strong> &mdash;
+              broadcast, room, or one-to-one.</span
+            >
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: clamp(1rem, 2vw, 2rem);
+              padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1rem, 2vw, 2rem);
+              background: rgba(67, 97, 238, 0.06);
+              border-radius: 8px;
+            "
+          >
+            <span
+              style="
+                font-size: var(--h2-size);
+                font-weight: 800;
+                color: var(--accent);
+                min-width: 2ch;
+              "
+              >5</span
+            >
+            <span style="font-size: var(--h3-size); font-weight: 600"
+              >WebSocket isn't free &mdash; choose <strong class="text-accent">the right protocol</strong> for the job: HTTP, SSE, or WebSocket.</span
             >
           </div>
         </div>
@@ -3124,11 +3479,11 @@
     </section>
 
     <!-- =============================================
-     SLIDE 20 — DEMO: LIVE CHAT
+     SLIDE 17 — DEMO: LIVE CHAT
      ============================================= -->
     <section
       class="slide slide--dark demo-slide"
-      id="slide-19"
+      id="slide-17"
       data-demo="chat"
     >
       <div class="slide-content">
@@ -3226,9 +3581,9 @@
     </section>
 
     <!-- =============================================
-     SLIDE 20 — Q&A
+     SLIDE 18 — Q&A
      ============================================= -->
-    <section class="slide slide--light" id="slide-21">
+    <section class="slide slide--light" id="slide-18">
       <div
         class="slide-content"
         style="
@@ -4070,7 +4425,10 @@
                 // flash only the targeted user
                 const cards = this.usersEl.querySelectorAll('.user-card');
                 cards.forEach((c) => {
-                  if (c.dataset.socketId === data.from || c.querySelector('.card-name').textContent === data.user) {
+                  if (
+                    c.dataset.socketId === data.from ||
+                    c.querySelector('.card-name').textContent === data.user
+                  ) {
                     this.flashOne(c, data.text);
                   }
                 });
@@ -4092,7 +4450,10 @@
         fallbackMode() {
           this.isSimulation = true;
           this.setStatus('amber', 'Simulation mode (no server)');
-          this.addMsg('System', 'Server not available — running in simulation mode');
+          this.addMsg(
+            'System',
+            'Server not available — running in simulation mode',
+          );
           this.users = [
             { nickname: 'Alice', room: 'Room A', socketId: 'fake-0' },
             { nickname: 'Bob', room: 'Room B', socketId: 'fake-1' },
@@ -4110,11 +4471,20 @@
             card.dataset.socketId = u.socketId;
             card.dataset.room = u.room === 'Room A' ? 'A' : 'B';
             const initial = u.nickname.charAt(0).toUpperCase();
-            const roomColor = u.room === 'Room A' ? 'var(--accent)' : 'var(--amber)';
+            const roomColor =
+              u.room === 'Room A' ? 'var(--accent)' : 'var(--amber)';
             card.innerHTML =
-              '<div class="card-avatar">' + initial + '</div>' +
-              '<div class="card-name">' + u.nickname + '</div>' +
-              '<div class="card-room" style="color:' + roomColor + '">' + u.room + '</div>' +
+              '<div class="card-avatar">' +
+              initial +
+              '</div>' +
+              '<div class="card-name">' +
+              u.nickname +
+              '</div>' +
+              '<div class="card-room" style="color:' +
+              roomColor +
+              '">' +
+              u.room +
+              '</div>' +
               '<div class="msg-bubble"></div>';
             this.usersEl.appendChild(card);
           });
@@ -4141,8 +4511,14 @@
               mode,
               text: msg,
               user: 'Presenter',
-              targetRoom: mode === 'roomA' ? 'Room A' : mode === 'roomB' ? 'Room B' : undefined,
-              targetSocketId: mode === 'direct' ? this.targetSelect.value : undefined,
+              targetRoom:
+                mode === 'roomA'
+                  ? 'Room A'
+                  : mode === 'roomB'
+                    ? 'Room B'
+                    : undefined,
+              targetSocketId:
+                mode === 'direct' ? this.targetSelect.value : undefined,
             };
             this.socket.emit('presenter message', payload);
           } else if (this.isSimulation) {
@@ -4200,8 +4576,11 @@
         addMsg(user, text, prefix) {
           const div = document.createElement('div');
           div.className = 'chat-message';
-          const pfx = prefix ? '<span class="sender" style="opacity:0.5">' + prefix + '</span>' : '';
-          div.innerHTML = pfx + '<span class="sender">' + user + '</span>' + text;
+          const pfx = prefix
+            ? '<span class="sender" style="opacity:0.5">' + prefix + '</span>'
+            : '';
+          div.innerHTML =
+            pfx + '<span class="sender">' + user + '</span>' + text;
           this.messagesEl.appendChild(div);
           this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
         }
