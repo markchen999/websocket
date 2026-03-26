@@ -2850,228 +2850,53 @@
     </section>
 
     <!-- =============================================
-     SLIDE 16 — REAL WORLD
-     ============================================= -->
-    <section class="slide slide--light" id="slide-17">
-      <div class="slide-content" style="gap: var(--content-gap)">
-        <h2 class="slide-h2 reveal">WebSocket in the Real World</h2>
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            gap: clamp(0.4rem, 1vh, 0.8rem);
-            max-width: min(90vw, 600px);
-          "
-        >
-          <div
-            class="reveal"
-            style="
-              display: flex;
-              align-items: center;
-              gap: clamp(0.5rem, 1.2vw, 1rem);
-              padding: clamp(0.3rem, 0.8vw, 0.6rem);
-              background: rgba(67, 97, 238, 0.04);
-              border-radius: 6px;
-              border-left: 3px solid var(--accent);
-            "
-          >
-            <span style="font-size: clamp(1rem, 2vw, 1.5rem)">💬</span>
-            <div>
-              <strong class="slide-body">Chat apps</strong><br /><span
-                class="slide-body text-muted-dark"
-                style="font-size: var(--small-size)"
-                >Slack, Discord, LINE</span
-              >
-            </div>
-          </div>
-          <div
-            class="reveal"
-            style="
-              display: flex;
-              align-items: center;
-              gap: clamp(0.5rem, 1.2vw, 1rem);
-              padding: clamp(0.3rem, 0.8vw, 0.6rem);
-              background: rgba(67, 97, 238, 0.04);
-              border-radius: 6px;
-              border-left: 3px solid var(--accent);
-            "
-          >
-            <span style="font-size: clamp(1rem, 2vw, 1.5rem)">✏️</span>
-            <div>
-              <strong class="slide-body">Collaborative editing</strong
-              ><br /><span
-                class="slide-body text-muted-dark"
-                style="font-size: var(--small-size)"
-                >Google Docs, Figma</span
-              >
-            </div>
-          </div>
-          <div
-            class="reveal"
-            style="
-              display: flex;
-              align-items: center;
-              gap: clamp(0.5rem, 1.2vw, 1rem);
-              padding: clamp(0.3rem, 0.8vw, 0.6rem);
-              background: rgba(67, 97, 238, 0.04);
-              border-radius: 6px;
-              border-left: 3px solid var(--accent);
-            "
-          >
-            <span style="font-size: clamp(1rem, 2vw, 1.5rem)">📈</span>
-            <div>
-              <strong class="slide-body">Live data</strong><br /><span
-                class="slide-body text-muted-dark"
-                style="font-size: var(--small-size)"
-                >Stock tickers, sports scores</span
-              >
-            </div>
-          </div>
-          <div
-            class="reveal"
-            style="
-              display: flex;
-              align-items: center;
-              gap: clamp(0.5rem, 1.2vw, 1rem);
-              padding: clamp(0.3rem, 0.8vw, 0.6rem);
-              background: rgba(67, 97, 238, 0.04);
-              border-radius: 6px;
-              border-left: 3px solid var(--accent);
-            "
-          >
-            <span style="font-size: clamp(1rem, 2vw, 1.5rem)">🎮</span>
-            <div>
-              <strong class="slide-body">Gaming</strong><br /><span
-                class="slide-body text-muted-dark"
-                style="font-size: var(--small-size)"
-                >Multiplayer online games</span
-              >
-            </div>
-          </div>
-          <div
-            class="reveal"
-            style="
-              display: flex;
-              align-items: center;
-              gap: clamp(0.5rem, 1.2vw, 1rem);
-              padding: clamp(0.3rem, 0.8vw, 0.6rem);
-              background: rgba(67, 97, 238, 0.04);
-              border-radius: 6px;
-              border-left: 3px solid var(--accent);
-            "
-          >
-            <span style="font-size: clamp(1rem, 2vw, 1.5rem)">🔔</span>
-            <div>
-              <strong class="slide-body">Notifications</strong><br /><span
-                class="slide-body text-muted-dark"
-                style="font-size: var(--small-size)"
-                >Real-time push alerts</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 17 — WHEN TO USE / NOT USE
-     ============================================= -->
-    <section class="slide slide--light" id="slide-18">
-      <div class="slide-content" style="gap: var(--content-gap)">
-        <h2 class="slide-h2 reveal">When to Use WebSocket</h2>
-        <div class="compare-blocks reveal" style="transition-delay: 0.2s">
-          <div class="compare-block compare-block--green">
-            <h3 class="slide-h3" style="color: var(--green)">
-              Use WebSocket ✓
-            </h3>
-            <ul class="check-list check-list--yes">
-              <li>Server needs to push data without being asked</li>
-              <li>Both sides send messages frequently</li>
-              <li>Low latency matters</li>
-            </ul>
-          </div>
-          <div class="compare-block compare-block--red">
-            <h3 class="slide-h3" style="color: var(--red)">Don't Use ✗</h3>
-            <ul class="check-list check-list--no">
-              <li>Simple form submissions</li>
-              <li>Loading a page or fetching data once</li>
-              <li>Data doesn't change often</li>
-            </ul>
-          </div>
-        </div>
-        <p
-          class="slide-body reveal"
-          style="
-            text-align: center;
-            max-width: 50ch;
-            margin: 0 auto;
-            transition-delay: 0.35s;
-          "
-        >
-          <strong>If a normal HTTP request can do the job, use HTTP.</strong
-          ><br />
-          <span class="text-muted-dark"
-            >WebSocket adds complexity — only use it when you need it.</span
-          >
-        </p>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 18 — THE COST OF WEBSOCKET
+     SLIDE 16 — THE COST OF WEBSOCKET
      ============================================= -->
     <section class="slide slide--light" id="slide-cost">
       <div class="slide-content" style="gap: var(--content-gap)">
+        <div class="section-num reveal">14 — TRADE-OFFS</div>
         <h2 class="slide-h2 reveal">The Cost of WebSocket</h2>
         <div
           class="reveal"
           style="
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             gap: clamp(0.8rem, 1.5vw, 1.2rem);
+            flex: 1;
             transition-delay: 0.2s;
           "
         >
-          <div class="compare-block compare-block--dark">
+          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
             <h3 class="slide-h3" style="color: var(--amber)">
               Server Resources
             </h3>
-            <p class="slide-body text-muted-dark">
-              Every connected user holds an open connection.<br />
-              <strong>10,000 users = 10,000 persistent connections</strong>
-              on your server. HTTP serves a request and moves on — WebSocket
-              doesn't.
+            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
+              1 user = 1 persistent connection. <strong>10K users = 10K open sockets.</strong>
             </p>
           </div>
-          <div class="compare-block compare-block--dark">
+          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
             <h3 class="slide-h3" style="color: var(--amber)">
               Scaling is Harder
             </h3>
-            <p class="slide-body text-muted-dark">
-              HTTP is stateless — any server can handle any request.<br />
-              WebSocket is <strong>stateful</strong> — a client is tied to one
-              server. Scaling across multiple servers needs extra work.
+            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
+              <strong>Stateful</strong> — client tied to one server. Scaling needs sticky sessions or pub/sub.
             </p>
           </div>
-          <div class="compare-block compare-block--dark">
+          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
             <h3 class="slide-h3" style="color: var(--amber)">
               More Things Can Go Wrong
             </h3>
-            <p class="slide-body text-muted-dark">
-              Network drops, proxy timeouts, mobile sleep mode...<br />
-              You need
-              <strong>heartbeat, reconnection logic, and error handling</strong
-              >.
+            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
+              Network drops, proxy timeouts, mobile sleep. <strong>You must handle all of them.</strong>
             </p>
           </div>
-          <div class="compare-block compare-block--dark">
+          <div class="compare-block compare-block--dark" style="flex: 1; display: flex; flex-direction: column; justify-content: center">
             <h3 class="slide-h3" style="color: var(--amber)">
               Infrastructure Cost
             </h3>
-            <p class="slide-body text-muted-dark">
-              Load balancers, firewalls, and proxies must be configured to
-              support <strong>long-lived connections</strong>. Not all do by
-              default.
+            <p class="slide-body text-muted-dark" style="font-size: var(--body-size)">
+              Load balancers, firewalls, proxies — all need <strong>long-lived connection support.</strong>
             </p>
           </div>
         </div>
@@ -3079,7 +2904,227 @@
     </section>
 
     <!-- =============================================
-     SLIDE 19 — DEMO: LIVE CHAT
+     SLIDE 17 — CHOOSING THE RIGHT PROTOCOL
+     ============================================= -->
+    <section class="slide slide--light" id="slide-18">
+      <div class="slide-content" style="gap: var(--content-gap); justify-content: center">
+        <div class="section-num reveal">15 — DECISION</div>
+        <h2 class="slide-h2 reveal">Choosing the Right Protocol</h2>
+        <div
+          class="reveal"
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            transition-delay: 0.2s;
+          "
+        >
+          <!-- Column Headers -->
+          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--amber); text-align: center">
+            <strong class="slide-h3" style="color: var(--amber)">HTTP</strong>
+          </div>
+          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--green); text-align: center">
+            <strong class="slide-h3" style="color: var(--green)">SSE</strong>
+          </div>
+          <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(0,0,0,0.03); border-top: 4px solid var(--accent); text-align: center">
+            <strong class="slide-h3" style="color: var(--accent)">WebSocket</strong>
+          </div>
+          <!-- Row: Direction -->
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+            Request ↔ Response
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+            Server → Client only
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Direction</div>
+            <strong>Bidirectional</strong>
+          </div>
+          <!-- Row: Connection -->
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+            New connection per request
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+            Persistent HTTP stream
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Connection</div>
+            Persistent, protocol upgrade
+          </div>
+          <!-- Row: Best for -->
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+            REST APIs, forms, static resources, caching
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+            Live feeds, notifications, dashboards, AI token streaming
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Best for</div>
+            Chat, collaborative editing, multiplayer games, trading
+          </div>
+          <!-- Row: Complexity -->
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
+            <strong style="color: var(--green)">Low</strong>
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
+            <strong style="color: var(--green)">Low</strong> — auto-reconnect built in
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); border-bottom: 1px solid rgba(0,0,0,0.06); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Complexity</div>
+            <strong style="color: var(--amber)">Higher</strong> — manage lifecycle yourself
+          </div>
+          <!-- Row: Binary data -->
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+            <strong style="color: var(--green)">✓</strong>
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+            <strong style="color: var(--red)">✗</strong> text only
+          </div>
+          <div style="padding: clamp(0.4rem, 0.8vw, 0.7rem); font-size: var(--small-size)">
+            <div class="slide-small text-muted-dark" style="font-weight: 700; margin-bottom: 0.2em">Binary data</div>
+            <strong style="color: var(--green)">✓</strong>
+          </div>
+        </div>
+        <p class="slide-body reveal" style="text-align: center; font-size: var(--body-size); font-weight: 700; transition-delay: 0.35s; max-width: 65ch; margin: 0 auto">
+          Need the server to push data? &rarr;
+          If one-way is enough, use <strong style="color: var(--green)">SSE</strong>.
+          If both sides talk, use <strong style="color: var(--accent)">WebSocket</strong>.
+          If neither — <strong style="color: var(--amber)">HTTP is all you need</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================================
+     SLIDE 19 — SUMMARY
+     ============================================= -->
+    <section class="slide slide--light" id="slide-20">
+      <div class="slide-content" style="gap: var(--content-gap)">
+        <h2 class="slide-h2 reveal">What We Learned Today</h2>
+
+        <div
+          class="reveal"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.6rem, 1.5vh, 1.2rem);
+            width: 100%;
+            transition-delay: 0.2s;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: clamp(1rem, 2vw, 2rem);
+              padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1rem, 2vw, 2rem);
+              background: rgba(67, 97, 238, 0.06);
+              border-radius: 8px;
+            "
+          >
+            <span
+              style="
+                font-size: var(--h2-size);
+                font-weight: 800;
+                color: var(--accent);
+                min-width: 2ch;
+              "
+              >1</span
+            >
+            <span style="font-size: var(--h3-size); font-weight: 600"
+              ><strong class="text-accent">HTTP</strong> is request-response. It wasn't designed for real-time.</span
+            >
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: clamp(1rem, 2vw, 2rem);
+              padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1rem, 2vw, 2rem);
+              background: rgba(67, 97, 238, 0.06);
+              border-radius: 8px;
+            "
+          >
+            <span
+              style="
+                font-size: var(--h2-size);
+                font-weight: 800;
+                color: var(--accent);
+                min-width: 2ch;
+              "
+              >2</span
+            >
+            <span style="font-size: var(--h3-size); font-weight: 600"
+              ><strong class="text-accent">WebSocket</strong> gives us a persistent, two-way connection with very low overhead.</span
+            >
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: clamp(1rem, 2vw, 2rem);
+              padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1rem, 2vw, 2rem);
+              background: rgba(67, 97, 238, 0.06);
+              border-radius: 8px;
+            "
+          >
+            <span
+              style="
+                font-size: var(--h2-size);
+                font-weight: 800;
+                color: var(--accent);
+                min-width: 2ch;
+              "
+              >3</span
+            >
+            <span style="font-size: var(--h3-size); font-weight: 600"
+              >A connection has a <strong class="text-accent">lifecycle</strong> &mdash; open it, keep it alive, handle disconnections gracefully.</span
+            >
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: clamp(1rem, 2vw, 2rem);
+              padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1rem, 2vw, 2rem);
+              background: rgba(67, 97, 238, 0.06);
+              border-radius: 8px;
+            "
+          >
+            <span
+              style="
+                font-size: var(--h2-size);
+                font-weight: 800;
+                color: var(--accent);
+                min-width: 2ch;
+              "
+              >4</span
+            >
+            <span style="font-size: var(--h3-size); font-weight: 600"
+              >Choose the right <strong class="text-accent">message pattern</strong> &mdash; broadcast, room, or one-to-one.</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     SLIDE 20 — DEMO: LIVE CHAT
      ============================================= -->
     <section
       class="slide slide--dark demo-slide"
@@ -3177,41 +3222,6 @@
             ></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 19 — SUMMARY
-     ============================================= -->
-    <section class="slide slide--split" id="slide-20">
-      <div class="panel panel--top" style="justify-content: center">
-        <div class="accent-bar accent-bar--bottom"></div>
-        <h2 class="slide-h2 reveal" style="max-width: 20ch">
-          What We Learned Today
-        </h2>
-      </div>
-      <div
-        class="panel panel--bottom"
-        style="justify-content: center; gap: clamp(0.3rem, 1vh, 0.8rem)"
-      >
-        <div class="accent-bar accent-bar--top"></div>
-        <p class="slide-body reveal" style="max-width: 50ch">
-          <strong class="text-accent">HTTP</strong> is request-response. It
-          wasn't designed for real-time.
-        </p>
-        <p class="slide-body reveal" style="max-width: 50ch">
-          <strong class="text-accent">WebSocket</strong> gives us a persistent,
-          two-way connection with very low overhead.
-        </p>
-        <p class="slide-body reveal" style="max-width: 50ch">
-          A connection has a <strong class="text-accent">lifecycle</strong> —
-          open it, keep it alive, handle disconnections gracefully.
-        </p>
-        <p class="slide-body reveal" style="max-width: 50ch">
-          Choose the right
-          <strong class="text-accent">message pattern</strong> — broadcast,
-          room, or one-to-one.
-        </p>
       </div>
     </section>
 
