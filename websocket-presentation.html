@@ -657,7 +657,7 @@
 
       .network-log {
         flex: 1;
-        overflow-y: auto;
+        overflow: hidden;
         font-size: clamp(1rem, 1.6vw, 1.35rem);
         font-family: "Courier New", monospace;
         min-height: 0;
@@ -1486,7 +1486,7 @@
       id="slide-5"
       data-demo="polling-compare"
     >
-      <div class="slide-content">
+      <div class="slide-content" style="overflow: hidden">
         <div
           class="reveal"
           style="
@@ -2439,76 +2439,218 @@
         style="gap: var(--content-gap); align-items: center"
       >
         <h2 class="slide-h2 reveal">When the Connection Drops</h2>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--h3-size)">
+        <p
+          class="slide-body reveal"
+          style="text-align: center; font-size: var(--h3-size)"
+        >
           There are two kinds of disconnection:
         </p>
 
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; gap: clamp(0.5rem, 1vh, 0.8rem)">
-
-        <!-- Normal Close label -->
-        <div class="reveal" style="display: flex; align-items: baseline; gap: 0.5rem; transition-delay: 0.15s">
-          <strong style="color: #22c55e; font-size: var(--h3-size)">Normal Close</strong>
-          <span style="font-size: var(--h3-size); font-weight: 700">— User leaves the page, logs out, or server shuts down for maintenance</span>
-        </div>
-        <!-- Normal Close bar -->
         <div
-          class="reveal"
           style="
+            flex: 1;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             width: 100%;
-            height: clamp(6rem, 15vh, 10rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.2s;
+            gap: clamp(0.5rem, 1vh, 0.8rem);
           "
         >
-          <div style="flex: 0 0 auto; min-width: clamp(120px, 12vw, 200px); background: rgba(34,197,94,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 2px solid #fff; gap: 0.2rem">
-            <strong style="color: #22c55e; font-size: var(--h2-size)">1000</strong>
-            <span style="color: var(--text-muted-dark); font-size: var(--small-size)">Normal Closure</span>
+          <!-- Normal Close label -->
+          <div
+            class="reveal"
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 0.5rem;
+              transition-delay: 0.15s;
+            "
+          >
+            <strong style="color: #22c55e; font-size: var(--h3-size)"
+              >Normal Close</strong
+            >
+            <span style="font-size: var(--h3-size); font-weight: 700"
+              >— User leaves the page, logs out, or server shuts down for
+              maintenance</span
+            >
           </div>
-          <div style="flex: 1; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center">
-            <span style="color: #22c55e; font-size: var(--body-size); font-weight: 600">Close frame sent — both sides agree to end</span>
+          <!-- Normal Close bar -->
+          <div
+            class="reveal"
+            style="
+              display: flex;
+              width: 100%;
+              height: clamp(6rem, 15vh, 10rem);
+              border-radius: 8px;
+              overflow: hidden;
+              transition-delay: 0.2s;
+            "
+          >
+            <div
+              style="
+                flex: 0 0 auto;
+                min-width: clamp(120px, 12vw, 200px);
+                background: rgba(34, 197, 94, 0.2);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+                gap: 0.2rem;
+              "
+            >
+              <strong style="color: #22c55e; font-size: var(--h2-size)"
+                >1000</strong
+              >
+              <span
+                style="
+                  color: var(--text-muted-dark);
+                  font-size: var(--small-size);
+                "
+                >Normal Closure</span
+              >
+            </div>
+            <div
+              style="
+                flex: 1;
+                background: rgba(34, 197, 94, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <span
+                style="
+                  color: #22c55e;
+                  font-size: var(--body-size);
+                  font-weight: 600;
+                "
+                >Close frame sent — both sides agree to end</span
+              >
+            </div>
           </div>
-        </div>
 
-        <!-- Unexpected Close label -->
-        <div class="reveal" style="display: flex; align-items: baseline; gap: 0.5rem; margin-top: clamp(0.3rem, 0.5vh, 0.5rem); transition-delay: 0.25s">
-          <strong style="color: #ef4444; font-size: var(--h3-size)">Unexpected Close</strong>
-          <span style="font-size: var(--h3-size); font-weight: 700">— Network fails, server crashes, or timeout</span>
-        </div>
-        <!-- Unexpected Close bar -->
-        <div
-          class="reveal"
-          style="
-            display: flex;
-            width: 100%;
-            height: clamp(6rem, 15vh, 10rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.3s;
-          "
-        >
-          <div style="flex: 0 0 auto; min-width: clamp(120px, 12vw, 200px); background: rgba(239,68,68,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 2px solid #fff; gap: 0.2rem">
-            <strong style="color: #ef4444; font-size: var(--h2-size)">1006</strong>
-            <span style="color: var(--text-muted-dark); font-size: var(--small-size)">Abnormal Closure</span>
+          <!-- Unexpected Close label -->
+          <div
+            class="reveal"
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 0.5rem;
+              margin-top: clamp(0.3rem, 0.5vh, 0.5rem);
+              transition-delay: 0.25s;
+            "
+          >
+            <strong style="color: #ef4444; font-size: var(--h3-size)"
+              >Unexpected Close</strong
+            >
+            <span style="font-size: var(--h3-size); font-weight: 700"
+              >— Network fails, server crashes, or timeout</span
+            >
           </div>
-          <div style="flex: 1; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #ef4444; font-size: var(--h2-size)">1s</strong>
+          <!-- Unexpected Close bar -->
+          <div
+            class="reveal"
+            style="
+              display: flex;
+              width: 100%;
+              height: clamp(6rem, 15vh, 10rem);
+              border-radius: 8px;
+              overflow: hidden;
+              transition-delay: 0.3s;
+            "
+          >
+            <div
+              style="
+                flex: 0 0 auto;
+                min-width: clamp(120px, 12vw, 200px);
+                background: rgba(239, 68, 68, 0.15);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+                gap: 0.2rem;
+              "
+            >
+              <strong style="color: #ef4444; font-size: var(--h2-size)"
+                >1006</strong
+              >
+              <span
+                style="
+                  color: var(--text-muted-dark);
+                  font-size: var(--small-size);
+                "
+                >Abnormal Closure</span
+              >
+            </div>
+            <div
+              style="
+                flex: 1;
+                background: rgba(239, 68, 68, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
+            >
+              <strong style="color: #ef4444; font-size: var(--h2-size)"
+                >1s</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 2;
+                background: rgba(239, 68, 68, 0.17);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
+            >
+              <strong style="color: #ef4444; font-size: var(--h2-size)"
+                >2s</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 3;
+                background: rgba(239, 68, 68, 0.24);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
+            >
+              <strong style="color: #ef4444; font-size: var(--h2-size)"
+                >4s</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 4;
+                background: rgba(239, 68, 68, 0.32);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <strong style="color: #ef4444; font-size: var(--h2-size)"
+                >8s</strong
+              >
+            </div>
           </div>
-          <div style="flex: 2; background: rgba(239,68,68,0.17); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #ef4444; font-size: var(--h2-size)">2s</strong>
-          </div>
-          <div style="flex: 3; background: rgba(239,68,68,0.24); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #ef4444; font-size: var(--h2-size)">4s</strong>
-          </div>
-          <div style="flex: 4; background: rgba(239,68,68,0.32); display: flex; align-items: center; justify-content: center">
-            <strong style="color: #ef4444; font-size: var(--h2-size)">8s</strong>
-          </div>
-        </div>
 
-        <p class="reveal" style="text-align: center; font-size: var(--body-size); transition-delay: 0.4s">
-          Each retry waits longer to avoid overwhelming the server
-        </p>
+          <p
+            class="reveal"
+            style="
+              text-align: center;
+              font-size: var(--body-size);
+              transition-delay: 0.4s;
+            "
+          >
+            Each retry waits longer to avoid overwhelming the server
+          </p>
         </div>
       </div>
     </section>
@@ -2521,31 +2663,60 @@
       id="slide-13"
       data-demo="lifecycle"
     >
-      <div class="slide-content">
+      <div class="slide-content" style="align-items: center">
+        <h2 class="slide-h3 reveal" style="text-align: center">
+          Demo: Lifecycle Visualization
+        </h2>
         <div
-          class="reveal"
+          class="status-indicator reveal"
           style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.3rem;
+            transition-delay: 0.1s;
+            justify-content: center;
+            font-size: var(--h3-size);
           "
         >
-          <h2 class="slide-h3">Demo: Lifecycle Visualization</h2>
-          <button class="demo-btn demo-btn--danger" id="demo12-kill">
-            Kill Connection
-          </button>
-        </div>
-        <div class="status-indicator reveal" style="transition-delay: 0.1s">
-          <div class="status-dot status-dot--green" id="demo12-dot"></div>
+          <div
+            class="status-dot status-dot--green"
+            id="demo12-dot"
+            style="width: 14px; height: 14px"
+          ></div>
           <span id="demo12-status">Connected</span>
         </div>
         <div
           class="event-log reveal"
           id="demo12-log"
-          style="transition-delay: 0.2s"
+          style="
+            transition-delay: 0.2s;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            max-width: min(90vw, 800px);
+            width: 100%;
+            align-items: flex-start;
+            overflow: hidden;
+          "
         ></div>
+        <div
+          class="reveal"
+          style="display: flex; gap: 1rem; transition-delay: 0.3s"
+        >
+          <button
+            class="demo-btn"
+            id="demo12-normal"
+            style="
+              font-size: var(--body-size);
+              padding: 0.6rem 2rem;
+              background: #22c55e;
+            "
+          >
+            Normal Close
+          </button>
+          <button
+            class="demo-btn demo-btn--danger"
+            id="demo12-kill"
+            style="font-size: var(--body-size); padding: 0.6rem 2rem"
+          >
+            Unexpected Close
+          </button>
+        </div>
       </div>
     </section>
 
@@ -3486,7 +3657,7 @@
             "demo5-lp-net",
             "GET",
             "/api/long-poll",
-            "⏳",
+            "",
             "pending",
           );
           this.lpReqs++;
@@ -3756,7 +3927,10 @@
           this.socket = null;
           document
             .getElementById("demo12-kill")
-            .addEventListener("click", () => this.killConnection());
+            .addEventListener("click", () => this.unexpectedClose());
+          document
+            .getElementById("demo12-normal")
+            .addEventListener("click", () => this.normalClose());
         }
 
         start() {
@@ -3797,6 +3971,12 @@
             this.socket.on("disconnect", (reason) => {
               this.setStatus("red", "Disconnected");
               this.addLog("error", "⚠ Connection lost (" + reason + ")");
+              // Unexpected close: server kicked us — reconnect manually
+              if (reason === "io server disconnect" && this._shouldReconnect) {
+                this._shouldReconnect = false;
+                this.addLog("warn", "Unexpected — attempting to reconnect...");
+                this.socket.connect();
+              }
             });
 
             this.socket.io.on("reconnect_attempt", (attempt) => {
@@ -3818,7 +3998,11 @@
             });
 
             this.socket.on("pong-server", () => {
-              this.addLog("success", "Pong received");
+              var latency = Math.round(300 + Math.random() * 700);
+              var self = this;
+              setTimeout(function () {
+                self.addLog("success", "Pong received (" + latency + "ms)");
+              }, latency);
             });
           } catch (e) {
             this.setStatus("red", "Error");
@@ -3834,10 +4018,64 @@
           }, 3000);
         }
 
-        killConnection() {
+        normalClose() {
+          var btn = document.getElementById("demo12-normal");
+          if (this.socket && this.socket.connected) {
+            // Disconnect
+            this._shouldReconnect = false;
+            this.addLog(
+              "info",
+              "Normal close — client disconnecting gracefully",
+            );
+            this.socket.disconnect();
+            this.setStatus("green", "Closed (1000)");
+            this.addLog("success", "Connection closed normally ✓");
+            btn.textContent = "Connect";
+            btn.style.background = "#4361ee";
+          } else {
+            // Reconnect
+            this.addLog("info", "Opening connection...");
+            this.socket.connect();
+            btn.textContent = "Normal Close";
+            btn.style.background = "#22c55e";
+          }
+        }
+
+        unexpectedClose() {
           if (!this.socket || !this.socket.connected) return;
-          this.addLog("warn", "Force disconnect triggered");
+          this._shouldReconnect = false; // prevent auto-reconnect
+          this.addLog("warn", "Simulating unexpected close...");
           this.socket.emit("force disconnect");
+
+          // Simulate exponential backoff: 1s → 2s → 4s → then reconnect
+          var self = this;
+          var delays = [1000, 2000, 4000];
+          var total = 0;
+
+          delays.forEach(function (delay, i) {
+            total += delay;
+            setTimeout(function () {
+              self.setStatus("amber", "Reconnecting...");
+              self.addLog(
+                "warn",
+                "Retry #" +
+                  (i + 1) +
+                  " failed — waiting " +
+                  (delays[i + 1] ? delays[i + 1] / 1000 + "s" : "") +
+                  "...",
+              );
+            }, total);
+          });
+
+          // After all retries, actually reconnect
+          total += 2000;
+          setTimeout(function () {
+            self.addLog("info", "Retry #4 — connecting...");
+            self.socket.connect();
+            var btn = document.getElementById("demo12-normal");
+            btn.textContent = "Normal Close";
+            btn.style.background = "#22c55e";
+          }, total);
         }
 
         setStatus(color, text) {
