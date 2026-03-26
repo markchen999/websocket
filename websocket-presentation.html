@@ -1599,215 +1599,231 @@
         style="gap: var(--content-gap); align-items: center"
       >
         <h2 class="slide-h2 reveal">The Cost of One HTTP Request</h2>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--h3-size)">
-          Every HTTP request carries overhead — even when the server has nothing new to say.
+        <p
+          class="slide-body reveal"
+          style="text-align: center; font-size: var(--h3-size)"
+        >
+          Every HTTP request carries overhead — even when the server has nothing
+          new to say.
         </p>
-        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; gap: var(--content-gap)">
         <div
-          class="reveal"
           style="
-            width: 100%;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: clamp(1.5rem, 3vh, 2.5rem);
-            transition-delay: 0.2s;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: var(--content-gap);
           "
         >
-          <!-- Stacked bar chart -->
           <div
+            class="reveal"
             style="
+              width: 100%;
               display: flex;
               flex-direction: column;
-              gap: clamp(1rem, 2vh, 1.8rem);
-              width: 100%;
+              gap: clamp(1.5rem, 3vh, 2.5rem);
+              transition-delay: 0.2s;
             "
           >
-            <!-- HTTP Request — stacked horizontal bar -->
+            <!-- Stacked bar chart -->
             <div
               style="
                 display: flex;
                 flex-direction: column;
-                gap: 0.4rem;
+                gap: clamp(1rem, 2vh, 1.8rem);
                 width: 100%;
               "
             >
-              <div
-                class="text-amber"
-                style="font-weight: 700; font-size: var(--body-size)"
-              >
-                HTTP Request — per request overhead
-              </div>
+              <!-- HTTP Request — stacked horizontal bar -->
               <div
                 style="
                   display: flex;
+                  flex-direction: column;
+                  gap: 0.4rem;
                   width: 100%;
-                  height: clamp(6rem, 16vh, 10rem);
-                  border-radius: 8px;
-                  overflow: hidden;
                 "
               >
                 <div
-                  style="
-                    flex: 0 0 25%;
-                    background: var(--amber);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #000;
-                    font-weight: 700;
-                    font-size: var(--h3-size);
-                    padding: 0 1rem;
-                    text-align: center;
-                    border-right: 2px solid #fff;
-                  "
+                  class="text-amber"
+                  style="font-weight: 700; font-size: var(--body-size)"
                 >
-                  TCP Handshake<br /><span
-                    style="opacity: 0.7; font-size: 0.7em"
-                    >~1 RTT</span
-                  >
+                  HTTP Request — per request overhead
                 </div>
                 <div
                   style="
-                    flex: 1;
-                    background: rgba(245, 158, 11, 0.72);
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #000;
-                    font-weight: 700;
-                    font-size: var(--h3-size);
-                    padding: 0 1.5rem;
-                    text-align: center;
-                    border-right: 2px solid #fff;
-                    line-height: 1.8;
+                    width: 100%;
+                    height: clamp(6rem, 16vh, 10rem);
+                    border-radius: 8px;
+                    overflow: hidden;
                   "
                 >
-                  Headers: 200–800 bytes<br /><span
-                    style="opacity: 0.7; font-size: 0.7em"
-                    >: cookies, auth, content-type…</span
-                  >
-                </div>
-                <div
-                  style="
-                    flex: 0 0 8%;
-                    background: rgba(245, 158, 11, 0.35);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #000;
-                    font-size: var(--body-size);
-                    padding: 0 0.3rem;
-                    text-align: center;
-                    white-space: nowrap;
-                  "
-                >
-                  Body ≈ 0
-                </div>
-              </div>
-              <div
-                style="
-                  text-align: right;
-                  font-size: var(--small-size);
-                  color: var(--amber);
-                  font-weight: 600;
-                "
-              >
-                ~800+ bytes per request
-              </div>
-            </div>
-
-            <!-- WebSocket Frame — stacked horizontal bar -->
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                gap: 0.4rem;
-                width: 100%;
-              "
-            >
-              <div
-                class="text-accent"
-                style="font-weight: 700; font-size: var(--body-size)"
-              >
-                WebSocket Frame
-              </div>
-              <div
-                style="
-                  display: flex;
-                  width: 100%;
-                  border-radius: 8px;
-                  overflow: hidden;
-                "
-              >
-                <div style="display: flex; height: clamp(6rem, 16vh, 10rem)">
                   <div
                     style="
-                      width: clamp(200px, 20vw, 320px);
-                      background: var(--accent);
+                      flex: 0 0 25%;
+                      background: var(--amber);
                       display: flex;
                       align-items: center;
                       justify-content: center;
-                      color: #fff;
+                      color: #000;
                       font-weight: 700;
                       font-size: var(--h3-size);
                       padding: 0 1rem;
                       text-align: center;
                       border-right: 2px solid #fff;
-                      border-radius: 8px 0 0 8px;
-                      white-space: nowrap;
                     "
                   >
-                    Header: 2–6 bytes
+                    TCP Handshake<br /><span
+                      style="opacity: 0.7; font-size: 0.7em"
+                      >~1 RTT</span
+                    >
                   </div>
                   <div
                     style="
-                      width: clamp(160px, 18vw, 280px);
-                      background: rgba(67, 97, 238, 0.5);
+                      flex: 1;
+                      background: rgba(245, 158, 11, 0.72);
                       display: flex;
                       align-items: center;
                       justify-content: center;
-                      color: #fff;
+                      color: #000;
                       font-weight: 700;
                       font-size: var(--h3-size);
-                      padding: 0 1rem;
+                      padding: 0 1.5rem;
                       text-align: center;
-                      border-radius: 0 8px 8px 0;
+                      border-right: 2px solid #fff;
+                      line-height: 1.8;
+                    "
+                  >
+                    Headers: 200–800 bytes<br /><span
+                      style="opacity: 0.7; font-size: 0.7em"
+                      >: cookies, auth, content-type…</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      flex: 0 0 8%;
+                      background: rgba(245, 158, 11, 0.35);
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      color: #000;
+                      font-size: var(--body-size);
+                      padding: 0 0.3rem;
+                      text-align: center;
                       white-space: nowrap;
                     "
                   >
-                    Payload
+                    Body ≈ 0
                   </div>
                 </div>
+                <div
+                  style="
+                    text-align: right;
+                    font-size: var(--small-size);
+                    color: var(--amber);
+                    font-weight: 600;
+                  "
+                >
+                  ~800+ bytes per request
+                </div>
               </div>
+
+              <!-- WebSocket Frame — stacked horizontal bar -->
               <div
                 style="
-                  text-align: left;
-                  font-size: var(--small-size);
-                  color: var(--accent);
-                  font-weight: 600;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.4rem;
+                  width: 100%;
                 "
               >
-                ~2–6 bytes overhead
+                <div
+                  class="text-accent"
+                  style="font-weight: 700; font-size: var(--body-size)"
+                >
+                  WebSocket Frame
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    width: 100%;
+                    border-radius: 8px;
+                    overflow: hidden;
+                  "
+                >
+                  <div style="display: flex; height: clamp(6rem, 16vh, 10rem)">
+                    <div
+                      style="
+                        width: clamp(200px, 20vw, 320px);
+                        background: var(--accent);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-weight: 700;
+                        font-size: var(--h3-size);
+                        padding: 0 1rem;
+                        text-align: center;
+                        border-right: 2px solid #fff;
+                        border-radius: 8px 0 0 8px;
+                        white-space: nowrap;
+                      "
+                    >
+                      Header: 2–6 bytes
+                    </div>
+                    <div
+                      style="
+                        width: clamp(160px, 18vw, 280px);
+                        background: rgba(67, 97, 238, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-weight: 700;
+                        font-size: var(--h3-size);
+                        padding: 0 1rem;
+                        text-align: center;
+                        border-radius: 0 8px 8px 0;
+                        white-space: nowrap;
+                      "
+                    >
+                      Payload
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    text-align: left;
+                    font-size: var(--small-size);
+                    color: var(--accent);
+                    font-weight: 600;
+                  "
+                >
+                  ~2–6 bytes overhead
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Bottom summary -->
-          <p
-            class="slide-body reveal"
-            style="
-              font-size: var(--body-size);
-              color: var(--text-muted-dark);
-              text-align: center;
-              transition-delay: 0.4s;
-            "
-          >
-            Polling every 2s =
-            <strong style="color: var(--amber)">30 req/min × 800 bytes</strong>
-            vs WebSocket:
-            <strong style="color: var(--accent)">just your data</strong>
-          </p>
-        </div>
+            <!-- Bottom summary -->
+            <p
+              class="slide-body reveal"
+              style="
+                font-size: var(--body-size);
+                color: var(--text-muted-dark);
+                text-align: center;
+                transition-delay: 0.4s;
+              "
+            >
+              Polling every 2s =
+              <strong style="color: var(--amber)"
+                >30 req/min × 800 bytes</strong
+              >
+              vs WebSocket:
+              <strong style="color: var(--accent)">just your data</strong>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1908,128 +1924,141 @@
         style="gap: var(--content-gap); align-items: center"
       >
         <h2 class="slide-h2 reveal">Connection Lifecycle</h2>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--h3-size)">
+        <p
+          class="slide-body reveal"
+          style="text-align: center; font-size: var(--h3-size)"
+        >
           A WebSocket connection goes through four stages:
         </p>
-        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; gap: var(--content-gap)">
-        <!-- Color bar -->
         <div
-          class="reveal"
           style="
+            flex: 1;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            height: clamp(6rem, 16vh, 10rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.25s;
+            gap: var(--content-gap);
           "
         >
+          <!-- Color bar -->
           <div
+            class="reveal"
             style="
-              flex: 0 0 15%;
-              background: rgba(67, 97, 238, 0.15);
               display: flex;
-              align-items: center;
-              justify-content: center;
-              border-right: 2px solid #fff;
+              width: 100%;
+              height: clamp(6rem, 16vh, 10rem);
+              border-radius: 8px;
+              overflow: hidden;
+              transition-delay: 0.25s;
             "
           >
-            <strong style="color: #4361ee; font-size: var(--h3-size)"
-              >Opening</strong
+            <div
+              style="
+                flex: 0 0 15%;
+                background: rgba(67, 97, 238, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
             >
-          </div>
-          <div
-            style="
-              flex: 1;
-              background: rgba(34, 197, 94, 0.15);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-right: 2px solid #fff;
-            "
-          >
-            <strong style="color: #22c55e; font-size: var(--h3-size)"
-              >Open</strong
+              <strong style="color: #4361ee; font-size: var(--h3-size)"
+                >Opening</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 1;
+                background: rgba(34, 197, 94, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
             >
-          </div>
-          <div
-            style="
-              flex: 0 0 20%;
-              background: rgba(245, 158, 11, 0.15);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-right: 2px solid #fff;
-            "
-          >
-            <strong style="color: #f59e0b; font-size: var(--h3-size)"
-              >Closing</strong
+              <strong style="color: #22c55e; font-size: var(--h3-size)"
+                >Open</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 0 0 20%;
+                background: rgba(245, 158, 11, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 2px solid #fff;
+              "
             >
-          </div>
-          <div
-            style="
-              flex: 0 0 20%;
-              background: rgba(239, 68, 68, 0.15);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
-            <strong style="color: #ef4444; font-size: var(--h3-size)"
-              >Reconnecting</strong
+              <strong style="color: #f59e0b; font-size: var(--h3-size)"
+                >Closing</strong
+              >
+            </div>
+            <div
+              style="
+                flex: 0 0 20%;
+                background: rgba(239, 68, 68, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
             >
+              <strong style="color: #ef4444; font-size: var(--h3-size)"
+                >Reconnecting</strong
+              >
+            </div>
           </div>
-        </div>
-        <!-- Descriptions below bar -->
-        <div
-          class="reveal"
-          style="display: flex; width: 100%; transition-delay: 0.35s"
-        >
+          <!-- Descriptions below bar -->
           <div
-            style="
-              flex: 0 0 20%;
-              padding: 0.8rem 0.5rem 0;
-              text-align: start;
-              font-size: var(--h3-size);
-              color: var(--text-muted-dark);
-            "
+            class="reveal"
+            style="display: flex; width: 100%; transition-delay: 0.35s"
           >
-            Start connection
+            <div
+              style="
+                flex: 0 0 20%;
+                padding: 0.8rem 0.5rem 0;
+                text-align: start;
+                font-size: var(--h3-size);
+                color: var(--text-muted-dark);
+              "
+            >
+              Start connection
+            </div>
+            <div
+              style="
+                flex: 1;
+                padding: 0.8rem 0.5rem 0;
+                text-align: center;
+                font-size: var(--h3-size);
+                color: var(--text-muted-dark);
+              "
+            >
+              Send and receive messages
+            </div>
+            <div
+              style="
+                flex: 0 0 20%;
+                padding: 0.8rem 0.5rem 0;
+                text-align: center;
+                font-size: var(--h3-size);
+                color: var(--text-muted-dark);
+              "
+            >
+              End the connection
+            </div>
+            <div
+              style="
+                flex: 0 0 20%;
+                padding: 0.8rem 0.5rem 0;
+                text-align: center;
+                font-size: var(--h3-size);
+                color: var(--text-muted-dark);
+              "
+            >
+              Retry after failure
+            </div>
           </div>
-          <div
-            style="
-              flex: 1;
-              padding: 0.8rem 0.5rem 0;
-              text-align: center;
-              font-size: var(--h3-size);
-              color: var(--text-muted-dark);
-            "
-          >
-            Send and receive messages
-          </div>
-          <div
-            style="
-              flex: 0 0 20%;
-              padding: 0.8rem 0.5rem 0;
-              text-align: center;
-              font-size: var(--h3-size);
-              color: var(--text-muted-dark);
-            "
-          >
-            End the connection
-          </div>
-          <div
-            style="
-              flex: 0 0 20%;
-              padding: 0.8rem 0.5rem 0;
-              text-align: center;
-              font-size: var(--h3-size);
-              color: var(--text-muted-dark);
-            "
-          >
-            Retry after failure
-          </div>
-        </div>
         </div>
       </div>
     </section>
@@ -2038,83 +2067,365 @@
      SLIDE 10 — HEARTBEAT (PING/PONG)
      ============================================= -->
     <section class="slide slide--light" id="slide-11">
+      <style>
+        /* Slide 10 — Ping/Pong */
+        #s10-wire-area {
+          position: relative;
+          height: clamp(80px, 15vh, 140px);
+          overflow: visible;
+        }
+        #s10-wire {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 1px;
+        }
+        #s10-wire::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: repeating-linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.12) 0 6px,
+            transparent 6px 12px
+          );
+        }
+        .s10-wire-dot {
+          position: absolute;
+          top: 50%;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(0, 0, 0, 0.15);
+          transform: translateY(-50%);
+        }
+        .s10-wire-dot.left {
+          left: -3px;
+        }
+        .s10-wire-dot.right {
+          right: -3px;
+        }
+        .s10-packet {
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 5px 16px;
+          border-radius: 20px;
+          font-size: var(--body-size);
+          font-weight: 600;
+          font-family: var(--font-body);
+          white-space: nowrap;
+          z-index: 3;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .s10-packet.ping {
+          background: rgba(67, 97, 238, 0.1);
+          color: #4361ee;
+          border: 1px solid rgba(67, 97, 238, 0.3);
+        }
+        .s10-packet.pong {
+          background: rgba(34, 197, 94, 0.1);
+          color: #22c55e;
+          border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        @keyframes s10FlyR {
+          0% {
+            left: 2%;
+            opacity: 0;
+          }
+          2% {
+            opacity: 1;
+          }
+          98% {
+            opacity: 1;
+          }
+          100% {
+            left: 98%;
+            opacity: 0;
+          }
+        }
+        @keyframes s10FlyL {
+          0% {
+            left: 98%;
+            opacity: 0;
+          }
+          2% {
+            opacity: 1;
+          }
+          98% {
+            opacity: 1;
+          }
+          100% {
+            left: 2%;
+            opacity: 0;
+          }
+        }
+        .s10-packet.fly-r {
+          animation: s10FlyR 5s linear forwards;
+        }
+        .s10-packet.fly-l {
+          animation: s10FlyL 5s linear forwards;
+        }
+        .s10-endpoint {
+          text-align: center;
+          width: clamp(120px, 15vw, 200px);
+          flex-shrink: 0;
+          z-index: 2;
+        }
+        .s10-endpoint-box {
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          border-radius: 12px;
+          padding: clamp(1rem, 2.5vh, 1.8rem) clamp(0.8rem, 1.5vw, 1.5rem);
+          background: #fff;
+          transition: border-color 0.3s;
+        }
+        .s10-endpoint-box.s10-hl-ping {
+          border-color: #4361ee;
+        }
+        .s10-endpoint-box.s10-hl-pong {
+          border-color: #22c55e;
+        }
+        .s10-endpoint-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 8px;
+          font-weight: 600;
+          font-size: 18px;
+        }
+        .s10-icon-client {
+          background: rgba(67, 97, 238, 0.1);
+          color: #4361ee;
+        }
+        .s10-icon-server {
+          background: rgba(34, 197, 94, 0.1);
+          color: #22c55e;
+        }
+        .s10-endpoint-label {
+          font-size: var(--h3-size);
+          font-weight: 700;
+          color: #1a1a1a;
+        }
+        .s10-endpoint-status {
+          font-size: var(--small-size);
+          margin-top: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          color: #6b7280;
+        }
+        .s10-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          flex-shrink: 0;
+          transition: background 0.3s;
+        }
+        .s10-dot.ok {
+          background: #22c55e;
+        }
+        .s10-stats {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: clamp(0.4rem, 1vw, 0.8rem);
+          width: 100%;
+        }
+        .s10-stat {
+          background: #f0efec;
+          border-radius: 8px;
+          padding: clamp(0.5rem, 1.2vh, 0.8rem) 0.5rem;
+          text-align: center;
+        }
+        .s10-stat-label {
+          font-size: var(--small-size);
+          color: #9ca3af;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+        .s10-stat-value {
+          font-size: var(--h3-size);
+          font-weight: 600;
+          margin-top: 2px;
+          font-variant-numeric: tabular-nums;
+        }
+        .s10-log {
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: 12px;
+          overflow: hidden;
+          width: 100%;
+          margin-top: auto;
+        }
+        .s10-log-header {
+          padding: 6px 12px;
+          font-size: var(--small-size);
+          font-weight: 500;
+          color: #9ca3af;
+          background: #f9fafb;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+        }
+        .s10-log-list {
+          height: 12em;
+          overflow-y: auto;
+          padding: 2px 0;
+          line-height: 1.5em;
+        }
+        .s10-log-list::-webkit-scrollbar {
+          width: 4px;
+        }
+        .s10-log-list::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.12);
+          border-radius: 2px;
+        }
+        .s10-log-entry {
+          padding: 3px 12px;
+          font-size: var(--body-size);
+          font-family: var(--font-body);
+          color: #6b7280;
+          display: flex;
+          gap: 8px;
+          align-items: baseline;
+          line-height: 1.5;
+        }
+        .s10-log-entry:hover {
+          background: #f9fafb;
+        }
+        .s10-log-entry .s10-time {
+          color: #9ca3af;
+          min-width: 52px;
+        }
+        .s10-log-entry .s10-dir {
+          min-width: 16px;
+          text-align: center;
+          font-size: var(--small-size);
+        }
+        .s10-log-entry.s10-ping-log .s10-dir {
+          color: #4361ee;
+        }
+        .s10-log-entry.s10-pong-log .s10-dir {
+          color: #22c55e;
+        }
+        .s10-log-entry.s10-info-log .s10-dir {
+          color: #f59e0b;
+        }
+      </style>
       <div
         class="slide-content"
-        style="gap: var(--content-gap); align-items: center"
+        style="gap: clamp(0.5rem, 1.5vh, 1rem); align-items: center"
       >
         <h2 class="slide-h2 reveal">Keeping the Connection Alive</h2>
-        <p class="slide-body reveal" style="text-align: center; font-size: var(--h3-size)">
+        <p
+          class="slide-body reveal"
+          style="text-align: center; font-size: var(--h3-size)"
+        >
           The server sends a Ping, the client replies with a Pong.
         </p>
-        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; gap: clamp(0.5rem, 1vh, 0.8rem)">
-        <!-- Row 1: Success -->
+
+        <!-- Wire visualization: Client (left) ←→ Server (right) -->
         <div
-          class="reveal"
           style="
             display: flex;
+            align-items: center;
             width: 100%;
-            height: clamp(4rem, 10vh, 7rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.2s;
+            flex: 1;
+            min-height: 0;
           "
         >
-          <div style="flex: 1; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #22c55e; font-size: var(--h3-size)">Ping →</strong>
+          <div class="s10-endpoint">
+            <div class="s10-endpoint-box" id="s10-client-box">
+              <div class="s10-endpoint-icon s10-icon-client">C</div>
+              <div class="s10-endpoint-label">Client</div>
+              <div class="s10-endpoint-status">
+                <span class="s10-dot ok" id="s10-client-dot"></span>
+                <span id="s10-client-status">Connected</span>
+              </div>
+            </div>
           </div>
-          <div style="flex: 1; background: rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center">
-            <strong style="color: #22c55e; font-size: var(--h3-size)">← Pong</strong>
+          <div style="flex: 1; min-width: 0">
+            <div id="s10-wire-area">
+              <div id="s10-wire"></div>
+              <div class="s10-wire-dot left"></div>
+              <div class="s10-wire-dot right"></div>
+            </div>
+          </div>
+          <div class="s10-endpoint">
+            <div class="s10-endpoint-box" id="s10-server-box">
+              <div class="s10-endpoint-icon s10-icon-server">S</div>
+              <div class="s10-endpoint-label">Server</div>
+              <div class="s10-endpoint-status">
+                <span class="s10-dot ok" id="s10-server-dot"></span>
+                <span id="s10-server-status">Listening</span>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Row 2: Success -->
-        <div
-          class="reveal"
-          style="
-            display: flex;
-            width: 100%;
-            height: clamp(4rem, 10vh, 7rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.3s;
-          "
-        >
-          <div style="flex: 1; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #22c55e; font-size: var(--h3-size)">Ping →</strong>
+
+        <!-- Stats + Control row -->
+        <!-- Control button -->
+        <div style="display: flex; justify-content: center">
+          <button
+            id="s10-toggle"
+            onclick="s10Toggle()"
+            style="
+              padding: 0.6rem 1.5rem;
+              background: #e3e7fc;
+              color: #4361ee;
+              border: none;
+              border-radius: 8px;
+              font-family: var(--font-body);
+              font-size: var(--body-size);
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            Pause
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="s10-stats">
+          <div class="s10-stat">
+            <div class="s10-stat-label">Pings</div>
+            <div class="s10-stat-value" id="s10-pings">0</div>
           </div>
-          <div style="flex: 1; background: rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center">
-            <strong style="color: #22c55e; font-size: var(--h3-size)">← Pong</strong>
+          <div class="s10-stat">
+            <div class="s10-stat-label">Pongs</div>
+            <div class="s10-stat-value" id="s10-pongs">0</div>
+          </div>
+          <div class="s10-stat">
+            <div class="s10-stat-label">Latency</div>
+            <div class="s10-stat-value" id="s10-lat">—</div>
           </div>
         </div>
-        <!-- Row 3: Failure -->
-        <div
-          class="reveal"
-          style="
-            display: flex;
-            width: 100%;
-            height: clamp(4rem, 10vh, 7rem);
-            border-radius: 8px;
-            overflow: hidden;
-            transition-delay: 0.4s;
-          "
-        >
-          <div style="flex: 1; background: rgba(239,68,68,0.15); display: flex; align-items: center; justify-content: center; border-right: 2px solid #fff">
-            <strong style="color: #ef4444; font-size: var(--h3-size)">Ping →</strong>
+
+        <!-- Event log (pushed to bottom) -->
+        <div class="s10-log">
+          <div class="s10-log-header">
+            <span>Event log</span>
+            <button
+              onclick="s10ClearLog()"
+              style="
+                font-size: var(--small-size);
+                padding: 2px 8px;
+                border: 1px solid #d1d5db;
+                border-radius: 4px;
+                background: #fff;
+                cursor: pointer;
+              "
+            >
+              Clear
+            </button>
           </div>
-          <div style="flex: 1; background: rgba(239,68,68,0.08); border: 2px dashed rgba(239,68,68,0.3); display: flex; align-items: center; justify-content: center; border-radius: 0 8px 8px 0">
-            <strong style="color: #ef4444; font-size: var(--h3-size)">✗ No Pong</strong>
-          </div>
-        </div>
-        <p
-          class="reveal"
-          style="
-            color: var(--text-muted-dark);
-            font-size: var(--body-size);
-            text-align: center;
-            transition-delay: 0.5s;
-          "
-        >
-          No Pong response — the server knows the client is gone
-        </p>
+          <div class="s10-log-list" id="s10-log-list"></div>
         </div>
       </div>
     </section>
@@ -3865,6 +4176,126 @@
 
       const presentation = new SlidePresentation();
       // const editor = new InlineEditor();
+
+      /* ── Slide 10: Ping/Pong visualization ── */
+      (function () {
+        var s10 = {
+          running: true,
+          timer: null,
+          pings: 0,
+          pongs: 0,
+          seq: 0,
+          FLY: 5000,
+        };
+
+        function s10El(id) {
+          return document.getElementById(id);
+        }
+
+        function s10Log(type, dir, msg) {
+          var logs = s10El("s10-log-list");
+          if (!logs) return;
+          var t = new Date().toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+          var a = dir === "r" ? "\u2192" : dir === "l" ? "\u2190" : "\u25CF";
+          var e = document.createElement("div");
+          e.className = "s10-log-entry s10-" + type + "-log";
+          e.innerHTML =
+            '<span class="s10-time">' +
+            t +
+            '</span><span class="s10-dir">' +
+            a +
+            "</span><span>" +
+            msg +
+            "</span>";
+          logs.appendChild(e);
+          logs.scrollTop = logs.scrollHeight;
+        }
+
+        function s10Packet(label, cls, dir) {
+          var w = s10El("s10-wire-area");
+          if (!w) return;
+          var p = document.createElement("div");
+          p.className = "s10-packet " + cls + " fly-" + dir;
+          p.textContent = label;
+          w.appendChild(p);
+          setTimeout(function () {
+            if (p.parentNode) p.remove();
+          }, s10.FLY + 200);
+        }
+
+        function s10Flash(id, cls) {
+          var el = s10El(id);
+          if (!el) return;
+          el.classList.add(cls);
+          setTimeout(function () {
+            el.classList.remove(cls);
+          }, s10.FLY);
+        }
+
+        function s10Stats() {
+          var ep = s10El("s10-pings");
+          if (ep) ep.textContent = s10.pings;
+          var eo = s10El("s10-pongs");
+          if (eo) eo.textContent = s10.pongs;
+        }
+
+        function s10Cycle() {
+          if (!s10.running) return;
+          s10.seq++;
+          s10.pings++;
+          var n = s10.seq;
+          s10Stats();
+          // Phase 1: Server sends Ping → (flies right, 5s)
+          s10Packet("PING #" + n, "ping", "r");
+          s10Log("ping", "r", "PING #" + n + " sent by server");
+          s10Flash("s10-server-box", "s10-hl-ping");
+
+          // Phase 2: After Ping arrives (5s), Client sends Pong ← (flies left, 5s)
+          var lat = Math.round(30 + Math.random() * 90);
+          s10.timer = setTimeout(function () {
+            if (!s10.running) return;
+            s10.pongs++;
+            var el = s10El("s10-lat");
+            if (el) el.textContent = lat + "ms";
+            s10Stats();
+            s10Packet("PONG #" + n, "pong", "l");
+            s10Log("pong", "l", "PONG #" + n + " (" + lat + "ms)");
+            s10Flash("s10-client-box", "s10-hl-pong");
+
+            // Phase 3: After Pong arrives (5s), wait 1s then start next cycle
+            s10.timer = setTimeout(function () {
+              s10Cycle();
+            }, s10.FLY + 1000);
+          }, s10.FLY);
+        }
+
+        function s10Loop() {
+          clearTimeout(s10.timer);
+          if (s10.running) {
+            s10Cycle();
+          }
+        }
+
+        window.s10Toggle = function () {
+          s10.running = !s10.running;
+          var btn = s10El("s10-toggle");
+          if (btn) btn.textContent = s10.running ? "Pause" : "Start";
+          if (s10.running) s10Loop();
+          else clearTimeout(s10.timer);
+        };
+
+        window.s10ClearLog = function () {
+          var l = s10El("s10-log-list");
+          if (l) l.innerHTML = "";
+        };
+
+        s10Log("info", "", "WebSocket connection established");
+        s10Loop();
+      })();
     </script>
 
     <!-- Optional: Socket.IO client for live chat demo -->
