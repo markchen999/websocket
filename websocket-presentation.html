@@ -865,7 +865,7 @@
         padding: clamp(0.2rem, 0.4vw, 0.35rem) clamp(0.4rem, 0.8vw, 0.6rem);
         background: rgba(255, 255, 255, 0.05);
         border-radius: 4px;
-        font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+        font-size: clamp(0.8rem, 1.2vw, 1rem);
         animation: msgIn 0.2s ease-out;
       }
 
@@ -1287,7 +1287,7 @@
      ============================================= -->
     <section class="slide slide--light" id="slide-2">
       <div class="slide-content" style="gap: var(--content-gap)">
-        <h2 class="slide-h2 reveal">Today's Agenda</h2>
+        <h2 class="slide-h2 reveal">Agenda</h2>
 
         <div
           class="reveal"
@@ -1416,7 +1416,7 @@
               >5</span
             >
             <span style="font-size: var(--h3-size); font-weight: 600"
-              >Real World &mdash; use cases, trade-offs, live demo</span
+              >Real World &mdash; trade-offs, live demo</span
             >
           </div>
         </div>
@@ -1445,7 +1445,7 @@
             align-self: center;
           "
         />
-        <p class="slide-body reveal">
+        <p class="slide-body reveal" style="font-size: var(--h3-size)">
           The client sends a request, the server sends back a response.
           <strong>Then the connection is done.</strong>
         </p>
@@ -2626,7 +2626,7 @@
             class="reveal"
             style="
               text-align: center;
-              font-size: var(--body-size);
+              font-size: var(--h3-size);
               transition-delay: 0.4s;
             "
           >
@@ -2754,26 +2754,26 @@
               </div>
               <div class="user-grid" id="pattern-broadcast">
                 <div class="user-icon user-icon--lit">
-                  <div class="avatar">A</div>
-                  <div class="name">Alice</div>
+                  <div class="avatar">M</div>
+                  <div class="name">Max</div>
                 </div>
                 <div class="user-icon user-icon--lit">
-                  <div class="avatar">B</div>
-                  <div class="name">Bob</div>
+                  <div class="avatar">E</div>
+                  <div class="name">Erin</div>
                 </div>
                 <div class="user-icon user-icon--lit">
-                  <div class="avatar">C</div>
-                  <div class="name">Carol</div>
+                  <div class="avatar">M</div>
+                  <div class="name">Mark</div>
                 </div>
                 <div class="user-icon user-icon--lit">
-                  <div class="avatar">D</div>
-                  <div class="name">Dave</div>
+                  <div class="avatar">K</div>
+                  <div class="name">Karen</div>
                 </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em"
+              style="font-size: var(--h3-size); margin-top: 0.6em"
             >
               All connected clients receive it
             </p>
@@ -2818,12 +2818,12 @@
                 </div>
                 <div class="user-grid">
                   <div class="user-icon user-icon--lit">
-                    <div class="avatar">A</div>
-                    <div class="name">Alice</div>
+                    <div class="avatar">M</div>
+                    <div class="name">Max</div>
                   </div>
                   <div class="user-icon user-icon--lit">
-                    <div class="avatar">B</div>
-                    <div class="name">Bob</div>
+                    <div class="avatar">E</div>
+                    <div class="name">Erin</div>
                   </div>
                 </div>
               </div>
@@ -2850,19 +2850,19 @@
                 </div>
                 <div class="user-grid">
                   <div class="user-icon user-icon--dim" style="opacity: 1">
-                    <div class="avatar">C</div>
-                    <div class="name">Carol</div>
+                    <div class="avatar">M</div>
+                    <div class="name">Mark</div>
                   </div>
                   <div class="user-icon user-icon--dim" style="opacity: 1">
-                    <div class="avatar">D</div>
-                    <div class="name">Dave</div>
+                    <div class="avatar">K</div>
+                    <div class="name">Karen</div>
                   </div>
                 </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em"
+              style="font-size: var(--h3-size); margin-top: 0.6em"
             >
               Only same-room members receive it
             </p>
@@ -2894,30 +2894,30 @@
                   margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
                 "
               >
-                &rarr; Alice
+                &rarr; Max
               </div>
               <div class="user-grid" id="pattern-direct">
                 <div class="user-icon user-icon--lit">
-                  <div class="avatar">A</div>
-                  <div class="name">Alice</div>
+                  <div class="avatar">M</div>
+                  <div class="name">Max</div>
                 </div>
                 <div class="user-icon user-icon--dim">
-                  <div class="avatar">B</div>
-                  <div class="name">Bob</div>
+                  <div class="avatar">E</div>
+                  <div class="name">Erin</div>
                 </div>
                 <div class="user-icon user-icon--dim">
-                  <div class="avatar">C</div>
-                  <div class="name">Carol</div>
+                  <div class="avatar">M</div>
+                  <div class="name">Mark</div>
                 </div>
                 <div class="user-icon user-icon--dim">
-                  <div class="avatar">D</div>
-                  <div class="name">Dave</div>
+                  <div class="avatar">K</div>
+                  <div class="name">Karen</div>
                 </div>
               </div>
             </div>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size); margin-top: 0.6em"
+              style="font-size: var(--h3-size); margin-top: 0.6em"
             >
               Exactly one client receives it
             </p>
@@ -3054,7 +3054,7 @@
           class="reveal"
           style="
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: auto 1fr 1fr 1fr;
             gap: 0;
             width: 100%;
             border-radius: 8px;
@@ -3063,6 +3063,12 @@
           "
         >
           <!-- Column Headers -->
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              background: rgba(0, 0, 0, 0.03);
+            "
+          ></div>
           <div
             style="
               padding: clamp(0.6rem, 1.2vw, 1rem);
@@ -3091,239 +3097,199 @@
               text-align: center;
             "
           >
-            <strong class="slide-h3" style="color: var(--accent)"
-              >WebSocket</strong
-            >
+            <strong class="slide-h3" style="color: var(--accent)">WebSocket</strong>
           </div>
           <!-- Row: Direction -->
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              font-weight: 700;
+              color: var(--text-muted-dark);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Direction
-            </div>
-            Request ↔ Response
-          </div>
+          >Direction</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Direction
-            </div>
-            Server → Client only
-          </div>
+          >Request ↔ Response</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Direction
-            </div>
-            <strong>Bidirectional</strong>
-          </div>
+          >Server → Client only</div>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
+            "
+          ><strong>Bidirectional</strong></div>
           <!-- Row: Connection -->
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              font-weight: 700;
+              color: var(--text-muted-dark);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Connection
-            </div>
-            New connection per request
-          </div>
+          >Connection</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Connection
-            </div>
-            Persistent HTTP stream
-          </div>
+          >New connection per request</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Connection
-            </div>
-            Persistent, protocol upgrade
-          </div>
+          >Persistent HTTP stream</div>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
+            "
+          >Persistent, protocol upgrade</div>
           <!-- Row: Best for -->
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              font-weight: 700;
+              color: var(--text-muted-dark);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Best for
-            </div>
-            REST APIs, forms, static resources, caching
-          </div>
+          >Best for</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Best for
-            </div>
-            Live feeds, notifications, dashboards, AI token streaming
-          </div>
+          >REST APIs, forms, static resources, caching</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Best for
-            </div>
-            Chat, collaborative editing, multiplayer games, trading
-          </div>
+          >Live feeds, notifications, dashboards, AI token streaming</div>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
+            "
+          >Chat, collaborative editing, multiplayer games, trading</div>
           <!-- Row: Complexity -->
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              font-weight: 700;
+              color: var(--text-muted-dark);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Complexity
-            </div>
-            <strong style="color: var(--green)">Low</strong>
-          </div>
+          >Complexity</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Complexity
-            </div>
-            <strong style="color: var(--green)">Low</strong> — auto-reconnect
-            built in
-          </div>
+          ><strong style="color: var(--green)">Low</strong></div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
               border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              font-size: var(--small-size);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Complexity
-            </div>
-            <strong style="color: var(--amber)">Higher</strong> — manage
-            lifecycle yourself
-          </div>
+          ><strong style="color: var(--green)">Low</strong>&nbsp;— auto-reconnect built in</div>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
+            "
+          ><strong style="color: var(--amber)">Higher</strong>&nbsp;— manage lifecycle yourself</div>
           <!-- Row: Binary data -->
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
-              font-size: var(--small-size);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              font-size: var(--body-size);
+              font-weight: 700;
+              color: var(--text-muted-dark);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Binary data
-            </div>
-            <strong style="color: var(--green)">✓</strong>
-          </div>
+          >Binary data</div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
-              font-size: var(--small-size);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Binary data
-            </div>
-            <strong style="color: var(--red)">✗</strong> text only
-          </div>
+          ><strong style="color: var(--green)">✓</strong></div>
           <div
             style="
-              padding: clamp(0.4rem, 0.8vw, 0.7rem);
-              font-size: var(--small-size);
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
             "
-          >
-            <div
-              class="slide-small text-muted-dark"
-              style="font-weight: 700; margin-bottom: 0.2em"
-            >
-              Binary data
-            </div>
-            <strong style="color: var(--green)">✓</strong>
-          </div>
+          ><strong style="color: var(--red)">✗</strong>&nbsp;text only</div>
+          <div
+            style="
+              padding: clamp(0.6rem, 1.2vw, 1rem);
+              font-size: var(--body-size);
+              display: flex;
+              align-items: center;
+            "
+          ><strong style="color: var(--green)">✓</strong></div>
         </div>
         <p
           class="slide-body reveal"
