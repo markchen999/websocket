@@ -2308,7 +2308,7 @@
           class="slide-body reveal"
           style="text-align: center; font-size: var(--h3-size)"
         >
-          The server sends a Ping, the client replies with a Pong.
+          Heartbeat: the server sends a Ping, the client replies with a Pong.
         </p>
 
         <!-- Wire visualization: Client (left) ←→ Server (right) -->
@@ -2963,18 +2963,20 @@
               flex: 1;
               display: flex;
               flex-direction: column;
-              justify-content: center;
+              justify-content: flex-start;
             "
           >
+            <div style="font-size: var(--h2-size); font-weight: 800; color: var(--amber); opacity: 0.25; line-height: 1">01</div>
             <h3 class="slide-h3" style="color: var(--amber)">
               Server Resources
             </h3>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size)"
+              style="font-size: var(--h3-size)"
             >
-              1 user = 1 persistent connection.
-              <strong>10K users = 10K open sockets.</strong>
+              1 user = 1 persistent connection.<br>
+              10K users = 10K open sockets.<br>
+              HTTP serves and moves on — WebSocket doesn't.
             </p>
           </div>
           <div
@@ -2983,18 +2985,19 @@
               flex: 1;
               display: flex;
               flex-direction: column;
-              justify-content: center;
+              justify-content: flex-start;
             "
           >
+            <div style="font-size: var(--h2-size); font-weight: 800; color: var(--amber); opacity: 0.25; line-height: 1">02</div>
             <h3 class="slide-h3" style="color: var(--amber)">
               Scaling is Harder
             </h3>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size)"
+              style="font-size: var(--h3-size)"
             >
-              <strong>Stateful</strong> — client tied to one server. Scaling
-              needs sticky sessions or pub/sub.
+              Stateful — client is tied to one server.<br>
+              Adding more servers doesn't automatically help.
             </p>
           </div>
           <div
@@ -3003,17 +3006,18 @@
               flex: 1;
               display: flex;
               flex-direction: column;
-              justify-content: center;
+              justify-content: flex-start;
             "
           >
+            <div style="font-size: var(--h2-size); font-weight: 800; color: var(--amber); opacity: 0.25; line-height: 1">03</div>
             <h3 class="slide-h3" style="color: var(--amber)">
               More Things Can Go Wrong
             </h3>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size)"
+              style="font-size: var(--h3-size)"
             >
-              Network drops, proxy timeouts, mobile sleep.
+              Network drops, proxy timeouts, mobile sleep.<br>
               <strong>You must handle all of them.</strong>
             </p>
           </div>
@@ -3023,15 +3027,16 @@
               flex: 1;
               display: flex;
               flex-direction: column;
-              justify-content: center;
+              justify-content: flex-start;
             "
           >
+            <div style="font-size: var(--h2-size); font-weight: 800; color: var(--amber); opacity: 0.25; line-height: 1">04</div>
             <h3 class="slide-h3" style="color: var(--amber)">
               Infrastructure Cost
             </h3>
             <p
               class="slide-body text-muted-dark"
-              style="font-size: var(--body-size)"
+              style="font-size: var(--h3-size)"
             >
               Load balancers, firewalls, proxies — all need
               <strong>long-lived connection support.</strong>
