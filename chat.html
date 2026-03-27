@@ -223,13 +223,20 @@
     const $ = (id) => document.getElementById(id);
 
     let nickname = '';
-    const socket = io({ transports: ['websocket'] });
+    const socket = io();
 
     // ── Nickname & Registration ──
     function enterChat() {
       const val = $('nicknameInput').value.trim();
       nickname = val || 'Anonymous';
-      socket.emit('register', { nickname });
+      if (socket.connected) {
+        socket.emit('register', { nickname });
+      } else {
+        // Not connected yet — register as soon as connection is established
+        socket.once('connect', () => {
+          socket.emit('register', { nickname });
+        });
+      }
     }
 
     socket.on('registered', (data) => {
