@@ -2941,9 +2941,111 @@
     </section>
 
     <!-- =============================================
-     SLIDE 14 — THE COST OF WEBSOCKET
+     SLIDE 14 — DEMO: LIVE CHAT
      ============================================= -->
-    <section class="slide slide--light" id="slide-14">
+    <section
+      class="slide slide--dark demo-slide"
+      id="slide-14"
+      data-demo="chat"
+    >
+      <div class="slide-content">
+        <div
+          class="reveal"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+          "
+        >
+          <h2 class="slide-h3">Live Demo: Chat & Message Patterns</h2>
+          <div class="demo-controls">
+            <select class="demo-select" id="demo18-mode">
+              <option value="broadcast">Broadcast</option>
+              <option value="roomA">Room A</option>
+              <option value="roomB">Room B</option>
+              <option value="direct">Direct</option>
+            </select>
+            <select
+              class="demo-select"
+              id="demo18-target"
+              style="display: none"
+            ></select>
+            <input
+              type="text"
+              class="demo-input"
+              id="demo18-input"
+              placeholder="Type a message..."
+              style="max-width: 200px"
+            />
+            <button class="demo-btn" id="demo18-send">Send</button>
+          </div>
+        </div>
+        <div class="demo-body reveal" style="transition-delay: 0.15s">
+          <!-- Left column: QR & URL -->
+          <div class="url-display" style="flex: 0.6">
+            <p class="slide-small text-muted-light">Scan or visit to join</p>
+            <div
+              id="chat-qr"
+              style="
+                background: #fff;
+                padding: 8px;
+                border-radius: 8px;
+                display: inline-block;
+              "
+            ></div>
+            <div class="url-box" id="chat-url">localhost:3000/chat</div>
+            <p
+              class="slide-body text-muted-light"
+              style="font-size: var(--small-size); text-align: center"
+            >
+              Connect to the same Wi-Fi network
+            </p>
+            <div class="status-indicator" style="font-size: var(--small-size)">
+              <div class="status-dot status-dot--amber" id="demo18-dot"></div>
+              <span id="demo18-conn-status">Waiting for server...</span>
+            </div>
+          </div>
+          <!-- Center column: Chat messages -->
+          <div class="chat-panel" style="flex: 1">
+            <div class="chat-messages" id="demo18-messages"></div>
+          </div>
+          <!-- Right column: Connected users -->
+          <div
+            style="
+              flex: 0.6;
+              display: flex;
+              flex-direction: column;
+              gap: clamp(0.4rem, 1vh, 0.8rem);
+            "
+          >
+            <div
+              class="slide-small text-muted-light"
+              style="text-align: center; font-weight: 700"
+            >
+              Connected Users
+            </div>
+            <div
+              id="demo18-users"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: clamp(0.4rem, 0.8vh, 0.6rem);
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     SLIDE 15 — THE COST OF WEBSOCKET
+     ============================================= -->
+    <section class="slide slide--light" id="slide-15">
       <div class="slide-content" style="gap: var(--content-gap)">
         <h2 class="slide-h2 reveal">The Cost of WebSocket</h2>
         <div
@@ -3047,9 +3149,9 @@
     </section>
 
     <!-- =============================================
-     SLIDE 15 — CHOOSING THE RIGHT PROTOCOL
+     SLIDE 16 — CHOOSING THE RIGHT PROTOCOL
      ============================================= -->
-    <section class="slide slide--light" id="slide-15">
+    <section class="slide slide--light" id="slide-16">
       <div
         class="slide-content"
         style="gap: var(--content-gap); justify-content: center"
@@ -3361,9 +3463,9 @@
     </section>
 
     <!-- =============================================
-     SLIDE 16 — SUMMARY
+     SLIDE 17 — SUMMARY
      ============================================= -->
-    <section class="slide slide--light" id="slide-16">
+    <section class="slide slide--light" id="slide-17">
       <div class="slide-content" style="gap: var(--content-gap)">
         <h2 class="slide-h2 reveal">What We Learned Today</h2>
 
@@ -3477,108 +3579,6 @@
               <strong class="text-accent">message pattern</strong> &mdash;
               broadcast, room, or one-to-one.</span
             >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-     SLIDE 17 — DEMO: LIVE CHAT
-     ============================================= -->
-    <section
-      class="slide slide--dark demo-slide"
-      id="slide-17"
-      data-demo="chat"
-    >
-      <div class="slide-content">
-        <div
-          class="reveal"
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-          "
-        >
-          <h2 class="slide-h3">Live Demo: Chat & Message Patterns</h2>
-          <div class="demo-controls">
-            <select class="demo-select" id="demo18-mode">
-              <option value="broadcast">Broadcast</option>
-              <option value="roomA">Room A</option>
-              <option value="roomB">Room B</option>
-              <option value="direct">Direct</option>
-            </select>
-            <select
-              class="demo-select"
-              id="demo18-target"
-              style="display: none"
-            ></select>
-            <input
-              type="text"
-              class="demo-input"
-              id="demo18-input"
-              placeholder="Type a message..."
-              style="max-width: 200px"
-            />
-            <button class="demo-btn" id="demo18-send">Send</button>
-          </div>
-        </div>
-        <div class="demo-body reveal" style="transition-delay: 0.15s">
-          <!-- Left column: QR & URL -->
-          <div class="url-display" style="flex: 0.6">
-            <p class="slide-small text-muted-light">Scan or visit to join</p>
-            <div
-              id="chat-qr"
-              style="
-                background: #fff;
-                padding: 8px;
-                border-radius: 8px;
-                display: inline-block;
-              "
-            ></div>
-            <div class="url-box" id="chat-url">localhost:3000/chat</div>
-            <p
-              class="slide-body text-muted-light"
-              style="font-size: var(--small-size); text-align: center"
-            >
-              Connect to the same Wi-Fi network
-            </p>
-            <div class="status-indicator" style="font-size: var(--small-size)">
-              <div class="status-dot status-dot--amber" id="demo18-dot"></div>
-              <span id="demo18-conn-status">Waiting for server...</span>
-            </div>
-          </div>
-          <!-- Center column: Chat messages -->
-          <div class="chat-panel" style="flex: 1">
-            <div class="chat-messages" id="demo18-messages"></div>
-          </div>
-          <!-- Right column: Connected users -->
-          <div
-            style="
-              flex: 0.6;
-              display: flex;
-              flex-direction: column;
-              gap: clamp(0.4rem, 1vh, 0.8rem);
-            "
-          >
-            <div
-              class="slide-small text-muted-light"
-              style="text-align: center; font-weight: 700"
-            >
-              Connected Users
-            </div>
-            <div
-              id="demo18-users"
-              style="
-                display: flex;
-                flex-direction: column;
-                gap: clamp(0.4rem, 0.8vh, 0.6rem);
-                flex: 1;
-                min-height: 0;
-                overflow-y: auto;
-              "
-            ></div>
           </div>
         </div>
       </div>
